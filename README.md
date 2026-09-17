@@ -86,12 +86,23 @@ Buka [http://localhost:3000](http://localhost:3000) di browser Anda.
 
 ## 🧪 Verifikasi & Testing Kode
 
-Untuk memastikan tidak ada kesalahan TypeScript dan linting:
+Untuk menjalankan pengujian unit otentikasi, type checking, dan build:
 
 ```bash
-# Type check & build
-npm run build
+# Menjalankan pengujian unit otentikasi & proteksi route proxy
+npm test
 
-# Linter check
-npm run lint
+# Type check & production build Next.js 16
+npm run build
 ```
+
+---
+
+## 🔐 Arsitektur Otentikasi & Sesi
+
+Platform ini menggunakan sistem otentikasi siap pakai berbasis **Supabase Auth SSR** dan **Next.js 16 Proxy**:
+1. **Email & Password**: Registrasi akun baru dan login dengan validasi kredensial.
+2. **OAuth Provider**: Dukungan login cepat dengan Google dan GitHub via alur PKCE (`/auth/callback`).
+3. **Guest Access Session (Akses Tamu)**: Memungkinkan pengguna menjelajah dan menjalankan simulasi portofolio tanpa login awal, dengan kemampuan *upgrade* ke akun permanen secara langsung tanpa kehilangan data.
+4. **Proteksi Route (`proxy.ts`)**: Route guard otomatis untuk rute privat (`/dashboard`), redirect pengguna terotentikasi dari halaman `/login` dan `/register`, serta penanganan token refresh yang aman.
+
