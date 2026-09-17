@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, ShieldCheck, Sparkles, TrendingUp, Lock } from 'lucide-react'
+import { ArrowRight, ShieldCheck, Sparkles, TrendingUp } from 'lucide-react'
 import { getAuthStatus } from '@/lib/auth/session'
 import { Button } from '@/components/ui/button'
 
@@ -91,14 +91,6 @@ export default async function Home() {
               </Link>
             </>
           )}
-
-          <Link
-            href="/dashboard"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-transparent font-medium text-sm text-muted-foreground hover:text-foreground transition-all"
-          >
-            <Lock className="size-4" />
-            <span>Tes Route Guard /dashboard</span>
-          </Link>
         </div>
 
         {/* Status Box */}
