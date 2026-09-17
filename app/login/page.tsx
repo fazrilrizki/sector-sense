@@ -4,22 +4,26 @@ import React, { useState, useTransition, use } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
-import { OAuthButtons } from '@/components/auth/oauth-buttons'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { PasswordInput } from '@/components/ui/password-input'
 import { signInWithEmail, signInAsGuest } from '@/lib/auth/actions'
-import { UserCheck, Shield, Lock, Mail, AlertCircle, Sparkles } from 'lucide-react'
+import { Shield, AlertCircle, Sparkles, CheckCircle2, Mail } from 'lucide-react'
 
 export default function LoginPage({
   searchParams,
 }: {
-  searchParams: Promise<{ next?: string; error?: string }>
+  searchParams: Promise<{ next?: string; error?: string; registered?: string; email?: string }>
 }) {
   const resolvedParams = use(searchParams)
   const nextUrl = resolvedParams.next || '/dashboard'
+  const isRegisteredSuccess = resolvedParams.registered === 'true'
+  const registeredEmail = resolvedParams.email || ''
   const router = useRouter()
 
   const [errorMessage, setErrorMessage] = useState<string | null>(
     resolvedParams.error === 'auth_callback_failed'
-      ? 'Otentikasi pihak ketiga gagal. Silakan coba lagi.'
+      ? 'Verifikasi tautan atau otentikasi gagal. Silakan coba login langsung.'
       : null
   )
   const [isPending, startTransition] = useTransition()
@@ -68,6 +72,29 @@ export default function LoginPage({
           </p>
         </div>
 
+        {/* Registered Success Banner */}
+        {isRegisteredSuccess && (
+          <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-950 dark:text-emerald-200 space-y-2">
+            <div className="flex items-center gap-2 font-semibold text-sm text-emerald-700 dark:text-emerald-300">
+              <CheckCircle2 className="size-4 shrink-0" />
+              <span>Pendaftaran Berhasil!</span>
+            </div>
+            <p className="text-xs leading-relaxed">
+              Tautan verifikasi akun telah dikirimkan ke{' '}
+              <strong className="underline underline-offset-2">
+                {registeredEmail || 'email Anda'}
+              </strong>
+              .
+            </p>
+            <div className="flex items-start gap-1.5 text-[11px] text-emerald-600 dark:text-emerald-400 bg-emerald-500/5 p-2 rounded-lg border border-emerald-500/10">
+              <Mail className="size-3.5 mt-0.5 shrink-0" />
+              <span>
+                Silakan buka kotak masuk (atau spam) email Anda dan klik tautan konfirmasi untuk <strong>otomatis masuk ke dashboard</strong>.
+              </span>
+            </div>
+          </div>
+        )}
+
         {/* Error Notification */}
         {errorMessage && (
           <div className="p-3.5 rounded-lg bg-destructive/10 border border-destructive/20 text-destructive text-sm flex items-start gap-2.5">
@@ -78,46 +105,28 @@ export default function LoginPage({
 
         {/* Email & Password Form */}
         <form onSubmit={handleEmailSignIn} className="space-y-4">
-          <div>
-            <label className="block text-xs font-medium text-foreground mb-1.5" htmlFor="email">
-              Email
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-muted-foreground">
-                <Mail className="size-4" />
-              </div>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                placeholder="nama@email.com"
-                className="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-input bg-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-              />
-            </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              required
+              defaultValue={registeredEmail}
+              placeholder="nama@email.com"
+            />
           </div>
 
-          <div>
-            <div className="flex items-center justify-between mb-1.5">
-              <label className="block text-xs font-medium text-foreground" htmlFor="password">
-                Password
-              </label>
-            </div>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-muted-foreground">
-                <Lock className="size-4" />
-              </div>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                placeholder="••••••••"
-                className="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-input bg-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-              />
-            </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="password">Password</Label>
+            <PasswordInput
+              id="password"
+              name="password"
+              autoComplete="current-password"
+              required
+              placeholder="••••••••"
+            />
           </div>
 
           <Button
@@ -129,21 +138,6 @@ export default function LoginPage({
           </Button>
         </form>
 
-        {/* Divider OAuth */}
-        <div className="relative my-4">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-border" />
-          </div>
-          <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-white dark:bg-zinc-950 px-2 text-muted-foreground">
-              Atau lanjutkan dengan
-            </span>
-          </div>
-        </div>
-
-        {/* OAuth Buttons */}
-        <OAuthButtons nextUrl={nextUrl} />
-
         {/* Divider Guest Access */}
         <div className="relative my-4">
           <div className="absolute inset-0 flex items-center">
@@ -151,7 +145,7 @@ export default function LoginPage({
           </div>
           <div className="relative flex justify-center text-xs uppercase">
             <span className="bg-white dark:bg-zinc-950 px-2 text-muted-foreground">
-              Akses Sementara
+              Atau Gunakan Akses Tamu
             </span>
           </div>
         </div>

@@ -31,6 +31,11 @@ export async function signUpWithEmail(formData: FormData): Promise<AuthActionRes
   try {
     const supabase = await createClient()
 
+    const headerList = await headers()
+    const host = headerList.get('host') || 'localhost:3000'
+    const protocol = headerList.get('x-forwarded-proto') || 'http'
+    const origin = `${protocol}://${host}`
+
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
@@ -39,6 +44,7 @@ export async function signUpWithEmail(formData: FormData): Promise<AuthActionRes
           full_name: fullName || '',
           is_guest: false,
         },
+        emailRedirectTo: `${origin}/auth/callback?next=/dashboard`,
       },
     })
 
@@ -58,7 +64,8 @@ export async function signUpWithEmail(formData: FormData): Promise<AuthActionRes
     return {
       success: true,
       data: {
-        message: 'Registrasi berhasil! Silakan cek email Anda untuk konfirmasi jika diperlukan.',
+        email,
+        message: 'Registrasi berhasil! Silakan cek email Anda untuk konfirmasi.',
       },
     }
   } catch (err: unknown) {

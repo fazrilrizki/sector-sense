@@ -4,9 +4,11 @@ import React, { useState, useTransition, use } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
-import { OAuthButtons } from '@/components/auth/oauth-buttons'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { PasswordInput } from '@/components/ui/password-input'
 import { signUpWithEmail, upgradeGuestAccount } from '@/lib/auth/actions'
-import { Shield, Lock, Mail, User, AlertCircle, Sparkles, CheckCircle2 } from 'lucide-react'
+import { Shield, AlertCircle, Sparkles } from 'lucide-react'
 
 export default function RegisterPage({
   searchParams,
@@ -19,15 +21,14 @@ export default function RegisterPage({
   const router = useRouter()
 
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
-  const [successMessage, setSuccessMessage] = useState<string | null>(null)
   const [isPending, startTransition] = useTransition()
 
   const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setErrorMessage(null)
-    setSuccessMessage(null)
 
     const formData = new FormData(e.currentTarget)
+    const email = (formData.get('email') as string)?.trim()
     const password = formData.get('password') as string
     const confirmPassword = formData.get('confirmPassword') as string
 
@@ -52,9 +53,8 @@ export default function RegisterPage({
         if (!result.success) {
           setErrorMessage(result.error || 'Gagal mendaftar akun.')
         } else {
-          setSuccessMessage(
-            'Registrasi berhasil! Silakan periksa email Anda jika konfirmasi email diaktifkan, atau masuk menggunakan akun baru Anda.'
-          )
+          // Redirect to login page with clear instructions and pre-filled email
+          router.push(`/login?registered=true&email=${encodeURIComponent(email)}`)
         }
       }
     })
@@ -86,92 +86,51 @@ export default function RegisterPage({
           </div>
         )}
 
-        {successMessage && (
-          <div className="p-3.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-sm flex items-start gap-2.5">
-            <CheckCircle2 className="size-4 mt-0.5 shrink-0" />
-            <span>{successMessage}</span>
-          </div>
-        )}
-
         {/* Form */}
         <form onSubmit={handleRegister} className="space-y-4">
-          <div>
-            <label className="block text-xs font-medium text-foreground mb-1.5" htmlFor="fullName">
-              Nama Lengkap
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-muted-foreground">
-                <User className="size-4" />
-              </div>
-              <input
-                id="fullName"
-                name="fullName"
-                type="text"
-                required
-                placeholder="Nama Anda"
-                className="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-input bg-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-              />
-            </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="fullName">Nama Lengkap</Label>
+            <Input
+              id="fullName"
+              name="fullName"
+              type="text"
+              required
+              placeholder="Nama Anda"
+            />
           </div>
 
-          <div>
-            <label className="block text-xs font-medium text-foreground mb-1.5" htmlFor="email">
-              Email
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-muted-foreground">
-                <Mail className="size-4" />
-              </div>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                placeholder="nama@email.com"
-                className="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-input bg-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-              />
-            </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              required
+              placeholder="nama@email.com"
+            />
           </div>
 
-          <div>
-            <label className="block text-xs font-medium text-foreground mb-1.5" htmlFor="password">
-              Password
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-muted-foreground">
-                <Lock className="size-4" />
-              </div>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="new-password"
-                required
-                placeholder="Minimal 6 karakter"
-                className="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-input bg-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-              />
-            </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="password">Password</Label>
+            <PasswordInput
+              id="password"
+              name="password"
+              autoComplete="new-password"
+              required
+              placeholder="Minimal 6 karakter"
+            />
           </div>
 
-          <div>
-            <label className="block text-xs font-medium text-foreground mb-1.5" htmlFor="confirmPassword">
-              Konfirmasi Password
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-muted-foreground">
-                <Lock className="size-4" />
-              </div>
-              <input
-                id="confirmPassword"
-                name="confirmPassword"
-                type="password"
-                autoComplete="new-password"
-                required
-                placeholder="Ulangi password"
-                className="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-input bg-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-              />
-            </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="confirmPassword">Konfirmasi Password</Label>
+            <PasswordInput
+              id="confirmPassword"
+              name="confirmPassword"
+              autoComplete="new-password"
+              required
+              placeholder="Ulangi password"
+            />
           </div>
 
           <Button type="submit" disabled={isPending} className="w-full h-10 font-medium cursor-pointer">
@@ -184,25 +143,6 @@ export default function RegisterPage({
                 : 'Daftar Sekarang'}
           </Button>
         </form>
-
-        {!isUpgrade && (
-          <>
-            {/* Divider */}
-            <div className="relative my-4">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-border" />
-              </div>
-              <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-white dark:bg-zinc-950 px-2 text-muted-foreground">
-                  Atau daftar dengan
-                </span>
-              </div>
-            </div>
-
-            {/* OAuth */}
-            <OAuthButtons nextUrl={nextUrl} />
-          </>
-        )}
 
         {/* Footer */}
         <p className="text-center text-xs text-muted-foreground pt-2">

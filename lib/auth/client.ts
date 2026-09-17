@@ -2,7 +2,6 @@ export { useAuth, AuthProvider } from '@/components/providers/auth-provider'
 export {
   signInWithEmail,
   signUpWithEmail,
-  signInWithOAuth,
   signInAsGuest,
   signOut,
   upgradeGuestAccount,
@@ -18,6 +17,5 @@ export type {
   AuthState,
   AuthActionResult,
   UserProfile,
-  OAuthProvider,
   GuestSessionData,
 } from './types'
