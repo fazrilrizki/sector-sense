@@ -20,6 +20,7 @@ export interface Database {
           risk_tolerance: RiskTolerance
           investment_horizon: InvestmentHorizon
           base_capital: number
+          is_guest: boolean
           created_at: string
           updated_at: string
         }
@@ -29,6 +30,7 @@ export interface Database {
           risk_tolerance?: RiskTolerance
           investment_horizon?: InvestmentHorizon
           base_capital?: number
+          is_guest?: boolean
           created_at?: string
           updated_at?: string
         }
@@ -38,6 +40,7 @@ export interface Database {
           risk_tolerance?: RiskTolerance
           investment_horizon?: InvestmentHorizon
           base_capital?: number
+          is_guest?: boolean
           created_at?: string
           updated_at?: string
         }

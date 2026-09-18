@@ -1,0 +1,13 @@
+# Sector Sense - AI Assistant Rules
+
+## UI & Styling Guidelines (Shadcn UI & Tailwind CSS)
+1. **Always Reuse Existing UI Components**:
+   - Inspect `@/components/ui/` first before building any screen or view.
+   - Always reuse `Button`, `Input`, `Label`, `PasswordInput`, `Card`, etc.
+   - Never write raw unstyled HTML form controls when a Shadcn component is available.
+2. **Modular Base Components**:
+   - If a new primitive is required, build it under `@/components/ui/` using Shadcn conventions (`@base-ui/react`, `cva`, `cn`) before using it in pages.
+3. **Semantic Tailwind CSS**:
+   - Use theme variables from `app/globals.css` (`bg-background`, `text-foreground`, `border-border`, `ring-ring`, `bg-primary`, etc.) for dark/light mode consistency.
+4. **Accessibility**:
+   - Include ARIA attributes, semantic labels, proper button types, and visible focus rings.
