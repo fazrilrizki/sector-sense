@@ -26,11 +26,25 @@ cp .env.example .env.local
 # Copy-Item .env.example .env.local
 ```
 
-Buka `.env.local` dan isi nilai variabel yang diperoleh dari Supabase Dashboard:
+Buka `.env.local` (atau `.env`) dan isi nilai variabel yang diperoleh dari layanan terkait:
+
+#### A. Supabase
 - Buka **Supabase Dashboard** &rarr; Pilih Proyek Anda &rarr; Masuk ke menu **Project Settings** &rarr; **API**.
 - Salin **Project URL** ke `NEXT_PUBLIC_SUPABASE_URL`.
 - Salin **anon (public)** key ke `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
 - Salin **service_role (secret)** key ke `SUPABASE_SERVICE_ROLE_KEY` (*hanya digunakan di server/backend, jangan pernah di-commit atau diekspos ke client*).
+
+#### B. Sectors Financial API
+Platform ini menggunakan Sectors API untuk menarik data keuangan (balance sheet, income statement, cash flow, dsb).
+- Kunjungi [Sectors Dashboard](https://sectors.app/api) untuk mendapatkan API Key Anda.
+- Masukkan ke `SECTORS_API_KEY`.
+
+#### C. Upstash Redis (Opsional namun Sangat Direkomendasikan)
+Untuk performa yang cepat dan mencegah terkena batas *rate limit* dari Sectors API, kami menggunakan Upstash Redis sebagai lapisan *caching*.
+1. Kunjungi [Upstash.com](https://upstash.com/) dan buat/login ke akun Anda.
+2. Klik **Create Database**, pilih Region terdekat, dan biarkan pengaturan default (Free tier).
+3. Setelah database terbuat, gulir ke bagian **REST API**.
+4. Salin nilai `UPSTASH_REDIS_REST_URL` dan `UPSTASH_REDIS_REST_TOKEN` lalu masukkan ke file `.env` Anda.
 
 ---
 

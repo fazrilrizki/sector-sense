@@ -9,3 +9,7 @@
 - If a UI primitive is not in `@/components/ui/`, build it there first following Shadcn UI architecture (`@base-ui/react`, `cva`, `cn`).
 - Use semantic Tailwind CSS theme tokens (`bg-background`, `text-foreground`, `border-border`, `ring-ring`, `bg-primary`, `text-muted-foreground`).
 - Ensure accessibility: label association, keyboard interaction, focus rings, and explicit button types.
+
+## Enforcement for New Additions
+- Engineers MUST strictly follow these UI guidelines for any new feature, screen, or component additions.
+- Prioritize design consistency over novel implementations. Always leverage the established design system rather than introducing ad-hoc or unstandardized styling.
