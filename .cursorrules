@@ -11,3 +11,13 @@
    - Use theme variables from `app/globals.css` (`bg-background`, `text-foreground`, `border-border`, `ring-ring`, `bg-primary`, etc.) for dark/light mode consistency.
 4. **Accessibility**:
    - Include ARIA attributes, semantic labels, proper button types, and visible focus rings.
+
+## Backend & Service Architecture
+1. **Service Layer (`lib/services/`)**:
+   - Centralize business logic and external API integrations in `lib/services/` as pure server-side functions. Keep Server Components and Route Handlers thin.
+2. **Data Normalization & Caching**:
+   - Normalize complex external API payloads into strict Typescript interfaces.
+   - Heavily utilize Upstash Redis (`@upstash/redis`) for caching with appropriate TTLs and structured keys (e.g. `namespace:entity:identifier`).
+3. **Error Handling & Testing**:
+   - Throw domain-specific custom errors (e.g. `SectorsAPIError`).
+   - Include unit tests in the `tests/` directory using `node:test`, mocking external `fetch` calls.
