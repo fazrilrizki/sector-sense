@@ -6,6 +6,7 @@ import * as React from 'react'
 import { HealthScoreWidget } from '@/components/dashboard/health-score'
 import { SearchBar } from '@/components/dashboard/search-bar'
 import { DividendTrapWidget } from '@/components/dashboard/dividend-trap-widget'
+import { AnomalyScannerWidget } from '@/components/dashboard/anomaly-scanner-widget'
 import { RankingList } from '@/components/dashboard/ranking-list'
 
 export default async function DashboardPage(props: {
@@ -87,6 +88,27 @@ export default async function DashboardPage(props: {
             <p>Mulai dengan mencari kode saham di atas.</p>
           </div>
         )}
+      </section>
+
+      {/* Market Anomaly Scanner */}
+      <section className="space-y-4 pt-6 border-t border-border">
+        <div>
+          <h2 className="text-xl font-bold tracking-tight">Market Anomaly Scanner & Radar</h2>
+          <p className="text-sm text-muted-foreground mt-0.5">
+            Pemindai otomatis dislokasi valuasi historis (Z-Score &gt;2σ), lonjakan rasio utang (DER), dan analisis forensik arus kas emiten.
+          </p>
+        </div>
+
+        <React.Suspense
+          key={`anomaly-${symbol || 'BBCA'}`}
+          fallback={
+            <div className="p-8 rounded-2xl border border-border h-64 flex items-center justify-center text-muted-foreground animate-pulse">
+              Memindai anomali pasar dan emiten...
+            </div>
+          }
+        >
+          <AnomalyScannerWidget symbol={symbol} />
+        </React.Suspense>
       </section>
 
       {/* Rankings */}
