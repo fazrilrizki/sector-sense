@@ -13,8 +13,15 @@ import {
   Activity,
 } from 'lucide-react'
 import Link from 'next/link'
+import * as React from 'react'
+import { HealthScoreWidget } from '@/components/dashboard/health-score'
+import { SearchBar } from '@/components/dashboard/search-bar'
 
-export default async function DashboardPage() {
+export default async function DashboardPage(props: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}) {
+  const searchParams = await props.searchParams
+  const symbol = typeof searchParams.symbol === 'string' ? searchParams.symbol : null
   const { role, state } = await getAuthStatus()
   const { user, profile, isGuest } = state
 
@@ -144,27 +151,31 @@ export default async function DashboardPage() {
           </div>
         </div>
 
-        {/* Feature Preview Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="p-6 rounded-2xl bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 space-y-3">
-            <div className="size-10 rounded-lg bg-blue-500/10 text-blue-600 flex items-center justify-center">
-              <TrendingUp className="size-5" />
-            </div>
-            <h3 className="font-semibold text-base text-foreground">Simulasi Portofolio Saham</h3>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              Jalankan simulasi alokasi kapital dan proyeksi PnL saham sektor pilihan berbasis model prediksi machine learning.
+        {/* Smart Analyzer Section */}
+        <div className="space-y-4">
+          <div className="flex flex-col gap-2">
+            <h2 className="text-xl font-bold tracking-tight">Smart Analyzer</h2>
+            <p className="text-sm text-muted-foreground">
+              Cari saham incaran Anda untuk melihat analisis fundamental dan perbandingannya dengan kompetitor.
             </p>
           </div>
+          
+          <SearchBar />
 
-          <div className="p-6 rounded-2xl bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 space-y-3">
-            <div className="size-10 rounded-lg bg-purple-500/10 text-purple-600 flex items-center justify-center">
-              <Activity className="size-5" />
+          {symbol ? (
+            <React.Suspense fallback={
+              <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 h-64 flex items-center justify-center text-muted-foreground animate-pulse">
+                Menarik data dan menghitung skor untuk {symbol}...
+              </div>
+            } key={symbol}>
+              <HealthScoreWidget symbol={symbol} />
+            </React.Suspense>
+          ) : (
+            <div className="p-12 rounded-2xl border border-dashed border-zinc-300 dark:border-zinc-800 flex flex-col items-center justify-center text-center gap-3 text-muted-foreground bg-zinc-50/50 dark:bg-zinc-950/50">
+              <Sparkles className="size-8 text-zinc-400" />
+              <p>Mulai dengan mencari kode saham di atas.</p>
             </div>
-            <h3 className="font-semibold text-base text-foreground">Metrik & Akurasi Model</h3>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              Pantau evaluasi performa model prediktif (MAPE, RMSE, Akurasi, dan F1-Score) secara transparan.
-            </p>
-          </div>
+          )}
         </div>
       </main>
     </div>

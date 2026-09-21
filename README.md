@@ -48,6 +48,19 @@ Untuk performa yang cepat dan mencegah terkena batas *rate limit* dari Sectors A
 
 ---
 
+## 🔑 Akun Demo / Akses Juri (Hackathon)
+
+Bagi tim penilai atau juri yang ingin menguji coba aplikasi secara langsung tanpa perlu registrasi, Anda dapat masuk menggunakan kredensial *superadmin* berikut pada halaman `/login`:
+
+- **Email**: `admin@sectorsense.com`
+- **Password**: `password`
+
+Akun ini sudah dikonfigurasi dengan profil toleransi risiko (*Risk Tolerance: AGGRESSIVE*) dan simulasi modal investasi siap pakai.
+
+*(Alternatifnya, Anda juga bisa langsung menekan tombol **"Masuk sebagai Pengguna Tamu"** di halaman Login untuk langsung masuk ke Dashboard).*
+
+---
+
 ## 🗄️ Menjalankan Database Migration
 
 Skema database project ini dirancang dengan pendekatan best practice Supabase (Opsi A):
