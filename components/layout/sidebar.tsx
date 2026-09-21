@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { cn } from 'cn';
+import { cn } from '@/lib/utils';
 import { NAV_SECTIONS } from './sidebar-nav';
 
 function isActive(href: string, pathname: string, searchParams: URLSearchParams): boolean {

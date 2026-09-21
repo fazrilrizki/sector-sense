@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { Header } from './header';
 import { Sidebar } from './sidebar';
 import { signOut } from '@/lib/auth/actions';
-import { cn } from 'cn';
+import { cn } from '@/lib/utils';
 
 interface DashboardShellProps {
   children: React.ReactNode;

@@ -9831,5 +9831,1243 @@
       "capital_expenditure": 6255000000000,
       "free_cash_flow": 11317000000000
     }
-  ]
+  ],
+  "/v2/company/report/GOTO/?sections=overview%2Cdividend%2Cpeers": {
+    "symbol": "GOTO.JK",
+    "company_name": "PT GoTo Gojek Tokopedia Tbk",
+    "overview": {
+      "listing_board": "New Economy",
+      "industry": "Online Applications & Services",
+      "sub_industry": "Online Applications & Services",
+      "sector": "Technology",
+      "sub_sector": "Software & IT Services",
+      "market_cap": 57028663361000,
+      "market_cap_rank": 43,
+      "address": "Gedung Pasaraya Blok M, lantai 6-7\nJl. Iskandarsyah II No. 2, Jakarta 12160",
+      "employee_num": 3352,
+      "employee_num_rank": 163,
+      "listing_date": "2022-04-11",
+      "website": "www.gotocompany.com",
+      "phone": "(021) 2910 1072",
+      "email": "corpsecretary@gotocompany.com dan ir@gotocompany.com",
+      "last_close_price": 50,
+      "latest_close_date": "2026-09-18",
+      "daily_close_change": 0,
+      "all_time_price": {
+        "ytd_low": {
+          "2026-03-25": 50
+        },
+        "52_w_low": {
+          "2026-03-25": 50
+        },
+        "90_d_low": {
+          "2026-06-22": 50
+        },
+        "ytd_high": {
+          "2026-01-14": 73
+        },
+        "52_w_high": {
+          "2025-12-09": 73
+        },
+        "90_d_high": {
+          "2026-06-22": 50
+        },
+        "all_time_low": {
+          "2024-06-10": 50
+        },
+        "all_time_high": {
+          "2022-04-12": 442
+        }
+      },
+      "esg_score": 18.99,
+      "tags": [
+        "esg-under-25",
+        "insider-1-month-buy",
+        "insider-1-month-sell",
+        "public-float-over-50",
+        "top-20-institution-buying"
+      ],
+      "indices": [
+        "LQ45",
+        "KOMPAS100",
+        "IDXESGL",
+        "IDX30",
+        "FTSE"
+      ],
+      "affiliates": [
+        "Boy Thohir"
+      ]
+    },
+    "dividend": {
+      "historical_dividends": null,
+      "upcoming_dividends": null,
+      "yield_ttm": null,
+      "dividend_yield_avg": null,
+      "dividend_ttm": null,
+      "payout_ratio": null,
+      "cash_payout_ratio": null,
+      "last_ex_dividend_date": null
+    },
+    "peers": [
+      {
+        "peers_data": {
+          "companies": [
+            {
+              "year": 2025,
+              "group": [
+                "self"
+              ],
+              "pb_mrq": 1.76026992058475,
+              "pe_ttm": 30826.3045194595,
+              "symbol": "GOTO.JK",
+              "market_cap": 57028663361000,
+              "net_income": -1185654000000,
+              "company_name": "PT GoTo Gojek Tokopedia Tbk",
+              "employee_num": 3352,
+              "total_assets": 45757642000000,
+              "total_equity": 28711657000000,
+              "pretax_income": -1086604000000,
+              "total_revenue": 18322117000000,
+              "point_summaries": [
+                {
+                  "name": "value",
+                  "point": 9.5,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "competitive",
+                  "point": 15,
+                  "maxpoint": 25.5
+                },
+                {
+                  "name": "future",
+                  "point": 24,
+                  "maxpoint": 30
+                },
+                {
+                  "name": "financials",
+                  "point": 3,
+                  "maxpoint": 7.5
+                },
+                {
+                  "name": "dividend",
+                  "point": 1.5,
+                  "maxpoint": 15.5
+                },
+                {
+                  "updatedAt": "2026-09-19T23:01:11.894Z"
+                }
+              ],
+              "yearly_mcap_chg": -0.137931034482759,
+              "operating_expense": 10954337000000,
+              "revenue_breakdown": null,
+              "total_liabilities": 17045985000000,
+              "int_income_breakdown": null,
+              "operating_expense_breakdown": null
+            },
+            {
+              "year": 2025,
+              "group": [
+                "sub_sector",
+                "sector",
+                "industry",
+                "sub_industry"
+              ],
+              "pb_mrq": 4.1994961206729,
+              "pe_ttm": -22.108317836129,
+              "symbol": "BELI.JK",
+              "market_cap": 38421315992920,
+              "net_income": -2278884000000,
+              "company_name": "PT Global Digital Niaga Tbk",
+              "employee_num": 1814,
+              "total_assets": 17800778000000,
+              "total_equity": 9454333000000,
+              "pretax_income": -2200939000000,
+              "total_revenue": 22361030000000,
+              "point_summaries": [
+                {
+                  "name": "value",
+                  "point": 4,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "competitive",
+                  "point": 10.5,
+                  "maxpoint": 25.5
+                },
+                {
+                  "name": "future",
+                  "point": 12,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "financials",
+                  "point": 2,
+                  "maxpoint": 7.5
+                },
+                {
+                  "name": "dividend",
+                  "point": 1.5,
+                  "maxpoint": 15.5
+                },
+                {
+                  "updatedAt": "2026-09-19T23:01:11.992Z"
+                }
+              ],
+              "yearly_mcap_chg": -0.215798783547591,
+              "operating_expense": 5953646000000,
+              "revenue_breakdown": null,
+              "total_liabilities": 8346445000000,
+              "int_income_breakdown": null,
+              "operating_expense_breakdown": null
+            },
+            {
+              "year": 2025,
+              "group": [
+                "sub_sector",
+                "sector",
+                "industry",
+                "sub_industry"
+              ],
+              "pb_mrq": 0.784883559587057,
+              "pe_ttm": 12.8167299802735,
+              "symbol": "EMTK.JK",
+              "market_cap": 28747579294044,
+              "net_income": 6789292000000,
+              "company_name": "Elang Mahkota Teknologi Tbk",
+              "employee_num": 9303,
+              "total_assets": 60770077000000,
+              "total_equity": 53391480000000,
+              "pretax_income": 9495939000000,
+              "total_revenue": 19119724000000,
+              "point_summaries": [
+                {
+                  "name": "value",
+                  "point": 13,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "competitive",
+                  "point": 16.5,
+                  "maxpoint": 25.5
+                },
+                {
+                  "name": "future",
+                  "point": 12,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "financials",
+                  "point": 5,
+                  "maxpoint": 7.5
+                },
+                {
+                  "name": "dividend",
+                  "point": 3.5,
+                  "maxpoint": 11
+                },
+                {
+                  "updatedAt": "2026-09-19T23:01:11.732Z"
+                }
+              ],
+              "yearly_mcap_chg": -0.625388380691442,
+              "operating_expense": 4034594000000,
+              "revenue_breakdown": null,
+              "total_liabilities": 7378597000000,
+              "int_income_breakdown": null,
+              "operating_expense_breakdown": null
+            },
+            {
+              "year": 2025,
+              "group": [
+                "sub_sector",
+                "sector",
+                "industry",
+                "sub_industry"
+              ],
+              "pb_mrq": 0.441579208707032,
+              "pe_ttm": 5.77822585698875,
+              "symbol": "BUKA.JK",
+              "market_cap": 10729377439768,
+              "net_income": 3142054776000,
+              "company_name": "PT Bukalapak.com Tbk",
+              "employee_num": 989,
+              "total_assets": 26030762801000,
+              "total_equity": 25313466848000,
+              "pretax_income": 3163709046000,
+              "total_revenue": 6510030453000,
+              "point_summaries": [
+                {
+                  "name": "value",
+                  "point": 13,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "competitive",
+                  "point": 12.5,
+                  "maxpoint": 25.5
+                },
+                {
+                  "name": "future",
+                  "point": 12,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "financials",
+                  "point": 6,
+                  "maxpoint": 7.5
+                },
+                {
+                  "name": "dividend",
+                  "point": 1.5,
+                  "maxpoint": 15.5
+                },
+                {
+                  "updatedAt": "2026-09-19T23:01:12.190Z"
+                }
+              ],
+              "yearly_mcap_chg": -0.380786064774459,
+              "operating_expense": 694400038000,
+              "revenue_breakdown": null,
+              "total_liabilities": 717295953000,
+              "int_income_breakdown": null,
+              "operating_expense_breakdown": null
+            },
+            {
+              "year": 2025,
+              "group": [
+                "sub_sector",
+                "sector",
+                "industry",
+                "sub_industry"
+              ],
+              "pb_mrq": 1.34254460349299,
+              "pe_ttm": 20.0185277821842,
+              "symbol": "WIFI.JK",
+              "market_cap": 10245499598950,
+              "net_income": 408551231766,
+              "company_name": "PT Solusi Sinergi Digital Tbk",
+              "employee_num": 18,
+              "total_assets": 15169662226172,
+              "total_equity": 8517944853017,
+              "pretax_income": 704059678259,
+              "total_revenue": 1659396069858,
+              "point_summaries": [
+                {
+                  "name": "value",
+                  "point": 8,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "competitive",
+                  "point": 9.5,
+                  "maxpoint": 25.5
+                },
+                {
+                  "name": "future",
+                  "point": 12,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "financials",
+                  "point": 6.5,
+                  "maxpoint": 7.5
+                },
+                {
+                  "name": "dividend",
+                  "point": 1.5,
+                  "maxpoint": 9
+                },
+                {
+                  "updatedAt": "2026-09-19T23:01:11.791Z"
+                }
+              ],
+              "yearly_mcap_chg": -0.237154150197628,
+              "operating_expense": 210399151610,
+              "revenue_breakdown": null,
+              "total_liabilities": 6651717373155,
+              "int_income_breakdown": null,
+              "operating_expense_breakdown": null
+            },
+            {
+              "year": 2025,
+              "group": [
+                "sub_sector",
+                "sector",
+                "industry",
+                "sub_industry"
+              ],
+              "pb_mrq": 4.31893992552718,
+              "pe_ttm": -94.0984493483607,
+              "symbol": "NFCX.JK",
+              "market_cap": 1133334750000,
+              "net_income": 5646379667,
+              "company_name": "PT NFC Indonesia Tbk",
+              "employee_num": null,
+              "total_assets": 1376206862017,
+              "total_equity": 750615327085,
+              "pretax_income": 19879059947,
+              "total_revenue": 4069974238531,
+              "point_summaries": [
+                {
+                  "name": "value",
+                  "point": 5.5,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "competitive",
+                  "point": 4.5,
+                  "maxpoint": 25.5
+                },
+                {
+                  "name": "future",
+                  "point": 12,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "financials",
+                  "point": 3,
+                  "maxpoint": 7.5
+                },
+                {
+                  "name": "dividend",
+                  "point": 1.5,
+                  "maxpoint": 15.5
+                },
+                {
+                  "updatedAt": "2026-09-19T23:01:11.752Z"
+                }
+              ],
+              "yearly_mcap_chg": -0.0502793296089385,
+              "operating_expense": 131490393481,
+              "revenue_breakdown": null,
+              "total_liabilities": 625591534932,
+              "int_income_breakdown": null,
+              "operating_expense_breakdown": null
+            },
+            {
+              "year": 2025,
+              "group": [
+                "sub_sector",
+                "sector",
+                "industry",
+                "sub_industry"
+              ],
+              "pb_mrq": 254.471261398648,
+              "pe_ttm": null,
+              "symbol": "PGJO.JK",
+              "market_cap": 700356003600,
+              "net_income": -6817676184,
+              "company_name": "PT Bahtera Bumi Raya Tbk",
+              "employee_num": 8,
+              "total_assets": 30397356013,
+              "total_equity": -2000513755,
+              "pretax_income": -6545568371,
+              "total_revenue": 28025828926,
+              "point_summaries": [
+                {
+                  "name": "value",
+                  "point": 4,
+                  "maxpoint": 15
+                },
+                {
+                  "name": "competitive",
+                  "point": 0,
+                  "maxpoint": 21
+                },
+                {
+                  "name": "future",
+                  "point": 12,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "financials",
+                  "point": 2,
+                  "maxpoint": 7.5
+                },
+                {
+                  "name": "dividend",
+                  "point": 1.5,
+                  "maxpoint": 15.5
+                },
+                {
+                  "updatedAt": "2026-09-19T23:01:11.933Z"
+                }
+              ],
+              "yearly_mcap_chg": -0.0382513661202186,
+              "operating_expense": 4621260607,
+              "revenue_breakdown": null,
+              "total_liabilities": 32397869768,
+              "int_income_breakdown": null,
+              "operating_expense_breakdown": null
+            },
+            {
+              "year": 2025,
+              "group": [
+                "sub_sector",
+                "sector",
+                "industry",
+                "sub_industry"
+              ],
+              "pb_mrq": -12.886437020608,
+              "pe_ttm": null,
+              "symbol": "CASH.JK",
+              "market_cap": 660362202752,
+              "net_income": -68119715915,
+              "company_name": "PT Cashlez Worldwide Indonesia Tbk.",
+              "employee_num": 7883,
+              "total_assets": 271633116614,
+              "total_equity": 62035810766,
+              "pretax_income": -54836269741,
+              "total_revenue": 110185952915,
+              "point_summaries": [
+                {
+                  "name": "value",
+                  "point": 10,
+                  "maxpoint": 15
+                },
+                {
+                  "name": "competitive",
+                  "point": 6,
+                  "maxpoint": 21
+                },
+                {
+                  "name": "future",
+                  "point": 12,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "financials",
+                  "point": 2,
+                  "maxpoint": 7.5
+                },
+                {
+                  "name": "dividend",
+                  "point": 1.5,
+                  "maxpoint": 15.5
+                },
+                {
+                  "updatedAt": "2026-09-19T23:01:12.191Z"
+                }
+              ],
+              "yearly_mcap_chg": 3.43681318619314,
+              "operating_expense": 54982291301,
+              "revenue_breakdown": null,
+              "total_liabilities": 209597305848,
+              "int_income_breakdown": null,
+              "operating_expense_breakdown": null
+            },
+            {
+              "year": 2025,
+              "group": [
+                "sub_sector",
+                "sector",
+                "industry",
+                "sub_industry"
+              ],
+              "pb_mrq": 7.62192919167925,
+              "pe_ttm": -61.524108966232,
+              "symbol": "AWAN.JK",
+              "market_cap": 556470000000,
+              "net_income": -6525948000,
+              "company_name": "PT Era Digital Media Tbk",
+              "employee_num": 31,
+              "total_assets": 91966641000,
+              "total_equity": 74980420000,
+              "pretax_income": -5706906000,
+              "total_revenue": 63101970000,
+              "point_summaries": [
+                {
+                  "name": "value",
+                  "point": 4,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "competitive",
+                  "point": 0,
+                  "maxpoint": 25.5
+                },
+                {
+                  "name": "future",
+                  "point": 12,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "financials",
+                  "point": 2,
+                  "maxpoint": 7.5
+                },
+                {
+                  "name": "dividend",
+                  "point": 1.5,
+                  "maxpoint": 15.5
+                },
+                {
+                  "updatedAt": "2026-09-19T23:01:11.990Z"
+                }
+              ],
+              "yearly_mcap_chg": -0.346774193548387,
+              "operating_expense": 26342476000,
+              "revenue_breakdown": null,
+              "total_liabilities": 16986221000,
+              "int_income_breakdown": null,
+              "operating_expense_breakdown": null
+            },
+            {
+              "year": 2025,
+              "group": [
+                "sub_sector",
+                "sector",
+                "industry",
+                "sub_industry"
+              ],
+              "pb_mrq": 2.09344512066242,
+              "pe_ttm": 19.6023748179331,
+              "symbol": "JATI.JK",
+              "market_cap": 381714852402,
+              "net_income": 20809772692,
+              "company_name": "PT Informasi Teknologi Indonesia Tbk",
+              "employee_num": 354,
+              "total_assets": 412834783826,
+              "total_equity": 188684995587,
+              "pretax_income": 27324144391,
+              "total_revenue": 634943344152,
+              "point_summaries": [
+                {
+                  "name": "value",
+                  "point": 5.5,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "competitive",
+                  "point": 7.5,
+                  "maxpoint": 25.5
+                },
+                {
+                  "name": "future",
+                  "point": 12,
+                  "maxpoint": 18
+                },
+                {
+                  "name": "financials",
+                  "point": 6.5,
+                  "maxpoint": 7.5
+                },
+                {
+                  "name": "dividend",
+                  "point": 1.5,
+                  "maxpoint": 11
+                },
+                {
+                  "updatedAt": "2026-09-19T23:01:11.909Z"
+                }
+              ],
+              "yearly_mcap_chg": -0.139705882352941,
+              "operating_expense": 73829982730,
+              "revenue_breakdown": null,
+              "total_liabilities": 224149788239,
+              "int_income_breakdown": null,
+              "operating_expense_breakdown": null
+            }
+          ],
+          "group_name": {
+            "sector": "Technology",
+            "industry": "Online Applications & Services",
+            "sub_sector": "Software & IT Services",
+            "sub_industry": "Online Applications & Services"
+          }
+        }
+      }
+    ]
+  },
+  "/v2/company/corporate-actions/GOTO/": {
+    "symbol": "GOTO.JK",
+    "corporate_actions": {
+      "agm": [
+        {
+          "agm_date": "2022-06-10",
+          "agm_time": "10:00:00",
+          "agm_place": "IDX Public Expose",
+          "agm_result": null
+        },
+        {
+          "agm_date": "2022-06-28",
+          "agm_time": "09:00:00",
+          "agm_place": "Jakarta",
+          "agm_result": null
+        },
+        {
+          "agm_date": "2022-12-08",
+          "agm_time": "14:00:00",
+          "agm_place": "Virtual Melalui Zoom Dan Kanal Youtube",
+          "agm_result": null
+        },
+        {
+          "agm_date": "2022-12-13",
+          "agm_time": "13:00:00",
+          "agm_place": "",
+          "agm_result": null
+        },
+        {
+          "agm_date": "2023-01-31",
+          "agm_time": "13:00:00",
+          "agm_place": "",
+          "agm_result": null
+        },
+        {
+          "agm_date": "2023-02-21",
+          "agm_time": "13:00:00",
+          "agm_place": "",
+          "agm_result": null
+        },
+        {
+          "agm_date": "2023-03-02",
+          "agm_time": "13:00:00",
+          "agm_place": "Ballroom 3 Hotel Ritz Charlton Pacific Place Jl. Jendral Sudirman Kav. 52-53Jakarta 12190",
+          "agm_result": null
+        },
+        {
+          "agm_date": "2023-06-30",
+          "agm_time": "09:00:00",
+          "agm_place": "Jakarta Kota Adm. Jakarta Selatan",
+          "agm_result": null
+        },
+        {
+          "agm_date": "2024-02-28",
+          "agm_time": "13:30:00",
+          "agm_place": "Zoom Meeting",
+          "agm_result": null
+        },
+        {
+          "agm_date": "2024-06-11",
+          "agm_time": "09:00:00",
+          "agm_place": "Ballroom 3, Ritz Carlton Pacific Place, Jakarta Selatan",
+          "agm_result": null
+        },
+        {
+          "agm_date": "2024-08-30",
+          "agm_time": "09:00:00",
+          "agm_place": "Kantor Goto, Gedung Pasaraya Blok M, Lantai 3, Jl. Iskandarsyah II No. 2, Jakarta Selatan12160/ Goto Office, Pasaraya Blok M Building, 3Rd Floor, Jl. Iskandarsyah II No. 2, Southjakarta 12160",
+          "agm_result": null
+        },
+        {
+          "agm_date": "2025-06-18",
+          "agm_time": "10:00:00",
+          "agm_place": "Ballroom 3, Ritz Carlton Pacific Place, Jakarta Selatan Kota Adm. Jakarta Selatan Dki. Jakarta",
+          "agm_result": null
+        },
+        {
+          "agm_date": "2025-12-17",
+          "agm_time": "10:00:00",
+          "agm_place": "Auditorium Golearn, Kantor Goto, Gedung Pasaraya Blok M, Lantai 7, Jl. Iskandarsyah II No. 2, Jakarta Selatan 12160",
+          "agm_result": null
+        },
+        {
+          "agm_date": "2026-06-18",
+          "agm_time": "10:30:00",
+          "agm_place": "Ballroom 3, THE Ritz-Carlton Jakarta, Pacific Place, Jalan Jendral Sudirman KAV 52-53, Sudirman Central Business District, Jakarta, Indonesia, 12190 Kota Adm. Jakartaselatan",
+          "agm_result": "Agenda #1: Shareholders approved the 2025 annual report and audited financial statements, granting full discharge to the Board of Directors and Commissioners for their 2025 duties.\nAgenda #2: The meeting approved the 2026 honorarium for Commissioners and delegated authority to the Nomination and Remuneration Committee to set specific salaries and bonuses for both boards.\nAgenda #3: Shareholders approved appointing Purwanto, Susanti dan Surja (Ernst & Young Global Limited) to audit the company's 2026 consolidated financial statements.\nAgenda #4: The company presented a report regarding the realization of the use of proceeds to shareholders, which required no formal resolution.\nAgenda #5: The company reported the conclusion of its share buyback period which ran from June 19, 2025, to June 18, 2026.\nAgenda #6: Shareholders approved renewing the authority to issue up to 1.5% of paid-up capital annually for 10 years for employee and management share programs.\nAgenda #7: The meeting approved amending the Articles of Association to increase issued and paid-up capital for the Share Ownership Program and authorized the Board of Commissioners to execute the issuance.\nAgenda #8: Shareholders approved a share buyback plan for 2026-2027 with a maximum budget allocation of Rp3,500,000,000,000.\nAgenda #9: The meeting approved adjusting the company's purpose and objectives in Article 3 of the Articles of Association to align with the 2025 Indonesia Standard Industrial Classification.\nAgenda #10: Marjorie Tiu Lao was reappointed as Independent Commissioner with a term effective until the 2029 Annual General Meeting of Shareholders.\nAgenda #11: Agus D.W. Martowardojo was reappointed as President Commissioner with a term effective until the 2029 Annual General Meeting of Shareholders.\nAgenda #12: Santoso Kartono was reappointed as a Commissioner with a term effective until the 2029 Annual General Meeting of Shareholders.\nAgenda #13: The Board of Directors was authorized to notarize the new composition of the Board of Commissioners and Directors and notify the relevant authorities.\nAgenda #14: The company utilized a multiple voting share structure with Series A and Series B shares to determine meeting quorums and voting rights."
+        },
+        {
+          "agm_date": "2026-10-14",
+          "agm_time": "10:00:00",
+          "agm_place": null,
+          "agm_result": null
+        }
+      ],
+      "bonus": null,
+      "warrant": null,
+      "dividend": null,
+      "right_issue": null,
+      "stock_split": null,
+      "upcoming_dividend": null
+    }
+  },
+  "/v2/company/report/GOTO/?sections=overview%2Cdividend%2Cvaluation": {
+    "symbol": "GOTO.JK",
+    "company_name": "PT GoTo Gojek Tokopedia Tbk",
+    "overview": {
+      "listing_board": "New Economy",
+      "industry": "Online Applications & Services",
+      "sub_industry": "Online Applications & Services",
+      "sector": "Technology",
+      "sub_sector": "Software & IT Services",
+      "market_cap": 57028663361000,
+      "market_cap_rank": 43,
+      "address": "Gedung Pasaraya Blok M, lantai 6-7\nJl. Iskandarsyah II No. 2, Jakarta 12160",
+      "employee_num": 3352,
+      "employee_num_rank": 163,
+      "listing_date": "2022-04-11",
+      "website": "www.gotocompany.com",
+      "phone": "(021) 2910 1072",
+      "email": "corpsecretary@gotocompany.com dan ir@gotocompany.com",
+      "last_close_price": 50,
+      "latest_close_date": "2026-09-18",
+      "daily_close_change": 0,
+      "all_time_price": {
+        "ytd_low": {
+          "2026-03-25": 50
+        },
+        "52_w_low": {
+          "2026-03-25": 50
+        },
+        "90_d_low": {
+          "2026-06-22": 50
+        },
+        "ytd_high": {
+          "2026-01-14": 73
+        },
+        "52_w_high": {
+          "2025-12-09": 73
+        },
+        "90_d_high": {
+          "2026-06-22": 50
+        },
+        "all_time_low": {
+          "2024-06-10": 50
+        },
+        "all_time_high": {
+          "2022-04-12": 442
+        }
+      },
+      "esg_score": 18.99,
+      "tags": [
+        "esg-under-25",
+        "insider-1-month-buy",
+        "insider-1-month-sell",
+        "public-float-over-50",
+        "top-20-institution-buying"
+      ],
+      "indices": [
+        "LQ45",
+        "KOMPAS100",
+        "IDXESGL",
+        "IDX30",
+        "FTSE"
+      ],
+      "affiliates": [
+        "Boy Thohir"
+      ]
+    },
+    "dividend": {
+      "historical_dividends": null,
+      "upcoming_dividends": null,
+      "yield_ttm": null,
+      "dividend_yield_avg": null,
+      "dividend_ttm": null,
+      "payout_ratio": null,
+      "cash_payout_ratio": null,
+      "last_ex_dividend_date": null
+    },
+    "valuation": {
+      "last_close_price": 50,
+      "latest_close_date": "2026-09-18",
+      "daily_close_change": 0,
+      "forward_pe": -9.39849593733858,
+      "intrinsic_value": -91,
+      "historical_valuation": [
+        {
+          "pb": 0.878211076125827,
+          "pe": -2.72362491461901,
+          "ps": 9.49646789055091,
+          "pcf": -6.26380925641028,
+          "peg": -0.03204628244348352,
+          "year": 2022,
+          "pb_peer_avg": 2.7094075204924,
+          "pe_peer_avg": 20.528933708268,
+          "ps_peer_avg": 3.64737150468417,
+          "enterprise_to_ebitda": -2.1620443802109266,
+          "enterprise_to_revenue": 7.13210740488707
+        },
+        {
+          "pb": 2.89253247480403,
+          "pe": -1.1429895576035,
+          "ps": 6.98801636090297,
+          "pcf": -23.8876075414745,
+          "peg": -0.008899143578885434,
+          "year": 2023,
+          "pb_peer_avg": 2.7489540944428,
+          "pe_peer_avg": -1.1429895576035,
+          "ps_peer_avg": 1.24180740924816,
+          "enterprise_to_ebitda": -35.434305814469596,
+          "enterprise_to_revenue": 5.39944771536855
+        },
+        {
+          "pb": 2.62599168786166,
+          "pe": -15.4881291567829,
+          "ps": 5.02314131207461,
+          "pcf": -128.336814000971,
+          "peg": 0.16424772380292152,
+          "year": 2024,
+          "pb_peer_avg": 1.162617831504,
+          "pe_peer_avg": 4.18421675461469,
+          "ps_peer_avg": 1.43980030862148,
+          "enterprise_to_ebitda": 163.2389422419689,
+          "enterprise_to_revenue": 3.96428842356539
+        },
+        {
+          "pb": 2.54240600262395,
+          "pe": -61.5666029904846,
+          "ps": 3.98407504449841,
+          "pcf": 237.754870457064,
+          "peg": 0.7995705995160841,
+          "year": 2025,
+          "pb_peer_avg": 2.54240600262395,
+          "pe_peer_avg": 15.3208397947199,
+          "ps_peer_avg": 3.48580867898799,
+          "enterprise_to_ebitda": 304.32421101070054,
+          "enterprise_to_revenue": 3.06720703192104
+        },
+        {
+          "pb": 1.76026992058475,
+          "pe": 30826.3045194595,
+          "ps": 2.74740792443666,
+          "pcf": 21.5732717282135,
+          "peg": 1.86684381725508,
+          "year": 2026,
+          "pb_peer_avg": 2.09121498158475,
+          "pe_peer_avg": 17.9916350905255,
+          "ps_peer_avg": 1.43064329212834,
+          "enterprise_to_ebitda": 46.80132897050653,
+          "enterprise_to_revenue": 141.523292006998
+        }
+      ]
+    }
+  },
+  "/v2/financials/quarterly/EMTK/": [
+    {
+      "symbol": "EMTK.JK",
+      "financials_sector_metrics": null,
+      "date": "2026-06-30",
+      "premium_income": null,
+      "premium_expense": null,
+      "net_premium_income": null,
+      "non_interest_income": 154704000000,
+      "revenue": 4998378000000,
+      "operating_expense": 987559000000,
+      "provision": null,
+      "operating_pnl": 347001000000,
+      "non_operating_income_or_loss": -100249000000,
+      "earnings_before_tax": 246752000000,
+      "tax": 179048000000,
+      "minorities": 52457000000,
+      "earnings": 15247000000,
+      "gross_profit": 1334560000000,
+      "interest_expense_non_operating": 49822000000,
+      "ebit": 296574000000,
+      "ebitda": 497943000000,
+      "cost_of_revenue": 3663818000000,
+      "total_assets": 59875434000000,
+      "non_interest_bearing_liabilities": null,
+      "cash_only": 19853466000000,
+      "total_liabilities": 7898473000000,
+      "total_equity": 51976961000000,
+      "total_debt": 3010410000000,
+      "stockholders_equity": 36626553000000,
+      "total_non_current_assets": 27243779000000,
+      "current_liabilities": 6746702000000,
+      "cash_and_short_term_investments": 19853466000000,
+      "non_loan_assets": null,
+      "total_current_asset": 32631655000000,
+      "total_non_current_liabilities": 1151771000000,
+      "financing_cash_flow": 161052000000,
+      "operating_cash_flow": 458181000000,
+      "investing_cash_flow": -860333000000,
+      "net_cash_flow": -241100000000,
+      "capital_expenditure": 1588585000000,
+      "free_cash_flow": -1130404000000
+    }
+  ],
+  "/v2/financials/quarterly/BELI/": [
+    {
+      "symbol": "BELI.JK",
+      "financials_sector_metrics": null,
+      "date": "2026-06-30",
+      "premium_income": null,
+      "premium_expense": null,
+      "net_premium_income": null,
+      "non_interest_income": 12450000000,
+      "revenue": 6995135000000,
+      "operating_expense": 1431929000000,
+      "provision": null,
+      "operating_pnl": -295204000000,
+      "non_operating_income_or_loss": -94032000000,
+      "earnings_before_tax": -389236000000,
+      "tax": 27852000000,
+      "minorities": -8736000000,
+      "earnings": -408352000000,
+      "gross_profit": 1136725000000,
+      "interest_expense_non_operating": 112926000000,
+      "ebit": -276310000000,
+      "ebitda": -237332000000,
+      "cost_of_revenue": 5858410000000,
+      "total_assets": 18751121000000,
+      "non_interest_bearing_liabilities": null,
+      "cash_only": 1630052000000,
+      "total_liabilities": 9414947000000,
+      "total_equity": 9336174000000,
+      "total_debt": 3702772000000,
+      "stockholders_equity": 9149030000000,
+      "total_non_current_assets": 8636381000000,
+      "current_liabilities": 8129849000000,
+      "cash_and_short_term_investments": 1630052000000,
+      "non_loan_assets": null,
+      "total_current_asset": 10114740000000,
+      "total_non_current_liabilities": 1285098000000,
+      "financing_cash_flow": -41966000000,
+      "operating_cash_flow": -71356000000,
+      "investing_cash_flow": -102014000000,
+      "net_cash_flow": -215336000000,
+      "capital_expenditure": 72984000000,
+      "free_cash_flow": -144340000000
+    }
+  ],
+  "/v2/financials/quarterly/BUKA/": [
+    {
+      "symbol": "BUKA.JK",
+      "financials_sector_metrics": null,
+      "date": "2026-06-30",
+      "premium_income": null,
+      "premium_expense": null,
+      "net_premium_income": null,
+      "non_interest_income": 97340414000,
+      "revenue": 1621929136000,
+      "operating_expense": 122946291000,
+      "provision": null,
+      "operating_pnl": 14534613000,
+      "non_operating_income_or_loss": 94406432000,
+      "earnings_before_tax": -384905506000,
+      "tax": 9407907000,
+      "minorities": 646411000,
+      "earnings": -394959824000,
+      "gross_profit": 137480904000,
+      "interest_expense_non_operating": 2933982000,
+      "ebit": -381971524000,
+      "ebitda": -362977765000,
+      "cost_of_revenue": 1484448232000,
+      "total_assets": 24879814690000,
+      "non_interest_bearing_liabilities": null,
+      "cash_only": 14249892611000,
+      "total_liabilities": 573356425000,
+      "total_equity": 24306458265000,
+      "total_debt": 105978572000,
+      "stockholders_equity": 24297741443000,
+      "total_non_current_assets": 5560158683000,
+      "current_liabilities": 450671037000,
+      "cash_and_short_term_investments": 14249892611000,
+      "non_loan_assets": null,
+      "total_current_asset": 19319656007000,
+      "total_non_current_liabilities": 122685388000,
+      "financing_cash_flow": -63779399000,
+      "operating_cash_flow": 83061674000,
+      "investing_cash_flow": 317189671000,
+      "net_cash_flow": 336471946000,
+      "capital_expenditure": 70844726000,
+      "free_cash_flow": 12216948000
+    }
+  ],
+  "/v2/financials/quarterly/WIFI/": [
+    {
+      "symbol": "WIFI.JK",
+      "financials_sector_metrics": null,
+      "date": "2026-06-30",
+      "premium_income": null,
+      "premium_expense": null,
+      "net_premium_income": null,
+      "non_interest_income": 26216509352,
+      "revenue": 787328200716,
+      "operating_expense": 79436135109,
+      "provision": null,
+      "operating_pnl": 431898513294,
+      "non_operating_income_or_loss": -153506736369,
+      "earnings_before_tax": 278391776925,
+      "tax": 23209238503,
+      "minorities": 88524520136,
+      "earnings": 166658018286,
+      "gross_profit": 511334648403,
+      "interest_expense_non_operating": 155820208173,
+      "ebit": 434211985098,
+      "ebitda": 529294684918,
+      "cost_of_revenue": 275993552313,
+      "total_assets": 20949132568978,
+      "non_interest_bearing_liabilities": null,
+      "cash_only": 8285838461863,
+      "total_liabilities": 11933601734926,
+      "total_equity": 9015530834052,
+      "total_debt": 10032518946582,
+      "stockholders_equity": 7631403509644,
+      "total_non_current_assets": 7045404352645,
+      "current_liabilities": 6569810796182,
+      "cash_and_short_term_investments": 8285838461863,
+      "non_loan_assets": null,
+      "total_current_asset": 13903728216333,
+      "total_non_current_liabilities": 5363790938744,
+      "financing_cash_flow": 4679212337847,
+      "operating_cash_flow": -836964439736,
+      "investing_cash_flow": -998345091899,
+      "net_cash_flow": 2843902806212,
+      "capital_expenditure": 998345091899,
+      "free_cash_flow": -1835309531635
+    }
+  ],
+  "/v2/company/report/GOTO/?sections=dividend": {
+    "symbol": "GOTO.JK",
+    "company_name": "PT GoTo Gojek Tokopedia Tbk",
+    "dividend": {
+      "historical_dividends": null,
+      "upcoming_dividends": null,
+      "yield_ttm": null,
+      "dividend_yield_avg": null,
+      "dividend_ttm": null,
+      "payout_ratio": null,
+      "cash_payout_ratio": null,
+      "last_ex_dividend_date": null
+    }
+  },
+  "/v2/company/report/BELI/?sections=dividend": {
+    "symbol": "BELI.JK",
+    "company_name": "PT Global Digital Niaga Tbk",
+    "dividend": {
+      "historical_dividends": null,
+      "upcoming_dividends": null,
+      "yield_ttm": null,
+      "dividend_yield_avg": null,
+      "dividend_ttm": null,
+      "payout_ratio": null,
+      "cash_payout_ratio": null,
+      "last_ex_dividend_date": null
+    }
+  },
+  "/v2/company/report/WIFI/?sections=dividend": {
+    "symbol": "WIFI.JK",
+    "company_name": "PT Solusi Sinergi Digital Tbk",
+    "dividend": {
+      "historical_dividends": {
+        "2024": {
+          "breakdown": [
+            {
+              "date": "2024-06-19",
+              "total": 1.06,
+              "yield": 0.00442944001406431
+            }
+          ],
+          "total_yield": 0.00442944001406431,
+          "total_dividend": 1.06
+        },
+        "2025": {
+          "breakdown": [
+            {
+              "date": "2025-06-23",
+              "total": 2,
+              "yield": 0.000820331741124392
+            }
+          ],
+          "total_yield": 0.000820331741124392,
+          "total_dividend": 2
+        },
+        "2026": {
+          "breakdown": [
+            {
+              "date": "2026-07-09",
+              "total": 2,
+              "yield": 0.00103626943005181
+            }
+          ],
+          "total_yield": 0.00103626943005181,
+          "total_dividend": 2
+        }
+      },
+      "upcoming_dividends": null,
+      "yield_ttm": 0.00103626943005181,
+      "dividend_yield_avg": {
+        "period": 5,
+        "avg_yield": 0.00104995435103774
+      },
+      "dividend_ttm": 2,
+      "payout_ratio": 0.0181398330009051,
+      "cash_payout_ratio": -0.00166464554577108,
+      "last_ex_dividend_date": "2026-07-09"
+    }
+  },
+  "/v2/company/report/BUKA/?sections=dividend": {
+    "symbol": "BUKA.JK",
+    "company_name": "PT Bukalapak.com Tbk",
+    "dividend": {
+      "historical_dividends": null,
+      "upcoming_dividends": null,
+      "yield_ttm": null,
+      "dividend_yield_avg": null,
+      "dividend_ttm": null,
+      "payout_ratio": null,
+      "cash_payout_ratio": null,
+      "last_ex_dividend_date": null
+    }
+  },
+  "/v2/company/report/EMTK/?sections=dividend": {
+    "symbol": "EMTK.JK",
+    "company_name": "Elang Mahkota Teknologi Tbk",
+    "dividend": {
+      "historical_dividends": {
+        "2022": {
+          "breakdown": [
+            {
+              "date": "2022-09-16",
+              "total": 5,
+              "yield": 0.00268111005425453
+            }
+          ],
+          "total_yield": 0.00268111005425453,
+          "total_dividend": 5
+        },
+        "2023": {
+          "breakdown": [
+            {
+              "date": "2023-06-23",
+              "total": 5,
+              "yield": 0.00691155018284917
+            }
+          ],
+          "total_yield": 0.00691155018284917,
+          "total_dividend": 5
+        },
+        "2024": {
+          "breakdown": [
+            {
+              "date": "2024-06-25",
+              "total": 4,
+              "yield": 0.00890676025301218
+            }
+          ],
+          "total_yield": 0.00890676025301218,
+          "total_dividend": 4
+        },
+        "2025": {
+          "breakdown": [
+            {
+              "date": "2025-11-20",
+              "total": 5,
+              "yield": 0.00591727858409286
+            },
+            {
+              "date": "2025-05-08",
+              "total": 33,
+              "yield": 0.0390540361404419
+            }
+          ],
+          "total_yield": 0.0449713147245347,
+          "total_dividend": 38
+        }
+      },
+      "upcoming_dividends": null,
+      "yield_ttm": 0.0106837606837607,
+      "dividend_yield_avg": {
+        "period": 5,
+        "avg_yield": 0.0126941470429301
+      },
+      "dividend_ttm": 5,
+      "payout_ratio": 0.136984472181425,
+      "cash_payout_ratio": 0.4776569848106,
+      "last_ex_dividend_date": "2025-11-20"
+    }
+  }
 }

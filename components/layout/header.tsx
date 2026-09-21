@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { LogOut, ShieldCheck, Sparkles, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
-import { cn } from 'cn';
+import { cn } from '@/lib/utils';
 import { useState } from 'react';
 import { NAV_SECTIONS } from './sidebar-nav';
 import { usePathname, useSearchParams } from 'next/navigation';
