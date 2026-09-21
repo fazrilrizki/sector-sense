@@ -10,6 +10,7 @@ import {
   encodeGuestSession,
   convertGuestAccount,
 } from './guest'
+import { GUEST_QUOTA_COOKIE_KEY } from './guest-quota'
 import type { AuthActionResult, OAuthProvider } from './types'
 
 /**
@@ -55,6 +56,7 @@ export async function signUpWithEmail(formData: FormData): Promise<AuthActionRes
     // Clean up any guest cookie if registering a new permanent account
     const cookieStore = await cookies()
     cookieStore.delete(GUEST_COOKIE_NAME)
+    cookieStore.delete(GUEST_QUOTA_COOKIE_KEY)
 
     // If email confirmation is disabled or immediate session created
     if (data.session) {
@@ -105,6 +107,7 @@ export async function signInWithEmail(formData: FormData): Promise<AuthActionRes
     // Clean up any guest cookie since user logged in as permanent
     const cookieStore = await cookies()
     cookieStore.delete(GUEST_COOKIE_NAME)
+    cookieStore.delete(GUEST_QUOTA_COOKIE_KEY)
 
     return { success: true, data: { redirectTo: next } }
   } catch (err: unknown) {
@@ -217,6 +220,7 @@ export async function upgradeGuestAccount(formData: FormData): Promise<AuthActio
     // Remove guest cookie on successful upgrade
     const cookieStore = await cookies()
     cookieStore.delete(GUEST_COOKIE_NAME)
+    cookieStore.delete(GUEST_QUOTA_COOKIE_KEY)
 
     redirect('/dashboard')
   } catch (err: unknown) {
@@ -238,6 +242,7 @@ export async function signOut(): Promise<void> {
 
     const cookieStore = await cookies()
     cookieStore.delete(GUEST_COOKIE_NAME)
+    cookieStore.delete(GUEST_QUOTA_COOKIE_KEY)
   } catch {
     // Ignore sign out errors and proceed with redirect
   }
