@@ -42,7 +42,7 @@ export interface NormalizedFinancialData {
  */
 export async function getNormalizedFinancials(symbol: string): Promise<NormalizedFinancialData> {
   const cleanSymbol = symbol.toUpperCase().trim();
-  const cacheKey = `sectors:financials:${cleanSymbol}`;
+  const cacheKey = `sectors:financials:v6:${cleanSymbol}`;
 
   try {
     // 1. Coba ambil dari Cache (Upstash Redis)

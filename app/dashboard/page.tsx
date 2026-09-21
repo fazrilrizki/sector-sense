@@ -16,14 +16,21 @@ import Link from 'next/link'
 import * as React from 'react'
 import { HealthScoreWidget } from '@/components/dashboard/health-score'
 import { SearchBar } from '@/components/dashboard/search-bar'
+import { DividendTrapWidget } from '@/components/dashboard/dividend-trap-widget'
+import { RankingList } from '@/components/dashboard/ranking-list'
+import { sectors as sectorsClient } from '@/lib/sectors/client'
 
 export default async function DashboardPage(props: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
   const searchParams = await props.searchParams
   const symbol = typeof searchParams.symbol === 'string' ? searchParams.symbol : null
+  const sector = typeof searchParams.sector === 'string' ? searchParams.sector : 'banks'
   const { role, state } = await getAuthStatus()
   const { user, profile, isGuest } = state
+
+  // Fetch subsectors API dihapus untuk menghemat kredit, ranking difokuskan ke 1 sub-sektor (banks)
+
 
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-black font-sans flex flex-col">
@@ -163,19 +170,72 @@ export default async function DashboardPage(props: {
           <SearchBar />
 
           {symbol ? (
-            <React.Suspense fallback={
-              <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                Menarik data dan menghitung skor untuk {symbol}...
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+              <div className="xl:col-span-2">
+                <React.Suspense fallback={
+                  <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 h-64 flex items-center justify-center text-muted-foreground animate-pulse">
+                    Menarik data dan menghitung skor untuk {symbol}...
+                  </div>
+                } key={`health-${symbol}`}>
+                  <HealthScoreWidget symbol={symbol} />
+                </React.Suspense>
               </div>
-            } key={symbol}>
-              <HealthScoreWidget symbol={symbol} />
-            </React.Suspense>
+              <div className="xl:col-span-1">
+                <React.Suspense fallback={
+                  <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 h-64 flex items-center justify-center text-muted-foreground animate-pulse">
+                    Menganalisis dividend trap...
+                  </div>
+                } key={`trap-${symbol}`}>
+                  <DividendTrapWidget symbol={symbol} />
+                </React.Suspense>
+              </div>
+            </div>
           ) : (
             <div className="p-12 rounded-2xl border border-dashed border-zinc-300 dark:border-zinc-800 flex flex-col items-center justify-center text-center gap-3 text-muted-foreground bg-zinc-50/50 dark:bg-zinc-950/50">
               <Sparkles className="size-8 text-zinc-400" />
               <p>Mulai dengan mencari kode saham di atas.</p>
             </div>
           )}
+        </div>
+
+        {/* Market Movers / Rankings Section */}
+        <div className="space-y-4 pt-6 mt-6 border-t border-zinc-200 dark:border-zinc-800">
+          <div className="flex flex-col gap-2 mb-4">
+            <h2 className="text-xl font-bold tracking-tight">Market Movers & Rankings</h2>
+            <p className="text-sm text-muted-foreground">
+              Daftar peringkat emiten terbaik berdasarkan skor fundamental Sectors API.
+            </p>
+          </div>
+          
+          {/* <SectorSelector sectors={dynamicSectors} /> (Dihapus sementara untuk menghemat API, fokus ke 1 sektor) */}
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+            <React.Suspense fallback={
+              <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 h-64 flex items-center justify-center text-muted-foreground animate-pulse">
+                Memuat Top 5 Fundamental Sehat...
+              </div>
+            }>
+              <RankingList 
+                theme="health" 
+                subSector="banks" 
+                title="Top 5 Fundamental Paling Sehat (Perbankan)" 
+                description="Berdasarkan Skor Kesehatan Finansial tertinggi di sektor perbankan." 
+              />
+            </React.Suspense>
+
+            <React.Suspense fallback={
+              <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 h-64 flex items-center justify-center text-muted-foreground animate-pulse">
+                Memuat Dividen Bintang Lima...
+              </div>
+            }>
+              <RankingList 
+                theme="dividend" 
+                subSector="banks" 
+                title="Top Dividen Bintang Lima (Perbankan)" 
+                description="Kombinasi fundamental kuat & Dividen tinggi di sektor perbankan." 
+              />
+            </React.Suspense>
+          </div>
         </div>
       </main>
     </div>
