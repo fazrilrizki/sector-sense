@@ -46,18 +46,20 @@ Untuk performa yang cepat dan mencegah terkena batas *rate limit* dari Sectors A
 3. Setelah database terbuat, gulir ke bagian **REST API**.
 4. Salin nilai `UPSTASH_REDIS_REST_URL` dan `UPSTASH_REDIS_REST_TOKEN` lalu masukkan ke file `.env` Anda.
 
-## 📴 Offline / Mock Mode (Hemat Kredit API)
+## 🚀 Offline / Mock Mode (Hemat Kredit API)
 
-Karena keterbatasan kuota kredit pada Sectors API (Free Tier), proyek ini dilengkapi dengan arsitektur **Mock Interceptor**. Fitur ini memungkinkan Anda menyimpan *response* API secara lokal, lalu menyajikannya tanpa harus menyentuh internet saat pengembangan. 
+Karena keterbatasan kuota kredit pada Sectors API (Free Tier), proyek ini dilengkapi dengan arsitektur **Auto-Mock Interceptor**. Fitur pintar ini memungkinkan Anda menyimpan *response* API secara otomatis ke file lokal, lalu menyajikannya secara luring tanpa harus mengonsumsi kredit API saat pengembangan dan presentasi.
 
-Untuk menggunakannya, atur *environment variables* berikut di `.env.local`:
+Untuk mengaktifkannya, buka file `.env` Anda dan pasang:
+```env
+MOCK_API=true
+```
 
-1. **`RECORD_MOCK_API=true`**
-   Jika diaktifkan, aplikasi akan membiarkan *request* diteruskan ke Sectors API sungguhan. Setiap respons akan direkam dan disalin ke dalam file `lib/data/api-mock-db.json`. *(Nyalakan ini saat Anda sedang mengembangkan fitur baru dan butuh tarikan data API baru).*
-2. **`USE_MOCK_API=true`**
-   Jika diaktifkan, aplikasi akan 100% bergantung pada data yang ada di `api-mock-db.json`. *Loading* aplikasi akan menjadi instan (0 latensi) dan **tidak akan memotong kredit API Anda**. *(Sangat direkomendasikan untuk digunakan saat demo Hackathon agar presentasi berjalan mulus tanpa error limit).*
+**Bagaimana cara kerjanya?**
+1. **Cache-First (Zero Latency):** Aplikasi akan memeriksa data di file `lib/data/api-mock-db.json`. Jika data untuk permintaan URL tersebut ada, aplikasi akan langsung menampilkannya secara instan tanpa mengurangi kredit API.
+2. **Auto-Record (Perekaman Otomatis):** Jika datanya belum ada, aplikasi otomatis memanggil Sectors API aslinya **satu kali**, lalu langsung merekam/menyimpan hasilnya ke file JSON tersebut agar bisa dipakai sepuasnya pada pencarian berikutnya.
 
-> **Catatan:** Pastikan Anda mematikan `RECORD_MOCK_API` dan hanya menyisakan `USE_MOCK_API=true` jika Anda sudah selesai merekam data dan ingin masuk ke mode presentasi murni.
+> **Tips Juri:** Biarkan `MOCK_API=true` menyala selama demo presentasi Hackathon. Anda tidak perlu khawatir terkena *rate limit*, karena aplikasi akan melayani data dengan kecepatan instan dari lokal!
 
 ---
 
