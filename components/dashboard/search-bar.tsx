@@ -1,26 +1,28 @@
-'use client'
+'use client';
 
-import * as React from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
-import { Search } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Card } from '@/components/ui/card'
+import * as React from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { Search } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Card } from '@/components/ui/card';
 
 export function SearchBar() {
-  const router = useRouter()
-  const searchParams = useSearchParams()
-  const defaultSymbol = searchParams.get('symbol') || ''
-  
-  const [symbol, setSymbol] = React.useState(defaultSymbol)
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const defaultSymbol = searchParams.get('symbol') || '';
+
+  const [symbol, setSymbol] = React.useState(defaultSymbol);
 
   const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!symbol.trim()) return
+    e.preventDefault();
+    if (!symbol.trim()) return;
 
-    const cleanSymbol = symbol.toUpperCase().trim()
-    router.push(`/dashboard?symbol=${cleanSymbol}`)
-  }
+    const cleanSymbol = symbol.toUpperCase().trim();
+    const nextParams = new URLSearchParams(searchParams.toString());
+    nextParams.set('symbol', cleanSymbol);
+    router.push(`/dashboard?${nextParams.toString()}`);
+  };
 
   return (
     <Card className="p-1 border-primary/20 bg-primary/5 shadow-sm">
@@ -40,5 +42,5 @@ export function SearchBar() {
         </Button>
       </form>
     </Card>
-  )
+  );
 }

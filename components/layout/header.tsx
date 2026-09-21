@@ -1,13 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { LogOut, ShieldCheck, Sparkles, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
-import { NAV_SECTIONS } from './sidebar-nav';
+import { getNavHref, NAV_SECTIONS } from './sidebar-nav';
 import { usePathname, useSearchParams } from 'next/navigation';
 
 interface HeaderProps {
@@ -39,7 +38,7 @@ function MobileDrawer({
         className={cn(
           'fixed left-0 top-0 bottom-0 z-50 w-64 bg-sidebar border-r border-border',
           'transition-transform duration-200 ease-in-out md:hidden',
-          open ? 'translate-x-0' : '-translate-x-full',
+          open ? 'translate-x-0' : '-translate-x-full'
         )}
         role="dialog"
         aria-label="Navigation menu"
@@ -48,28 +47,31 @@ function MobileDrawer({
           <div className="p-1.5 rounded-md bg-primary text-primary-foreground text-xs font-bold">
             SS
           </div>
-          <span className="font-semibold text-sm text-foreground">Sector Sense</span>
+          <span className="font-semibold text-sm text-foreground">
+            Sector Sense
+          </span>
         </div>
         <nav className="flex flex-col gap-6 p-3 pt-4">
           {NAV_SECTIONS.map((section, si) => (
             <div key={si} className="flex flex-col gap-0.5">
               {si > 0 && <div className="h-px bg-border mx-2 mb-3" />}
               {section.items.map((item) => {
-                const isCurrentTab =
-                  item.href.includes('?tab=')
-                    ? new URL(item.href, 'http://x').searchParams.get('tab') === searchParams.get('tab')
-                    : pathname === item.href && !searchParams.get('tab');
+                const isCurrentTab = item.href.includes('?tab=')
+                  ? new URL(item.href, 'http://x').searchParams.get('tab') ===
+                    searchParams.get('tab')
+                  : pathname === item.href && !searchParams.get('tab');
+                const href = getNavHref(item.href, searchParams);
                 const Icon = item.icon;
                 return (
                   <Link
                     key={item.href}
-                    href={item.href}
+                    href={href}
                     onClick={onClose}
                     className={cn(
                       'flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium transition-colors',
                       isCurrentTab
                         ? 'bg-sidebar-primary text-sidebar-primary-foreground'
-                        : 'text-sidebar-foreground hover:bg-sidebar-accent',
+                        : 'text-sidebar-foreground hover:bg-sidebar-accent'
                     )}
                   >
                     <Icon className="size-4 shrink-0" />
@@ -99,7 +101,7 @@ export function Header({ userName, isGuest, onSignOut }: HeaderProps) {
         className={cn(
           'fixed top-0 left-0 right-0 z-40 h-14',
           'border-b border-border bg-background/80 backdrop-blur-md',
-          'flex items-center px-4 gap-3',
+          'flex items-center px-4 gap-3'
         )}
       >
         {/* Mobile hamburger */}

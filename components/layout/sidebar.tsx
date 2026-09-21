@@ -3,10 +3,19 @@
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { NAV_SECTIONS } from './sidebar-nav';
+import { getNavHref, NAV_SECTIONS } from './sidebar-nav';
 
-function isActive(href: string, pathname: string, searchParams: URLSearchParams): boolean {
-  if (href === '/dashboard' && pathname === '/dashboard' && !searchParams.get('tab')) return true;
+function isActive(
+  href: string,
+  pathname: string,
+  searchParams: URLSearchParams
+): boolean {
+  if (
+    href === '/dashboard' &&
+    pathname === '/dashboard' &&
+    !searchParams.get('tab')
+  )
+    return true;
   if (href.includes('?tab=')) {
     const tab = new URL(href, 'http://x').searchParams.get('tab');
     return pathname === '/dashboard' && searchParams.get('tab') === tab;
@@ -23,7 +32,7 @@ export function Sidebar() {
       className={cn(
         'hidden md:flex flex-col w-56 shrink-0',
         'border-r border-border bg-sidebar',
-        'fixed left-0 top-14 bottom-0 z-30 overflow-y-auto',
+        'fixed left-0 top-14 bottom-0 z-30 overflow-y-auto'
       )}
     >
       <nav className="flex flex-col gap-6 p-3 pt-4">
@@ -32,17 +41,18 @@ export function Sidebar() {
             {si > 0 && <div className="h-px bg-border mx-2 mb-3" />}
             {section.items.map((item) => {
               const active = isActive(item.href, pathname, searchParams);
+              const href = getNavHref(item.href, searchParams);
               const Icon = item.icon;
               return (
                 <Link
                   key={item.href}
-                  href={item.href}
+                  href={href}
                   className={cn(
                     'flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium transition-colors',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
                     active
                       ? 'bg-sidebar-primary text-sidebar-primary-foreground'
-                      : 'text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
+                      : 'text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground'
                   )}
                   aria-current={active ? 'page' : undefined}
                 >
