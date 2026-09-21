@@ -36,11 +36,10 @@ function saveMockDb(db: Record<string, any>) {
 }
 
 export async function interceptRequest(url: string, executeRealApi: () => Promise<any>): Promise<any> {
-  const isMockMode = process.env.USE_MOCK_API === 'true';
-  const isRecordMode = process.env.RECORD_MOCK_API === 'true';
+  const isMockMode = process.env.MOCK_API === 'true';
 
-  if (!isMockMode && !isRecordMode) {
-    // Normal operation
+  if (!isMockMode) {
+    // Normal operation (hits real API without saving/reading from mock)
     return executeRealApi();
   }
 
@@ -55,25 +54,20 @@ export async function interceptRequest(url: string, executeRealApi: () => Promis
   const cacheKey = urlObj.pathname + urlObj.search;
   const db = getMockDb();
 
-  // If we are in mock mode (or record mode) and the data exists, return it!
+  // 1. USE MODE: If we are in mock mode and the data exists, return it! (0 latency, 0 quota)
   if (db[cacheKey] !== undefined) {
     console.log(`[MockInterceptor] SERVED FROM MOCK DB: ${cacheKey}`);
     return db[cacheKey];
   }
 
-  // If it doesn't exist, we MUST hit the real API
-  if (isMockMode && !isRecordMode) {
-    console.warn(`[MockInterceptor] MISSING FROM MOCK DB AND RECORD_MOCK_API=false: ${cacheKey}. Hitting real API as fallback.`);
-  }
-
+  // 2. RECORD MODE: If it doesn't exist, we hit the real API
+  console.log(`[MockInterceptor] MISSING FROM MOCK DB: ${cacheKey}. Hitting real API and saving to mock db...`);
   const realData = await executeRealApi();
 
-  // If record mode is enabled, save it to the DB
-  if (isRecordMode || isMockMode) {
-    db[cacheKey] = realData;
-    saveMockDb(db);
-    console.log(`[MockInterceptor] RECORDED TO MOCK DB: ${cacheKey}`);
-  }
+  // Save it to the DB for future uses
+  db[cacheKey] = realData;
+  saveMockDb(db);
+  console.log(`[MockInterceptor] RECORDED TO MOCK DB: ${cacheKey}`);
 
   return realData;
 }
