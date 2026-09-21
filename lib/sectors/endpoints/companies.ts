@@ -6,6 +6,7 @@ import type {
   QuarterlyFinancialsParams,
   QuarterlyFinancialRow,
   CorporateActionItem,
+  CorporateActionsResponse,
   ShareholdersComposition,
   RevenueSegmentItem,
   ListingPerformance,
@@ -103,9 +104,9 @@ export class CompaniesClient {
   async getCorporateActions(
     symbol: string,
     options?: RequestOptions
-  ): Promise<CorporateActionItem[]> {
+  ): Promise<CorporateActionsResponse> {
     const clean = cleanSymbol(symbol);
-    return this.transport.request<CorporateActionItem[]>(
+    return this.transport.request<CorporateActionsResponse>(
       `/company/corporate-actions/${clean}`,
       undefined,
       {

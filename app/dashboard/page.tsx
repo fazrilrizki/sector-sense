@@ -17,6 +17,7 @@ import * as React from 'react'
 import { HealthScoreWidget } from '@/components/dashboard/health-score'
 import { SearchBar } from '@/components/dashboard/search-bar'
 import { DividendTrapWidget } from '@/components/dashboard/dividend-trap-widget'
+import { CorporateRadarWidget } from '@/components/dashboard/corporate-radar'
 import { RankingList } from '@/components/dashboard/ranking-list'
 import { sectors as sectorsClient } from '@/lib/sectors/client'
 
@@ -170,25 +171,36 @@ export default async function DashboardPage(props: {
           <SearchBar />
 
           {symbol ? (
-            <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-              <div className="xl:col-span-2">
-                <React.Suspense fallback={
-                  <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                    Menarik data dan menghitung skor untuk {symbol}...
-                  </div>
-                } key={`health-${symbol}`}>
-                  <HealthScoreWidget symbol={symbol} />
-                </React.Suspense>
+            <div className="space-y-6">
+              <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+                <div className="xl:col-span-2">
+                  <React.Suspense fallback={
+                    <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 h-64 flex items-center justify-center text-muted-foreground animate-pulse">
+                      Menarik data dan menghitung skor untuk {symbol}...
+                    </div>
+                  } key={`health-${symbol}`}>
+                    <HealthScoreWidget symbol={symbol} />
+                  </React.Suspense>
+                </div>
+                <div className="xl:col-span-1">
+                  <React.Suspense fallback={
+                    <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 h-64 flex items-center justify-center text-muted-foreground animate-pulse">
+                      Menganalisis dividend trap...
+                    </div>
+                  } key={`trap-${symbol}`}>
+                    <DividendTrapWidget symbol={symbol} />
+                  </React.Suspense>
+                </div>
               </div>
-              <div className="xl:col-span-1">
-                <React.Suspense fallback={
-                  <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                    Menganalisis dividend trap...
-                  </div>
-                } key={`trap-${symbol}`}>
-                  <DividendTrapWidget symbol={symbol} />
-                </React.Suspense>
-              </div>
+
+              {/* Corporate Radar & Dividend Calendar Engine */}
+              <React.Suspense fallback={
+                <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 h-64 flex items-center justify-center text-muted-foreground animate-pulse">
+                  Memuat Corporate Radar & Kalender Aksi Korporasi untuk {symbol}...
+                </div>
+              } key={`radar-${symbol}`}>
+                <CorporateRadarWidget symbol={symbol} />
+              </React.Suspense>
             </div>
           ) : (
             <div className="p-12 rounded-2xl border border-dashed border-zinc-300 dark:border-zinc-800 flex flex-col items-center justify-center text-center gap-3 text-muted-foreground bg-zinc-50/50 dark:bg-zinc-950/50">
