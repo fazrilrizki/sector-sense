@@ -66,7 +66,36 @@ flowchart TD
 
 ---
 
-## 3. Rumus Kuantitatif, Notasi Matematis, dan Sumber Referensi
+## 3. Sumber Acuan Project: Mengapa Rumus Ini Dipilih dalam Sector Sense?
+
+Pemilihan dan perancangan rumus kuantitatif ini didasarkan pada **3 pilar acuan utama project Sector Sense**:
+
+### A. Kepatuhan Spesifikasi Hackathon Track 3 (`hackathon.md`)
+1. **Penyelesaian User Story Epic 2 (US 2.2)**:
+   > *"Sebagai analis pasar, saya ingin sistem mendeteksi anomali valuasi secara otomatis, sehingga saya mendapat notifikasi jika ada saham berfundamental bagus yang harganya tiba-tiba anjlok tajam (undervalued)."*
+   - Rumus **Z-Score Valuasi ($Z < -2.0\sigma$)** yang dipadukan dengan filter kesehatan kas dirancang langsung untuk memenuhi US 2.2 ini secara matematis, mengidentifikasi diskon ekstrem tanpa terjebak *value trap*.
+2. **Penyelesaian Kebutuhan Fungsional FR4 (Anomaly Detection)**:
+   > *"FR4 - Anomaly Detection: Deteksi anjloknya valuasi atau lonjakan utang secara ekstrem."*
+   - Rumus **QoQ DER Growth ($\% \Delta DER \ge +50\%$)** dan **Equity Erosion ($> 25\%$)** ditujukan langsung untuk mengeksekusi mandat FR4 secara otomatis pada data kuartalan.
+3. **Penghindaran Diskualifikasi ("What Does Not Qualify")**:
+   > *"Membuat grafik Recharts yang estetik akan langsung gugur jika grafik tersebut hanya menampilkan data mentah dari API Sectors tanpa adanya formula, skor, atau logika analisis baru buatan timmu."*
+   - Modul ini mengonversi data mentah API Sectors menjadi indeks anomali kuantitatif baru (*proprietary composite status & severity scoring*).
+4. **Keputusan Cepat & Transparan (Explainable Quantitative Model)**:
+   - Sesuai tips juri di `hackathon.md`, sistem menghindari *black-box deep learning* yang lambat saat demo, melainkan menggunakan model kuantitatif parametrik yang deterministik, berkecepatan komputasi sub-milidetik, dan dapat dijelaskan dasar ilmiahnya secara transparan.
+
+### B. Mitigasi Risiko "Dividend Trap" & Filosofi "Zero Loss"
+- Seringkali emiten yang menawarkan imbal hasil dividen (*dividend yield*) tinggi adalah perusahaan yang harga sahamnya sedang anjlok tajam akibat lonjakan utang yang membahayakan atau kas yang menipis.
+- Jika investor hanya melihat *yield* tanpa memindai anomali, mereka akan terjebak dalam *dividend trap* (harga saham anjlok jauh lebih besar daripada dividen yang diterima).
+- Rumus **Altman Debt Spike** dan **Sloan Accrual Divergence** bertindak sebagai **lapisan saringan keselamatan (*Capital Defense Shield*)** sebelum investor memutuskan mengambil dividen suatu emiten.
+
+### C. Karakteristik Spesifik Pasar Modal Indonesia (IDX / BEI)
+1. **Volatilitas Siklikal Komoditas**: Saham tambang dan energi (seperti BUMI, ADRO, ITMG) sering mengalami lonjakan utang atau lonjakan arus kas mendadak mengikuti siklus harga komoditas global.
+2. **Struktur Perbankan Indonesia**: Bank menyumbang lebih dari 30% bobot IHSG (BBCA, BBRI, BMRI, BBNI). Dalam akuntansi bank, Dana Pihak Ketiga (DPK) dicatat sebagai liabilitas. Oleh karena itu, rasio DER normal bank adalah 4.0x–7.0x. Rumus engine ini dilengkapi penyesuaian khusus perbankan (*bank-adjusted threshold*) agar tidak terjadi *false positive* pada saham perbankan sehat.
+3. **Pelaporan Keuangan Kuartalan**: Emiten IDX menerbitkan laporan keuangan setiap kuartal (Q1, Q2, Q3, dan Tahunan). Engine memanfaatkan dinamika kuartalan ini untuk mendeteksi *quarterly shock* sebelum konsensus analis pasar menyadarinya.
+
+---
+
+## 4. Rumus Kuantitatif, Notasi Matematis, dan Referensi Ilmiah
 
 ### A. Pilar 1: Dislokasi Valuasi Historis (Valuation Multiples Z-Score)
 
@@ -172,7 +201,7 @@ Laba akuntansi (*Accounting Net Income*) disusun berdasarkan basis akrual dan re
 
 ---
 
-## 4. Matriks Klasifikasi Status Emiten (Composite Anomaly Status)
+## 5. Matriks Klasifikasi Status Emiten (Composite Anomaly Status)
 
 Berdasarkan gabungan dari seluruh alert yang terpicu, sistem menetapkan status komposit emiten secara deterministik:
 
@@ -186,7 +215,7 @@ Berdasarkan gabungan dari seluruh alert yang terpicu, sistem menetapkan status k
 
 ---
 
-## 5. Keselarasan Skema Data Mock dengan API Asli `lib/sectors`
+## 6. Keselarasan Skema Data Mock dengan API Asli `lib/sectors`
 
 Sesuai aturan Track 3 Hackathon, seluruh pemrosesan anomali didukung oleh data mock lokal yang **100% patuh pada antarmuka TypeScript resmi di [`lib/sectors/types.ts`](file:///D:/pribadi/Projects/sector-sense/lib/sectors/types.ts)**:
 
@@ -221,7 +250,7 @@ Data mock disimpan pada:
 
 ---
 
-## 6. Contoh Penggunaan Programatis
+## 7. Contoh Penggunaan Programatis
 
 ```typescript
 import { scanIssuerAnomalies, scanUniverseAnomalies } from '@/lib/services/anomalyDetector';
@@ -241,7 +270,7 @@ console.log(`Alert Prioritas Tinggi: ${universe.highPriorityAlerts.length}`);
 
 ---
 
-## 7. Verifikasi & Pengujian Otomatis
+## 8. Verifikasi & Pengujian Otomatis
 
 Seluruh formula dan logika diuji melalui suite pengujian otomatis Node.js runner:
 
