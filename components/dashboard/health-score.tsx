@@ -24,8 +24,8 @@ export async function HealthScoreWidget({ symbol }: { symbol: string }) {
 
   // Skor direpresentasikan dari 0-10, dibagi 5 pilar (masing-masing 0-2)
   const getScoreColor = (score: number) => {
-    if (score >= 8) return 'text-emerald-500';
-    if (score >= 5) return 'text-amber-500';
+    if (score >= 7) return 'text-emerald-500';
+    if (score >= 4) return 'text-amber-500';
     return 'text-red-500';
   };
 

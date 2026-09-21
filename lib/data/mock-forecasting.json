@@ -1,0 +1,56 @@
+{
+  "BBCA": {
+    "symbol": "BBCA",
+    "name": "PT Bank Central Asia Tbk",
+    "upcoming_dividend": {
+      "yield_percent": 1.5,
+      "amount_idr": 150,
+      "cum_date": "2024-11-20",
+      "ex_date": "2024-11-21"
+    },
+    "historical_analysis": {
+      "trap_probability": 0.15,
+      "avg_price_drop_ex_date_percent": -1.2,
+      "recovery_days": 14
+    },
+    "verdict": "SAFE",
+    "recommendation": "Pilihan A (Ambil Dividen). Penurunan harga pada ex-date biasanya lebih kecil dari nilai dividen, dan harga saham historis pulih dengan cepat.",
+    "alternatives": []
+  },
+  "ITMG": {
+    "symbol": "ITMG",
+    "name": "PT Indo Tambangraya Megah Tbk",
+    "upcoming_dividend": {
+      "yield_percent": 8.5,
+      "amount_idr": 2500,
+      "cum_date": "2024-10-30",
+      "ex_date": "2024-10-31"
+    },
+    "historical_analysis": {
+      "trap_probability": 0.92,
+      "avg_price_drop_ex_date_percent": -11.5,
+      "recovery_days": 180
+    },
+    "verdict": "DIVIDEND_TRAP",
+    "recommendation": "Pilihan B (Pindah ke Saham Saingan). Risiko dividend trap sangat tinggi! Harga saham ITMG secara historis anjlok lebih dalam (rata-rata -11.5%) dibandingkan persentase dividen yang dibagikan (8.5%). Pertimbangkan saham saingan seperti PTBA atau ADRO.",
+    "alternatives": ["PTBA", "ADRO"]
+  },
+  "PTBA": {
+    "symbol": "PTBA",
+    "name": "PT Bukit Asam Tbk",
+    "upcoming_dividend": {
+      "yield_percent": 6.0,
+      "amount_idr": 150,
+      "cum_date": "2024-12-05",
+      "ex_date": "2024-12-06"
+    },
+    "historical_analysis": {
+      "trap_probability": 0.40,
+      "avg_price_drop_ex_date_percent": -4.5,
+      "recovery_days": 45
+    },
+    "verdict": "MODERATE",
+    "recommendation": "Pertimbangkan secara hati-hati. Risiko sedang dengan valuasi fundamental yang relatif lebih stabil dibanding pesaingnya.",
+    "alternatives": ["ADRO"]
+  }
+}

@@ -80,10 +80,15 @@ export class HttpTransport {
     params?: Record<string, unknown>,
     options?: RequestOptions
   ): Promise<T> {
+    const { interceptRequest } = await import('./mockInterceptor.ts');
+    
     return this.cacheManager.getOrSet<T>(
       endpoint,
       params,
-      () => this.executeWithRetry<T>(endpoint, params, options),
+      () => interceptRequest(
+        this.buildUrl(endpoint, params),
+        () => this.executeWithRetry<T>(endpoint, params, options)
+      ),
       options
     );
   }

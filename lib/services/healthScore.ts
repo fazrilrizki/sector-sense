@@ -37,11 +37,11 @@ interface ExtractedMetrics {
 /**
  * Extracts latest metrics from normalized financials and company report.
  */
-function extractMetrics(
-  financials: NormalizedFinancialData,
+export function extractMetrics(
+  targetFinancials: NormalizedFinancialData,
   dividendYieldFromReport?: number | null
 ): ExtractedMetrics {
-  const qData = financials.quarterly;
+  const qData = targetFinancials.quarterly;
   if (!qData || qData.length === 0) {
     return { roe: null, der: null, currentRatio: null, revenueGrowth: null, dividendYield: dividendYieldFromReport || null };
   }
@@ -75,13 +75,20 @@ function extractMetrics(
     currentRatio = bs.total_assets / bs.total_liabilities;
   }
 
-  // Revenue Growth YoY
+  // Revenue Growth YoY (Support Banks by using operating_income or net_interest_income)
   let revenueGrowth: number | null = null;
-  if (is.revenue && previousYear) {
+  const currentRev = is.revenue || is.operating_income || is.net_interest_income || null;
+  
+  if (currentRev !== null && previousYear) {
     const prevIs = previousYear.incomeStatement as Record<string, number>;
-    if (prevIs.revenue && prevIs.revenue !== 0) {
-      revenueGrowth = (is.revenue - prevIs.revenue) / Math.abs(prevIs.revenue);
+    const prevRev = prevIs.revenue || prevIs.operating_income || prevIs.net_interest_income || null;
+    if (prevRev && prevRev !== 0) {
+      revenueGrowth = (Number(currentRev) - Number(prevRev)) / Math.abs(Number(prevRev));
+    } else {
+      console.log(`DEBUG RevGrowth: prevRev=${prevRev}`);
     }
+  } else {
+    console.log(`DEBUG RevGrowth: currentRev=${currentRev}, hasPrevYear=${!!previousYear}`);
   }
 
   return {
@@ -97,8 +104,8 @@ function extractMetrics(
  * Calculates score 0-2 based on percentile.
  * For DER, lower is better. For others, higher is better.
  */
-function getScore(value: number | null, peerValues: (number | null)[], isLowerBetter: boolean = false): number {
-  if (value === null) return 0; // Penalize missing data
+export function getScore(value: number | null, peerValues: (number | null)[], isLowerBetter: boolean = false): number {
+  if (value === null) return 1; // Anggap rata-rata (1 poin) jika data dari API kosong (tidak adil jika dihukum 0)
 
   const validPeers = peerValues.filter((v): v is number => v !== null && !isNaN(v));
   if (validPeers.length === 0) {
@@ -118,7 +125,9 @@ function getScore(value: number | null, peerValues: (number | null)[], isLowerBe
 
 export async function calculateHealthScore(symbol: string): Promise<HealthScoreResult> {
   const cleanSymbol = symbol.toUpperCase().trim();
-  const cacheKey = `sectors:health:${cleanSymbol}`;
+  const cacheKey = `sectors:health:v7:${cleanSymbol}`;
+  
+  console.log(`Executing calculateHealthScore for ${cleanSymbol}`);
 
   if (redis) {
     const cached = await redis.get<HealthScoreResult>(cacheKey);
