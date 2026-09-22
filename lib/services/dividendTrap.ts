@@ -1,5 +1,6 @@
 import { Redis } from '@upstash/redis';
 import { sectors } from '../sectors/client.ts';
+import type { RawDividendAction } from '../sectors/types.ts';
 import mockForecasting from '../data/mock-forecasting.json' assert { type: 'json' };
 
 const getRedisClient = () => {
@@ -188,8 +189,46 @@ function buildFromMock(symbol: string): DividendTrapResult | null {
 
 // ── Next dividend event extraction ────────────────────────────────────────────
 
+interface NormalizedDividendAction {
+  action_type: string;
+  date: string;
+  amount: number | null;
+}
+
+function normalizeDividendActions(
+  actionsResponse: Awaited<ReturnType<typeof sectors.companies.getCorporateActions>>,
+): NormalizedDividendAction[] {
+  if (Array.isArray(actionsResponse)) {
+    return (actionsResponse as any[]).map((a) => ({
+      action_type: a.action_type || 'dividend',
+      date: a.date,
+      amount: a.amount ?? null,
+    }));
+  }
+
+  const actionsObj = (actionsResponse as any)?.corporate_actions;
+  if (!actionsObj) return [];
+
+  const rawUpcoming = actionsObj.upcoming_dividend;
+  const upcomingList: RawDividendAction[] = Array.isArray(rawUpcoming)
+    ? rawUpcoming
+    : rawUpcoming
+      ? [rawUpcoming]
+      : [];
+  const divList: RawDividendAction[] = Array.isArray(actionsObj.dividend) ? actionsObj.dividend : [];
+
+  const allDivs = [...upcomingList, ...divList];
+  return allDivs
+    .filter((d) => Boolean(d && d.ex_date))
+    .map((d) => ({
+      action_type: 'dividend',
+      date: d.ex_date,
+      amount: d.dividend_amount ?? null,
+    }));
+}
+
 function extractNextEvent(
-  actions: Awaited<ReturnType<typeof sectors.companies.getCorporateActions>>,
+  actions: NormalizedDividendAction[],
 ): DividendTrapResult['nextEvent'] {
   const today = new Date();
 
@@ -200,7 +239,7 @@ function extractNextEvent(
   if (upcoming.length === 0) {
     // Fallback: latest past dividend
     const past = actions
-      .filter((a) => a.action_type === 'dividend' && a.amount)
+      .filter((a) => a.action_type === 'dividend' && a.amount != null)
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
     if (past.length === 0) return null;
@@ -254,13 +293,14 @@ export async function getDividendTrapAnalysis(symbol: string): Promise<DividendT
   const subSector = report.overview?.sub_sector ?? '';
 
   // Latest dividend amount from corporate actions
-  const dividendActions = actions.filter((a) => a.action_type === 'dividend' && a.amount);
+  const normalizedActions = normalizeDividendActions(actions);
+  const dividendActions = normalizedActions.filter((a) => a.action_type === 'dividend' && a.amount != null);
   const latestDividend = dividendActions.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   )[0];
 
   const modelOutput = runModel({ dividendYieldPct, payoutRatio, subSector });
-  const nextEvent = extractNextEvent(actions);
+  const nextEvent = extractNextEvent(normalizedActions);
 
   const result: DividendTrapResult = {
     symbol: clean,
@@ -278,3 +318,4 @@ export async function getDividendTrapAnalysis(symbol: string): Promise<DividendT
 
   return result;
 }
+

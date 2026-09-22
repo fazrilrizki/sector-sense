@@ -18,6 +18,25 @@ export interface NavSection {
   items: NavItem[];
 }
 
+type SearchParamReader = {
+  get(name: string): string | null;
+};
+
+export function getNavHref(
+  href: string,
+  searchParams: SearchParamReader
+): string {
+  const symbol = searchParams.get('symbol');
+
+  if (!symbol || !href.startsWith('/dashboard?tab=')) {
+    return href;
+  }
+
+  const url = new URL(href, 'http://sector-sense.local');
+  url.searchParams.set('symbol', symbol);
+  return `${url.pathname}?${url.searchParams.toString()}`;
+}
+
 export const NAV_SECTIONS: NavSection[] = [
   {
     items: [

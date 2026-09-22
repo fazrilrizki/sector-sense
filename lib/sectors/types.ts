@@ -145,6 +145,46 @@ export interface QuarterlyFinancialRow {
   [key: string]: unknown;
 }
 
+export interface RawDividendAction {
+  ex_date: string;
+  payment_date?: string | null;
+  dividend_yield?: number | null;
+  dividend_amount?: number | null;
+}
+
+export interface RawStockSplitAction {
+  date: string;
+  split_ratio?: number | string | null;
+}
+
+export interface RawRightIssueAction {
+  date?: string | null;
+  ratio?: string | null;
+  price?: number | null;
+  [key: string]: unknown;
+}
+
+export interface RawAgmAction {
+  agm_date: string;
+  agm_time?: string | null;
+  agm_place?: string | null;
+  agm_result?: string | null;
+}
+
+export interface CorporateActionsResponse {
+  symbol: string;
+  corporate_actions: {
+    agm?: RawAgmAction[] | null;
+    bonus?: unknown[] | null;
+    warrant?: unknown[] | null;
+    dividend?: RawDividendAction[] | null;
+    upcoming_dividend?: RawDividendAction[] | RawDividendAction | null;
+    right_issue?: RawRightIssueAction[] | null;
+    stock_split?: RawStockSplitAction[] | null;
+    [key: string]: unknown;
+  };
+}
+
 export interface CorporateActionItem {
   action_type: string; // 'dividend' | 'split' | 'rights' | 'warrant' | 'agm'
   date: string;

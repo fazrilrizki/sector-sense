@@ -94,6 +94,12 @@ SECTORS_MCP_URL=https://sectors-mcp.supertype.ai/mcp
 # Caching terdistribusi untuk Serverless / Edge runtime
 UPSTASH_REDIS_REST_URL=https://your-database.upstash.io
 UPSTASH_REDIS_REST_TOKEN=your_upstash_rest_token_here
+
+# ==========================================
+# Offline / Mock Mode (Hemat Kredit API)
+# ==========================================
+# Aktifkan mode interceptor mock (Auto USE & RECORD)
+MOCK_API=true
 ```
 
 ### Mekanisme Graceful Fallback
@@ -104,6 +110,18 @@ Modul mendeteksi konfigurasi cache secara otomatis (`adapter: 'auto'`):
 ---
 
 ## 3. Strategi Caching & Tiered TTL Policies
+
+### 3.1. Offline / Auto-Mock Interceptor (`MOCK_API=true`)
+Untuk mencegah kehabisan kuota kredit pada akun Sectors API (khususnya *Free Tier* saat tahap pengembangan dan presentasi juri), modul ini dilengkapi dengan **Auto-Mock Interceptor** (`lib/sectors/core/mockInterceptor.ts`).
+
+Setiap request HTTP melalui `HttpTransport` akan dicegat dengan mekanisme cerdas:
+1. **Cache-First (Zero Latency & 0 Quota):** Interceptor mengecek file lokal `lib/data/api-mock-db.json` berdasarkan key `pathname + search` dari URL request. Jika data sudah pernah terekam, data langsung disajikan secara instan tanpa memotong kuota kredit Sectors API sama sekali.
+2. **Auto-Record (Perekaman Otomatis):** Jika endpoint URL belum tercatat di file JSON, sistem akan memanggil Sectors API asli **satu kali**, kemudian otomatis menyimpan (*dump*) payload responsenya ke `api-mock-db.json` untuk digunakan seterusnya.
+
+> **Rekomendasi Hackathon:** Aktifkan `MOCK_API=true` di `.env.local` saat mendemokan aplikasi agar performa dashboard berkecepatan instan dan aman dari *rate limit*.
+
+### 3.2. Tiered TTL Policies
+
 
 Data finansial memiliki tingkat volatilitas yang bervariasi. Modul membagi TTL ke dalam 4 tingkatan (*tiers*) untuk menekan pemborosan kredit API Sectors:
 

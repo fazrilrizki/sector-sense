@@ -145,6 +145,6 @@ npm run build
 Platform ini menggunakan sistem otentikasi siap pakai berbasis **Supabase Auth SSR** dan **Next.js 16 Proxy**:
 1. **Email & Password**: Registrasi akun baru dengan verifikasi email otomatis, serta login dengan validasi kredensial.
 2. **Guest Access Session (Akses Tamu)**: Memungkinkan pengguna menjelajah dan menjalankan simulasi portofolio tanpa login awal, dengan kemampuan *upgrade* ke akun permanen secara langsung tanpa kehilangan data. Panduan aktivasi lengkap di Supabase Dashboard dapat dibaca di [docs/guest-access-setup.md](docs/guest-access-setup.md).
-3. **Proteksi Route (`proxy.ts`)**: Route guard otomatis untuk rute privat (`/dashboard`), redirect pengguna terotentikasi dari halaman `/login` dan `/register`, serta penanganan token refresh yang aman.
+3. **Proteksi Route (`middleware.ts`)**: Route guard otomatis untuk rute privat (`/dashboard`), redirect pengguna terotentikasi dari halaman `/login` dan `/register`, serta penanganan token refresh yang aman.
 4. **Alur Verifikasi Email & Auto-Login**: Pengguna mendaftar &rarr; diarahkan ke `/login` dengan notifikasi &rarr; klik tautan di email &rarr; otomatis login masuk ke `/dashboard`.
 
