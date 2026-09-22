@@ -1,12 +1,8 @@
+import { GuestBanner } from '@/components/auth/guest-banner';
+import { Sparkles } from 'lucide-react';
 import * as React from 'react';
 import { SearchBar } from '@/components/dashboard/search-bar';
 import { CorporateRadarWidget } from '@/components/dashboard/corporate-radar';
-import { Sparkles } from 'lucide-react';
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Corporate Radar — Sector Sense',
-};
 
 function EmptySymbolState({ message }: { message: string }) {
   return (
@@ -21,16 +17,17 @@ export default async function RadarPage(props: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const searchParams = await props.searchParams;
-  const symbol =
-    typeof searchParams.symbol === 'string' ? searchParams.symbol : null;
+  const symbol = typeof searchParams.symbol === 'string' ? searchParams.symbol : null;
 
   return (
     <div className="space-y-6">
-      <section className="space-y-4">
+      <GuestBanner />
+
+      <section id="corporate-radar" className="space-y-4">
         <div>
           <h2 className="text-xl font-bold tracking-tight">Corporate Radar</h2>
           <p className="text-sm text-muted-foreground mt-0.5">
-            Pantau aksi korporasi dan kalender dividen berdasarkan emiten yang dipilih.
+            Monitor corporate actions and dividend calendars based on the selected stock.
           </p>
         </div>
 
@@ -41,14 +38,14 @@ export default async function RadarPage(props: {
             key={`radar-only-${symbol}`}
             fallback={
               <div className="p-6 rounded-2xl border border-border h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                Memuat Corporate Radar & Kalender Aksi Korporasi untuk {symbol}...
+                Loading Corporate Radar & Corporate Action Calendar for {symbol}...
               </div>
             }
           >
             <CorporateRadarWidget symbol={symbol} />
           </React.Suspense>
         ) : (
-          <EmptySymbolState message="Pilih kode saham untuk membuka Corporate Radar." />
+          <EmptySymbolState message="Select a stock ticker to open Corporate Radar." />
         )}
       </section>
     </div>

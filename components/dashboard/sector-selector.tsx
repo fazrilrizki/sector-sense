@@ -60,7 +60,7 @@ export function SectorSelector({ sectors }: SectorSelectorProps) {
             <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
             <input
               className="flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
-              placeholder="Cari sub-sektor..."
+              placeholder="Search sub-sector..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               autoFocus

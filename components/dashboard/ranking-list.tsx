@@ -11,7 +11,7 @@ export async function RankingList({ theme, subSector, title, description }: { th
     return (
       <Card className="h-full">
         <CardHeader>
-          <CardTitle className="text-red-500 text-base">Error Memuat Ranking</CardTitle>
+          <CardTitle className="text-red-500 text-base">Error Loading Ranking</CardTitle>
         </CardHeader>
       </Card>
     );

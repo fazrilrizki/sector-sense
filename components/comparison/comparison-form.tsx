@@ -63,7 +63,7 @@ function StockCombobox({
       <PopoverContent className="w-[300px] p-0" align="start">
         <Command>
           <CommandInput 
-            placeholder="Cari kode saham..." 
+            placeholder="Search stock ticker..." 
             value={search}
             onValueChange={setSearch}
           />

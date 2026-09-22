@@ -211,7 +211,7 @@ export function DecisionCards({
         <CardHeader className="pb-2">
           <CardTitle className="text-base font-semibold">Capital Simulator Projection</CardTitle>
           <CardDescription>
-            Perbandingan saldo akhir berdasarkan modal awal {IDR.format(allocatedCapital)}
+            Comparison of final balance based on initial capital {IDR.format(allocatedCapital)}
           </CardDescription>
         </CardHeader>
         <CardContent>

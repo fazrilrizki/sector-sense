@@ -1,21 +1,17 @@
+import { GuestBanner } from '@/components/auth/guest-banner';
 import * as React from 'react';
 import { RankingList } from '@/components/dashboard/ranking-list';
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Market Rankings — Sector Sense',
-};
 
 export default function RankingsPage() {
   return (
     <div className="space-y-6">
-      <section className="space-y-4">
+      <GuestBanner />
+
+      <section id="rankings" className="space-y-4">
         <div>
-          <h2 className="text-xl font-bold tracking-tight">
-            Market Movers & Rankings
-          </h2>
+          <h2 className="text-xl font-bold tracking-tight">Market Movers & Rankings</h2>
           <p className="text-sm text-muted-foreground mt-0.5">
-            Daftar peringkat emiten terbaik berdasarkan skor fundamental Sectors API.
+            List of top companies based on Sectors API fundamental scores.
           </p>
         </div>
 
@@ -23,30 +19,30 @@ export default function RankingsPage() {
           <React.Suspense
             fallback={
               <div className="p-6 rounded-2xl border border-border h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                Memuat Top 5 Fundamental Sehat...
+                Loading Top 5 Healthy Fundamentals...
               </div>
             }
           >
             <RankingList
               theme="health"
               subSector="banks"
-              title="Top 5 Fundamental Paling Sehat (Perbankan)"
-              description="Berdasarkan Skor Kesehatan Finansial tertinggi di sektor perbankan."
+              title="Top 5 Healthiest Fundamentals (Banking)"
+              description="Based on the highest Financial Health Score in the banking sector."
             />
           </React.Suspense>
 
           <React.Suspense
             fallback={
               <div className="p-6 rounded-2xl border border-border h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                Memuat Dividen Bintang Lima...
+                Loading Five-Star Dividends...
               </div>
             }
           >
             <RankingList
               theme="dividend"
               subSector="banks"
-              title="Top Dividen Bintang Lima (Perbankan)"
-              description="Kombinasi fundamental kuat & Dividen tinggi di sektor perbankan."
+              title="Top Five-Star Dividends (Banking)"
+              description="Combination of strong fundamentals & high dividends in the banking sector."
             />
           </React.Suspense>
         </div>

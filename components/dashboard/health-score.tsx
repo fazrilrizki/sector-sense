@@ -11,7 +11,7 @@ export async function HealthScoreWidget({ symbol }: { symbol: string }) {
       <Card>
         <CardHeader>
           <CardTitle className="text-red-500">Error</CardTitle>
-          <CardDescription>Gagal memuat skor untuk {symbol}</CardDescription>
+          <CardDescription>Failed to load score for {symbol}</CardDescription>
         </CardHeader>
         <CardContent>
           <p className="text-sm text-muted-foreground">{err.message}</p>

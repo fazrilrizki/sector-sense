@@ -1,14 +1,11 @@
+import { getAuthStatus } from '@/lib/auth/session';
+import { GuestBanner } from '@/components/auth/guest-banner';
+import { Sparkles } from 'lucide-react';
 import * as React from 'react';
-import { SearchBar } from '@/components/dashboard/search-bar';
 import { HealthScoreWidget } from '@/components/dashboard/health-score';
+import { SearchBar } from '@/components/dashboard/search-bar';
 import { DividendTrapWidget } from '@/components/dashboard/dividend-trap-widget';
 import { CorporateRadarWidget } from '@/components/dashboard/corporate-radar';
-import { Sparkles } from 'lucide-react';
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Smart Analyzer — Sector Sense',
-};
 
 function EmptySymbolState({ message }: { message: string }) {
   return (
@@ -23,16 +20,17 @@ export default async function AnalyzerPage(props: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const searchParams = await props.searchParams;
-  const symbol =
-    typeof searchParams.symbol === 'string' ? searchParams.symbol : null;
+  const symbol = typeof searchParams.symbol === 'string' ? searchParams.symbol : null;
 
   return (
     <div className="space-y-6">
-      <section className="space-y-4">
+      <GuestBanner />
+
+      <section id="smart-analyzer" className="space-y-4">
         <div>
           <h2 className="text-xl font-bold tracking-tight">Smart Analyzer</h2>
           <p className="text-sm text-muted-foreground mt-0.5">
-            Cari saham incaran Anda untuk melihat analisis fundamental dan perbandingannya dengan kompetitor.
+            Search for your target stock to view fundamental analysis and compare with competitors.
           </p>
         </div>
 
@@ -46,7 +44,7 @@ export default async function AnalyzerPage(props: {
                   key={`health-${symbol}`}
                   fallback={
                     <div className="p-6 rounded-2xl border border-border h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                      Menarik data dan menghitung skor untuk {symbol}...
+                      Fetching data and calculating score for {symbol}...
                     </div>
                   }
                 >
@@ -58,7 +56,7 @@ export default async function AnalyzerPage(props: {
                   key={`trap-${symbol}`}
                   fallback={
                     <div className="p-6 rounded-2xl border border-border h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                      Menganalisis dividend trap...
+                      Analyzing dividend trap...
                     </div>
                   }
                 >
@@ -72,7 +70,7 @@ export default async function AnalyzerPage(props: {
               key={`radar-${symbol}`}
               fallback={
                 <div className="p-6 rounded-2xl border border-border h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                  Memuat Corporate Radar & Kalender Aksi Korporasi untuk {symbol}...
+                  Loading Corporate Radar & Corporate Action Calendar for {symbol}...
                 </div>
               }
             >
@@ -80,7 +78,7 @@ export default async function AnalyzerPage(props: {
             </React.Suspense>
           </div>
         ) : (
-          <EmptySymbolState message="Mulai dengan mencari kode saham di atas." />
+          <EmptySymbolState message="Start by searching for a stock ticker above." />
         )}
       </section>
     </div>

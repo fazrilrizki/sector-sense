@@ -127,7 +127,7 @@ export function ComparisonPanel({ initialCapital }: { initialCapital?: number })
             <div>
               <h2 className="text-lg font-semibold">Rekomendasi Keputusan</h2>
               <p className="text-sm text-muted-foreground">
-                Proyeksi berdasarkan modal {IDR.format(capital)}.
+                Projection based on capital {IDR.format(capital)}.
               </p>
             </div>
             <DecisionCards

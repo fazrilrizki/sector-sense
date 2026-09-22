@@ -11,14 +11,14 @@ const mockMetrics = {
     modelName: 'Dividend Trap Event-Study Regression (LightGBM)',
     mape: 12.4, // Mean Absolute Percentage Error (lower is better, <20% is good)
     rmse: 2.1,
-    description: 'Akurasi prediksi seberapa dalam harga saham akan turun setelah ex-date dividen.',
+    description: 'Prediction accuracy of how deep the stock price will fall after the dividend ex-date.',
     status: 'good',
   },
   classification: {
     modelName: 'Signal Direction Classifier (Random Forest)',
     accuracy: 86.5, // %
     f1Score: 0.84,
-    description: 'Akurasi sinyal rekomendasi (Beli/Tahan/Pindah) berdasarkan matriks komparasi.',
+    description: 'Accuracy of recommendation signals (Buy/Hold/Switch) based on the comparison matrix.',
     status: 'excellent',
   }
 };
@@ -73,7 +73,7 @@ export function PerformanceDashboard() {
         <div>
           <h1 className="text-2xl font-bold tracking-tight">Model Performance & Validity</h1>
           <p className="text-muted-foreground">
-            Transparansi keandalan ilmiah *machine learning engine* secara *real-time*.
+            Scientific reliability and transparency of the machine learning engine in real-time.
           </p>
         </div>
         <Badge variant="outline" className="w-fit flex items-center gap-1.5 py-1.5 px-3 bg-primary/5 border-primary/20 text-primary">
@@ -168,7 +168,7 @@ export function PerformanceDashboard() {
       <div className="flex items-start gap-3 p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-800 dark:text-amber-300">
         <AlertTriangle className="size-5 shrink-0 mt-0.5" />
         <div className="text-sm leading-relaxed">
-          <strong>Catatan Juri Hackathon:</strong> Metrik di atas dievaluasi berdasarkan data historis dari API Sectors. Sistem ini menggabungkan model regresi tradisional (Event-Study) untuk menangkap anomali penurunan harga spesifik pada tanggal <i>ex-date</i>, yang jauh lebih akurat daripada hanya melihat rasio harga rata-rata bulanan.
+          <strong>Hackathon Jury Note:</strong> The metrics above are evaluated based on historical data from the Sectors API. The system combines traditional regression models (Event-Study) to capture specific price drop anomalies on the <i>ex-date</i>, which is much more accurate than simply looking at monthly average price ratios.
         </div>
       </div>
     </div>
