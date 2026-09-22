@@ -42,22 +42,22 @@ export const NAV_SECTIONS: NavSection[] = [
   {
     items: [
       {
-        label: 'Dashboard',
+        label: 'Dasbor',
         href: '/dashboard',
         icon: LayoutDashboard,
       },
       {
-        label: 'Smart Analyzer',
+        label: 'Analisis Pintar',
         href: '/analyzer',
         icon: Search,
       },
       {
-        label: 'Market Rankings',
+        label: 'Peringkat Pasar',
         href: '/rankings',
         icon: TrendingUp,
       },
       {
-        label: 'Corporate Radar',
+        label: 'Radar Korporasi',
         href: '/radar',
         icon: Calendar,
       },
@@ -65,13 +65,11 @@ export const NAV_SECTIONS: NavSection[] = [
         label: 'Komparasi',
         href: '/comparison',
         icon: GitCompare,
-        badge: 'Baru',
       },
       {
-        label: 'Model Performance',
+        label: 'Performa Model',
         href: '/performance',
         icon: Activity,
-        badge: 'Validasi',
       },
     ],
   },
