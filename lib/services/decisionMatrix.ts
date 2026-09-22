@@ -25,6 +25,17 @@ interface OptionDetail {
   risks: string[];
 }
 
+export interface ComparisonMetricRowSnapshot {
+  ticker: string;
+  companyName: string;
+  isTarget: boolean;
+  healthScore: number;
+  valuation: { pe: number | null; pb: number | null; ps: number | null; evEbitda: number | null };
+  margins: { netProfitMargin: number | null; operatingMargin: number | null };
+  dividendYield: number | null;
+  revenueGrowthYoY: number | null;
+}
+
 export interface DecisionMatrixResult {
   targetTicker: string;
   generatedAt: string;
@@ -56,16 +67,7 @@ export interface DecisionMatrixResult {
   analysis: BullBearAnalysisOutput;
   comparisonSnapshot: {
     targetTicker: string;
-    rows: {
-      ticker: string;
-      companyName: string;
-      isTarget: boolean;
-      healthScore: number;
-      valuation: { pe: number | null; pb: number | null; ps: number | null; evEbitda: number | null };
-      margins: { netProfitMargin: number | null; operatingMargin: number | null };
-      dividendYield: number | null;
-      revenueGrowthYoY: number | null;
-    }[];
+    rows: ComparisonMetricRowSnapshot[];
     rankings: Record<string, string | null>;
   };
 }
@@ -357,4 +359,3 @@ export async function getDecisionMatrix(input: DecisionMatrixInput): Promise<Dec
     comparisonSnapshot,
   };
 }
-

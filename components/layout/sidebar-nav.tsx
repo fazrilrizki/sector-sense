@@ -5,6 +5,7 @@ import {
   Calendar,
   GitCompare,
   Settings,
+  Activity,
 } from 'lucide-react';
 
 export interface NavItem {
@@ -28,7 +29,7 @@ export function getNavHref(
 ): string {
   const symbol = searchParams.get('symbol');
 
-  if (!symbol || !href.startsWith('/dashboard?tab=')) {
+  if (!symbol) {
     return href;
   }
 
@@ -47,17 +48,17 @@ export const NAV_SECTIONS: NavSection[] = [
       },
       {
         label: 'Smart Analyzer',
-        href: '/dashboard?tab=analyzer',
+        href: '/dashboard/analyzer',
         icon: Search,
       },
       {
         label: 'Market Rankings',
-        href: '/dashboard?tab=rankings',
+        href: '/dashboard/rankings',
         icon: TrendingUp,
       },
       {
         label: 'Corporate Radar',
-        href: '/dashboard?tab=radar',
+        href: '/dashboard/radar',
         icon: Calendar,
       },
       {
@@ -65,6 +66,12 @@ export const NAV_SECTIONS: NavSection[] = [
         href: '/dashboard/comparison',
         icon: GitCompare,
         badge: 'Baru',
+      },
+      {
+        label: 'Model Performance',
+        href: '/dashboard/performance',
+        icon: Activity,
+        badge: 'Validasi',
       },
     ],
   },
