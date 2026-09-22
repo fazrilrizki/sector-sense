@@ -48,17 +48,17 @@ export const NAV_SECTIONS: NavSection[] = [
       },
       {
         label: 'Smart Analyzer',
-        href: '/dashboard/analyzer',
+        href: '/dashboard?tab=analyzer',
         icon: Search,
       },
       {
         label: 'Market Rankings',
-        href: '/dashboard/rankings',
+        href: '/dashboard?tab=rankings',
         icon: TrendingUp,
       },
       {
         label: 'Corporate Radar',
-        href: '/dashboard/radar',
+        href: '/dashboard?tab=radar',
         icon: Calendar,
       },
       {
