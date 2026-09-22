@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import { getAuthStatus } from '@/lib/auth/session';
 
 export const metadata: Metadata = {
-  title: 'Komparasi Saham — Sector Sense',
-  description: 'Head-to-head perbandingan metrik emiten dan rekomendasi keputusan investasi.',
+  title: 'Stock Comparison — Sector Sense',
+  description: 'Head-to-head comparison of corporate metrics and investment decision recommendations.',
 };
 
 export default async function ComparisonPage() {
@@ -14,9 +14,9 @@ export default async function ComparisonPage() {
   return (
     <div className="container mx-auto max-w-5xl px-4 py-8">
       <div className="mb-6">
-        <h1 className="text-2xl font-bold tracking-tight">Komparasi Saham</h1>
+        <h1 className="text-2xl font-bold tracking-tight">Stock Comparison</h1>
         <p className="text-muted-foreground mt-1">
-          Bandingkan emiten target dengan kompetitor dan dapatkan rekomendasi keputusan berbasis AI.
+          Compare target stock with competitors and get AI-based decision recommendations.
         </p>
       </div>
       <ComparisonPanel initialCapital={initialCapital} />

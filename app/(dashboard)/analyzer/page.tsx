@@ -44,7 +44,7 @@ export default async function AnalyzerPage(props: {
                   key={`health-${symbol}`}
                   fallback={
                     <div className="p-6 rounded-2xl border border-border h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                      Menarik data dan menghitung skor untuk {symbol}...
+                      Fetching data and calculating score for {symbol}...
                     </div>
                   }
                 >
@@ -56,7 +56,7 @@ export default async function AnalyzerPage(props: {
                   key={`trap-${symbol}`}
                   fallback={
                     <div className="p-6 rounded-2xl border border-border h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                      Menganalisis dividend trap...
+                      Analyzing dividend trap...
                     </div>
                   }
                 >
@@ -70,7 +70,7 @@ export default async function AnalyzerPage(props: {
               key={`radar-${symbol}`}
               fallback={
                 <div className="p-6 rounded-2xl border border-border h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                  Memuat Corporate Radar & Kalender Aksi Korporasi untuk {symbol}...
+                  Memuat Corporate Radar & Dividend Calendar Aksi Korporasi untuk {symbol}...
                 </div>
               }
             >
@@ -78,7 +78,7 @@ export default async function AnalyzerPage(props: {
             </React.Suspense>
           </div>
         ) : (
-          <EmptySymbolState message="Mulai dengan mencari kode saham di atas." />
+          <EmptySymbolState message="Start by searching for a stock ticker above." />
         )}
       </section>
     </div>

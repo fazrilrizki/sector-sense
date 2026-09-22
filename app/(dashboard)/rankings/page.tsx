@@ -19,7 +19,7 @@ export default function RankingsPage() {
           <React.Suspense
             fallback={
               <div className="p-6 rounded-2xl border border-border h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                Memuat Top 5 Fundamental Sehat...
+                Loading Top 5 Healthy Fundamentals...
               </div>
             }
           >
@@ -34,7 +34,7 @@ export default function RankingsPage() {
           <React.Suspense
             fallback={
               <div className="p-6 rounded-2xl border border-border h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                Memuat Dividen Bintang Lima...
+                Loading Five-Star Dividends...
               </div>
             }
           >

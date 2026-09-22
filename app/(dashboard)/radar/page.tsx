@@ -38,14 +38,14 @@ export default async function RadarPage(props: {
             key={`radar-only-${symbol}`}
             fallback={
               <div className="p-6 rounded-2xl border border-border h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                Memuat Corporate Radar & Kalender Aksi Korporasi untuk {symbol}...
+                Loading Corporate Radar & Corporate Action Calendar for {symbol}...
               </div>
             }
           >
             <CorporateRadarWidget symbol={symbol} />
           </React.Suspense>
         ) : (
-          <EmptySymbolState message="Pilih kode saham untuk membuka Corporate Radar." />
+          <EmptySymbolState message="Select a stock ticker to open Corporate Radar." />
         )}
       </section>
     </div>

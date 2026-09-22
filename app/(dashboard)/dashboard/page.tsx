@@ -35,7 +35,7 @@ export default async function OverviewDashboardPage(props: {
       <div className="p-6 rounded-2xl bg-card border border-border shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h2 className="text-2xl font-bold tracking-tight text-foreground">
-            Selamat Datang, {profile?.full_name || (isGuest ? 'Pengguna Tamu' : 'Investor')}!
+            Welcome, {profile?.full_name || (isGuest ? 'Guest User' : 'Investor')}!
           </h2>
           <p className="text-sm text-muted-foreground mt-1">
             {isGuest
@@ -59,7 +59,7 @@ export default async function OverviewDashboardPage(props: {
         <div>
           <h2 className="text-xl font-bold tracking-tight">Smart Analyzer</h2>
           <p className="text-sm text-muted-foreground mt-0.5">
-            Cari saham incaran Anda untuk melihat analisis fundamental dan perbandingannya dengan kompetitor.
+            Search for your target stock to view fundamental analysis and compare with competitors.
           </p>
         </div>
 
@@ -73,7 +73,7 @@ export default async function OverviewDashboardPage(props: {
                   key={`health-${symbol}`}
                   fallback={
                     <div className="p-6 rounded-2xl border border-border h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                      Menarik data dan menghitung skor untuk {symbol}...
+                      Fetching data and calculating score for {symbol}...
                     </div>
                   }
                 >
@@ -85,7 +85,7 @@ export default async function OverviewDashboardPage(props: {
                   key={`trap-${symbol}`}
                   fallback={
                     <div className="p-6 rounded-2xl border border-border h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                      Menganalisis dividend trap...
+                      Analyzing dividend trap...
                     </div>
                   }
                 >
@@ -99,7 +99,7 @@ export default async function OverviewDashboardPage(props: {
               key={`radar-${symbol}`}
               fallback={
                 <div className="p-6 rounded-2xl border border-border h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                  Memuat Corporate Radar & Kalender Aksi Korporasi untuk {symbol}...
+                  Memuat Corporate Radar & Dividend Calendar Aksi Korporasi untuk {symbol}...
                 </div>
               }
             >
@@ -107,7 +107,7 @@ export default async function OverviewDashboardPage(props: {
             </React.Suspense>
           </div>
         ) : (
-          <EmptySymbolState message="Mulai dengan mencari kode saham di atas." />
+          <EmptySymbolState message="Start by searching for a stock ticker above." />
         )}
       </section>
 
@@ -124,7 +124,7 @@ export default async function OverviewDashboardPage(props: {
           key={`anomaly-${symbol || 'BBCA'}`}
           fallback={
             <div className="p-8 rounded-2xl border border-border h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-              Memindai anomali pasar dan emiten...
+              Scanning market and corporate anomalies...
             </div>
           }
         >
@@ -137,7 +137,7 @@ export default async function OverviewDashboardPage(props: {
         <div>
           <h2 className="text-xl font-bold tracking-tight">Market Movers & Rankings</h2>
           <p className="text-sm text-muted-foreground mt-0.5">
-            Daftar peringkat emiten terbaik berdasarkan skor fundamental Sectors API.
+            List of top companies based on Sectors API fundamental scores.
           </p>
         </div>
 
@@ -145,7 +145,7 @@ export default async function OverviewDashboardPage(props: {
           <React.Suspense
             fallback={
               <div className="p-6 rounded-2xl border border-border h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                Memuat Top 5 Fundamental Sehat...
+                Loading Top 5 Healthy Fundamentals...
               </div>
             }
           >
@@ -160,7 +160,7 @@ export default async function OverviewDashboardPage(props: {
           <React.Suspense
             fallback={
               <div className="p-6 rounded-2xl border border-border h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                Memuat Dividen Bintang Lima...
+                Loading Five-Star Dividends...
               </div>
             }
           >
