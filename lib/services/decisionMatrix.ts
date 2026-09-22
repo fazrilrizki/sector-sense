@@ -6,6 +6,16 @@ import type { BullBearAnalysisOutput } from '@/lib/llm/schemas';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
+export interface ComparisonMetricRowSnapshot {
+  ticker: string;
+  companyName: string;
+  isTarget: boolean;
+  healthScore: number;
+  valuation: { pe: number | null; pb: number | null; ps: number | null; evEbitda: number | null };
+  margins: { netProfitMargin: number | null; operatingMargin: number | null };
+  dividendYield: number | null;
+}
+
 export type RiskTolerance = 'CONSERVATIVE' | 'MODERATE' | 'AGGRESSIVE';
 
 export interface DecisionMatrixInput {

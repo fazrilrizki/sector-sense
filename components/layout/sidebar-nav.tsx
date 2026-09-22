@@ -5,6 +5,7 @@ import {
   Calendar,
   GitCompare,
   Settings,
+  Activity,
 } from 'lucide-react';
 
 export interface NavItem {
@@ -65,6 +66,12 @@ export const NAV_SECTIONS: NavSection[] = [
         href: '/dashboard/comparison',
         icon: GitCompare,
         badge: 'Baru',
+      },
+      {
+        label: 'Model Performance',
+        href: '/dashboard/performance',
+        icon: Activity,
+        badge: 'Validasi',
       },
     ],
   },
