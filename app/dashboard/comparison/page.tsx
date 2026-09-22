@@ -1,12 +1,16 @@
 import { ComparisonPanel } from '@/components/comparison/comparison-panel';
 import type { Metadata } from 'next';
+import { getAuthStatus } from '@/lib/auth/session';
 
 export const metadata: Metadata = {
   title: 'Komparasi Saham — Sector Sense',
   description: 'Head-to-head perbandingan metrik emiten dan rekomendasi keputusan investasi.',
 };
 
-export default function ComparisonPage() {
+export default async function ComparisonPage() {
+  const { state } = await getAuthStatus();
+  const initialCapital = state.profile?.base_capital ? Number(state.profile.base_capital) : undefined;
+
   return (
     <div className="container mx-auto max-w-5xl px-4 py-8">
       <div className="mb-6">
@@ -15,7 +19,7 @@ export default function ComparisonPage() {
           Bandingkan emiten target dengan kompetitor dan dapatkan rekomendasi keputusan berbasis AI.
         </p>
       </div>
-      <ComparisonPanel />
+      <ComparisonPanel initialCapital={initialCapital} />
     </div>
   );
 }

@@ -2,6 +2,8 @@ import { cn } from 'cn';
 import { CheckCircle, AlertTriangle, TrendingUp, TrendingDown, DollarSign } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import type { DecisionMatrixResult } from '@/lib/services/decisionMatrix';
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis, LabelList } from 'recharts';
+import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from '@/components/ui/chart';
 
 interface DecisionCardsProps {
   optionA: DecisionMatrixResult['optionA'];
@@ -133,49 +135,119 @@ export function DecisionCards({
   decisionFactors,
   allocatedCapital,
 }: DecisionCardsProps) {
+  const pnlA = Math.round((allocatedCapital * optionA.projectedReturnPct) / 100);
+  const pnlB = Math.round((allocatedCapital * optionB.projectedReturnPct) / 100);
+  
+  const finalCapitalA = allocatedCapital + pnlA;
+  const finalCapitalB = allocatedCapital + pnlB;
+
+  const chartData = [
+    {
+      name: 'Opsi A (Target)',
+      capital: finalCapitalA,
+      fill: recommended === 'OPTION_A' ? 'hsl(var(--primary))' : 'hsl(var(--muted-foreground))',
+    },
+    {
+      name: 'Opsi B (Saingan)',
+      capital: finalCapitalB,
+      fill: recommended === 'OPTION_B' ? 'hsl(var(--primary))' : 'hsl(var(--muted-foreground))',
+    },
+  ];
+
+  const chartConfig = {
+    capital: {
+      label: 'Proyeksi Saldo Akhir',
+    },
+  } satisfies ChartConfig;
+
   return (
-    <div className="space-y-4">
-      {/* Confidence + override notice */}
-      <div className="flex flex-wrap items-center gap-3">
-        <span
-          className={cn(
-            'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border',
-            CONFIDENCE_COLOR[confidence],
-          )}
-        >
-          <CheckCircle className="size-3" />
-          {CONFIDENCE_LABEL[confidence]}
-        </span>
-
-        {decisionFactors.overrideApplied && (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border border-amber-500/20 bg-amber-500/10 text-amber-600 dark:text-amber-400">
-            <AlertTriangle className="size-3" />
-            Override matematis diterapkan
+    <div className="space-y-6">
+      <div className="space-y-4">
+        {/* Confidence + override notice */}
+        <div className="flex flex-wrap items-center gap-3">
+          <span
+            className={cn(
+              'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border',
+              CONFIDENCE_COLOR[confidence],
+            )}
+          >
+            <CheckCircle className="size-3" />
+            {CONFIDENCE_LABEL[confidence]}
           </span>
-        )}
 
-        {decisionFactors.overrideReason && (
-          <p className="text-xs text-muted-foreground w-full">
-            <span className="font-medium">Alasan override:</span> {decisionFactors.overrideReason}
-          </p>
-        )}
+          {decisionFactors.overrideApplied && (
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border border-amber-500/20 bg-amber-500/10 text-amber-600 dark:text-amber-400">
+              <AlertTriangle className="size-3" />
+              Override matematis diterapkan
+            </span>
+          )}
+
+          {decisionFactors.overrideReason && (
+            <p className="text-xs text-muted-foreground w-full">
+              <span className="font-medium">Alasan override:</span> {decisionFactors.overrideReason}
+            </p>
+          )}
+        </div>
+
+        {/* Cards side by side */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <OptionCard
+            option={optionA}
+            isRecommended={recommended === 'OPTION_A'}
+            capital={allocatedCapital}
+            tag="A"
+          />
+          <OptionCard
+            option={optionB}
+            isRecommended={recommended === 'OPTION_B'}
+            capital={allocatedCapital}
+            tag="B"
+          />
+        </div>
       </div>
 
-      {/* Cards side by side */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <OptionCard
-          option={optionA}
-          isRecommended={recommended === 'OPTION_A'}
-          capital={allocatedCapital}
-          tag="A"
-        />
-        <OptionCard
-          option={optionB}
-          isRecommended={recommended === 'OPTION_B'}
-          capital={allocatedCapital}
-          tag="B"
-        />
-      </div>
+      {/* Simulator Chart */}
+      <Card>
+        <CardHeader className="pb-2">
+          <CardTitle className="text-base font-semibold">Capital Simulator Projection</CardTitle>
+          <CardDescription>
+            Perbandingan saldo akhir berdasarkan modal awal {IDR.format(allocatedCapital)}
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ChartContainer config={chartConfig} className="min-h-[200px] h-[250px] w-full mt-4">
+            <BarChart
+              accessibilityLayer
+              data={chartData}
+              layout="vertical"
+              margin={{ left: 0, right: 32 }}
+            >
+              <CartesianGrid horizontal={false} strokeDasharray="4 4" />
+              <YAxis
+                dataKey="name"
+                type="category"
+                tickLine={false}
+                axisLine={false}
+                width={120}
+              />
+              <XAxis 
+                type="number" 
+                tickFormatter={(value) => `Rp ${value / 1000000}M`}
+                hide 
+              />
+              <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" />} />
+              <Bar dataKey="capital" radius={4}>
+                <LabelList
+                  dataKey="capital"
+                  position="right"
+                  formatter={(value: any) => IDR.format(Number(value))}
+                  className="fill-foreground font-semibold text-xs"
+                />
+              </Bar>
+            </BarChart>
+          </ChartContainer>
+        </CardContent>
+      </Card>
     </div>
   );
 }

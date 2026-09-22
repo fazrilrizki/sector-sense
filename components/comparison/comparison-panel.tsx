@@ -15,12 +15,19 @@ import type { DecisionMatrixResult } from '@/lib/services/decisionMatrix';
 const IDR = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 });
 const DEFAULT_CAPITAL = 10_000_000;
 
-export function ComparisonPanel() {
+export function ComparisonPanel({ initialCapital }: { initialCapital?: number }) {
+  const defaultCap = initialCapital ?? DEFAULT_CAPITAL;
   const [result, setResult] = useState<DecisionMatrixResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const [capital, setCapital] = useState(DEFAULT_CAPITAL);
-  const [rawCapital, setRawCapital] = useState(String(DEFAULT_CAPITAL));
+  const formatRupiah = (val: string) => {
+    const raw = val.replace(/\D/g, '');
+    if (!raw) return '';
+    return new Intl.NumberFormat('id-ID').format(parseInt(raw, 10));
+  };
+
+  const [capital, setCapital] = useState(defaultCap);
+  const [rawCapital, setRawCapital] = useState(formatRupiah(String(defaultCap)));
 
   const handleSubmit = async (targetTicker: string, competitorTickers: string[]) => {
     setLoading(true);
@@ -51,9 +58,10 @@ export function ComparisonPanel() {
 
   const handleCapitalChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const raw = e.target.value.replace(/\D/g, '');
-    setRawCapital(raw);
+    setRawCapital(formatRupiah(raw));
     const num = parseInt(raw, 10);
     if (!isNaN(num) && num > 0) setCapital(num);
+    else setCapital(0);
   };
 
   return (
@@ -71,16 +79,16 @@ export function ComparisonPanel() {
           <div className="flex flex-col sm:flex-row gap-4 p-4 rounded-xl bg-muted/40 border border-border">
             <div className="flex-1 space-y-1.5">
               <Label htmlFor="capital">Modal Simulasi (IDR)</Label>
-              <Input
-                id="capital"
-                value={rawCapital}
-                onChange={handleCapitalChange}
-                placeholder="10000000"
-                className="font-mono"
-              />
-              <p className="text-xs text-muted-foreground">
-                {isNaN(capital) ? '–' : IDR.format(capital)}
-              </p>
+              <div className="relative">
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm">Rp</span>
+                <Input
+                  id="capital"
+                  value={rawCapital}
+                  onChange={handleCapitalChange}
+                  placeholder="10.000.000"
+                  className="font-mono pl-9"
+                />
+              </div>
             </div>
           </div>
 

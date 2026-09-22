@@ -17,6 +17,24 @@
     "recommendation": "Pilihan A (Ambil Dividen). Penurunan harga pada ex-date biasanya lebih kecil dari nilai dividen, dan harga saham historis pulih dengan cepat.",
     "alternatives": []
   },
+  "BBRI": {
+    "symbol": "BBRI",
+    "name": "PT Bank Rakyat Indonesia (Persero) Tbk",
+    "upcoming_dividend": {
+      "yield_percent": 6.2,
+      "amount_idr": 315,
+      "cum_date": "2024-12-10",
+      "ex_date": "2024-12-11"
+    },
+    "historical_analysis": {
+      "trap_probability": 0.35,
+      "avg_price_drop_ex_date_percent": -4.2,
+      "recovery_days": 21
+    },
+    "verdict": "SAFE",
+    "recommendation": "Pilihan A (Ambil Dividen). Fundamental yang kuat membuat penurunan harga pasca dividen biasanya pulih lebih cepat dari kompetitor.",
+    "alternatives": ["BMRI", "BBNI"]
+  },
   "ITMG": {
     "symbol": "ITMG",
     "name": "PT Indo Tambangraya Megah Tbk",
