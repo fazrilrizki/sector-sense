@@ -10,15 +10,12 @@ function isActive(
   pathname: string,
   searchParams: URLSearchParams
 ): boolean {
-  if (
-    href === '/dashboard' &&
-    pathname === '/dashboard' &&
-    !searchParams.get('tab')
-  )
-    return true;
   if (href.includes('?tab=')) {
     const tab = new URL(href, 'http://x').searchParams.get('tab');
     return pathname === '/dashboard' && searchParams.get('tab') === tab;
+  }
+  if (href === '/dashboard') {
+    return pathname === '/dashboard' && !searchParams.get('tab');
   }
   return pathname === href;
 }

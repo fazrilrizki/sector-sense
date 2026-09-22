@@ -62,7 +62,7 @@ export const NAV_SECTIONS: NavSection[] = [
       },
       {
         label: 'Komparasi',
-        href: '/dashboard?tab=comparison',
+        href: '/dashboard/comparison',
         icon: GitCompare,
         badge: 'Baru',
       },

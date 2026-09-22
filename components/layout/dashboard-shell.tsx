@@ -1,5 +1,6 @@
 'use client';
 
+import { Suspense } from 'react';
 import { useRouter } from 'next/navigation';
 import { Header } from './header';
 import { Sidebar } from './sidebar';
@@ -23,7 +24,9 @@ export function DashboardShell({ children, userName, isGuest }: DashboardShellPr
   return (
     <div className="min-h-screen bg-background">
       <Header userName={userName} isGuest={isGuest} onSignOut={handleSignOut} />
-      <Sidebar />
+      <Suspense fallback={null}>
+        <Sidebar />
+      </Suspense>
       <main
         className={cn(
           'pt-14 md:pl-56',

@@ -16,6 +16,7 @@ import { DividendTrapWidget } from '@/components/dashboard/dividend-trap-widget'
 import { CorporateRadarWidget } from '@/components/dashboard/corporate-radar';
 import { AnomalyScannerWidget } from '@/components/dashboard/anomaly-scanner-widget';
 import { RankingList } from '@/components/dashboard/ranking-list';
+import { ComparisonPanel } from '@/components/comparison/comparison-panel';
 
 const DASHBOARD_TABS = [
   'overview',
@@ -96,7 +97,9 @@ export default async function DashboardPage(props: {
             </p>
           </div>
 
-          <SearchBar />
+          <React.Suspense fallback={<div className="h-12 rounded-xl bg-muted animate-pulse" />}>
+            <SearchBar />
+          </React.Suspense>
 
           {symbol ? (
             <div className="space-y-6">
@@ -158,7 +161,9 @@ export default async function DashboardPage(props: {
             </p>
           </div>
 
-          <SearchBar />
+          <React.Suspense fallback={<div className="h-12 rounded-xl bg-muted animate-pulse" />}>
+            <SearchBar />
+          </React.Suspense>
 
           {symbol ? (
             <React.Suspense
@@ -256,20 +261,7 @@ export default async function DashboardPage(props: {
 
       {activeTab === 'comparison' && (
         <section id="comparison" className="space-y-4">
-          <Card>
-            <CardHeader>
-              <CardTitle>Komparasi</CardTitle>
-              <CardDescription>
-                Halaman komparasi belum memiliki tampilan dashboard.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Menu ini sudah terhubung dari navigasi, tetapi komponen analisis
-                komparasi belum dibuat di halaman dashboard.
-              </p>
-            </CardContent>
-          </Card>
+          <ComparisonPanel />
         </section>
       )}
     </div>
