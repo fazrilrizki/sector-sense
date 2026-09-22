@@ -1,14 +1,11 @@
+import { getAuthStatus } from '@/lib/auth/session';
+import { GuestBanner } from '@/components/auth/guest-banner';
+import { Sparkles } from 'lucide-react';
 import * as React from 'react';
-import { SearchBar } from '@/components/dashboard/search-bar';
 import { HealthScoreWidget } from '@/components/dashboard/health-score';
+import { SearchBar } from '@/components/dashboard/search-bar';
 import { DividendTrapWidget } from '@/components/dashboard/dividend-trap-widget';
 import { CorporateRadarWidget } from '@/components/dashboard/corporate-radar';
-import { Sparkles } from 'lucide-react';
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Smart Analyzer — Sector Sense',
-};
 
 function EmptySymbolState({ message }: { message: string }) {
   return (
@@ -23,12 +20,13 @@ export default async function AnalyzerPage(props: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const searchParams = await props.searchParams;
-  const symbol =
-    typeof searchParams.symbol === 'string' ? searchParams.symbol : null;
+  const symbol = typeof searchParams.symbol === 'string' ? searchParams.symbol : null;
 
   return (
     <div className="space-y-6">
-      <section className="space-y-4">
+      <GuestBanner />
+
+      <section id="smart-analyzer" className="space-y-4">
         <div>
           <h2 className="text-xl font-bold tracking-tight">Smart Analyzer</h2>
           <p className="text-sm text-muted-foreground mt-0.5">

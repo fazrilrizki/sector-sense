@@ -48,28 +48,28 @@ export const NAV_SECTIONS: NavSection[] = [
       },
       {
         label: 'Smart Analyzer',
-        href: '/dashboard/analyzer',
+        href: '/analyzer',
         icon: Search,
       },
       {
         label: 'Market Rankings',
-        href: '/dashboard/rankings',
+        href: '/rankings',
         icon: TrendingUp,
       },
       {
         label: 'Corporate Radar',
-        href: '/dashboard/radar',
+        href: '/radar',
         icon: Calendar,
       },
       {
         label: 'Komparasi',
-        href: '/dashboard/comparison',
+        href: '/comparison',
         icon: GitCompare,
         badge: 'Baru',
       },
       {
         label: 'Model Performance',
-        href: '/dashboard/performance',
+        href: '/performance',
         icon: Activity,
         badge: 'Validasi',
       },

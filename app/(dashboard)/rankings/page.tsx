@@ -1,19 +1,15 @@
+import { GuestBanner } from '@/components/auth/guest-banner';
 import * as React from 'react';
 import { RankingList } from '@/components/dashboard/ranking-list';
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Market Rankings — Sector Sense',
-};
 
 export default function RankingsPage() {
   return (
     <div className="space-y-6">
-      <section className="space-y-4">
+      <GuestBanner />
+
+      <section id="rankings" className="space-y-4">
         <div>
-          <h2 className="text-xl font-bold tracking-tight">
-            Market Movers & Rankings
-          </h2>
+          <h2 className="text-xl font-bold tracking-tight">Market Movers & Rankings</h2>
           <p className="text-sm text-muted-foreground mt-0.5">
             Daftar peringkat emiten terbaik berdasarkan skor fundamental Sectors API.
           </p>

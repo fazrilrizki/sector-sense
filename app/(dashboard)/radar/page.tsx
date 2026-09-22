@@ -1,12 +1,8 @@
+import { GuestBanner } from '@/components/auth/guest-banner';
+import { Sparkles } from 'lucide-react';
 import * as React from 'react';
 import { SearchBar } from '@/components/dashboard/search-bar';
 import { CorporateRadarWidget } from '@/components/dashboard/corporate-radar';
-import { Sparkles } from 'lucide-react';
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Corporate Radar — Sector Sense',
-};
 
 function EmptySymbolState({ message }: { message: string }) {
   return (
@@ -21,12 +17,13 @@ export default async function RadarPage(props: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const searchParams = await props.searchParams;
-  const symbol =
-    typeof searchParams.symbol === 'string' ? searchParams.symbol : null;
+  const symbol = typeof searchParams.symbol === 'string' ? searchParams.symbol : null;
 
   return (
     <div className="space-y-6">
-      <section className="space-y-4">
+      <GuestBanner />
+
+      <section id="corporate-radar" className="space-y-4">
         <div>
           <h2 className="text-xl font-bold tracking-tight">Corporate Radar</h2>
           <p className="text-sm text-muted-foreground mt-0.5">
