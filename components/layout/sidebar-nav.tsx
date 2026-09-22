@@ -5,6 +5,7 @@ import {
   Calendar,
   GitCompare,
   Settings,
+  Activity,
 } from 'lucide-react';
 
 export interface NavItem {
@@ -47,24 +48,30 @@ export const NAV_SECTIONS: NavSection[] = [
       },
       {
         label: 'Smart Analyzer',
-        href: '/dashboard?tab=analyzer',
+        href: '/dashboard/analyzer',
         icon: Search,
       },
       {
         label: 'Market Rankings',
-        href: '/dashboard?tab=rankings',
+        href: '/dashboard/rankings',
         icon: TrendingUp,
       },
       {
         label: 'Corporate Radar',
-        href: '/dashboard?tab=radar',
+        href: '/dashboard/radar',
         icon: Calendar,
       },
       {
         label: 'Komparasi',
-        href: '/dashboard?tab=comparison',
+        href: '/dashboard/comparison',
         icon: GitCompare,
         badge: 'Baru',
+      },
+      {
+        label: 'Model Performance',
+        href: '/dashboard/performance',
+        icon: Activity,
+        badge: 'Validasi',
       },
     ],
   },
