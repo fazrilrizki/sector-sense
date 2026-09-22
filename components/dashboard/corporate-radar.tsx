@@ -27,7 +27,7 @@ export async function CorporateRadarWidget({ symbol }: { symbol: string }) {
             <AlertCircle className="size-5" />
             Corporate Radar
           </CardTitle>
-          <CardDescription>Gagal memuat jadwal aksi korporasi untuk {symbol}</CardDescription>
+          <CardDescription>Failed to load corporate action schedule for {symbol}</CardDescription>
         </CardHeader>
         <CardContent>
           <p className="text-sm text-muted-foreground">{err.message}</p>

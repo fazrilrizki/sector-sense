@@ -42,14 +42,14 @@ export function SearchLimitModal({
           <div className="space-y-1">
             <div className="flex items-center justify-center gap-2">
               <DialogTitle className="text-xl font-bold tracking-tight">
-                Limit Pencarian Tercapai
+                Search Limit Reached
               </DialogTitle>
               <Badge variant="destructive" className="text-[11px] px-2 py-0.5">
                 {limit}/{limit} Kuota
               </Badge>
             </div>
             <DialogDescription className="text-sm text-muted-foreground max-w-sm mx-auto">
-              Anda telah menggunakan seluruh {limit} kuota pencarian emiten baru untuk sesi tamu.
+              You have used all {limit} search quotas for new stocks in this guest session.
             </DialogDescription>
           </div>
         </DialogHeader>
@@ -59,7 +59,7 @@ export function SearchLimitModal({
           <div className="my-2 p-3 rounded-xl bg-muted/50 border border-border/60 text-xs text-muted-foreground space-y-1">
             <div className="flex items-center gap-1.5 font-medium text-foreground">
               <Check className="size-3.5 text-emerald-500 shrink-0" />
-              <span>Emiten yang sudah Anda cari (Cache Aktif):</span>
+              <span>Stocks you have already searched (Active Cache):</span>
             </div>
             <div className="flex flex-wrap gap-1.5 pt-0.5">
               {cachedSymbols.map((sym) => (
@@ -88,7 +88,7 @@ export function SearchLimitModal({
             <li className="flex items-start gap-2">
               <Sparkles className="size-3.5 mt-0.5 text-amber-500 shrink-0" />
               <span>
-                <strong>Pencarian Tanpa Batas (Unlimited)</strong> — Analisis ratusan saham IHSG tanpa kuota.
+                <strong>Unlimited Search</strong> — Analyze hundreds of IHSG stocks without limits.
               </span>
             </li>
             <li className="flex items-start gap-2">

@@ -99,7 +99,7 @@ export default async function OverviewDashboardPage(props: {
               key={`radar-${symbol}`}
               fallback={
                 <div className="p-6 rounded-2xl border border-border h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                  Memuat Corporate Radar & Dividend Calendar Aksi Korporasi untuk {symbol}...
+                  Loading Corporate Radar & Corporate Action Calendar for {symbol}...
                 </div>
               }
             >
@@ -152,8 +152,8 @@ export default async function OverviewDashboardPage(props: {
             <RankingList
               theme="health"
               subSector="banks"
-              title="Top 5 Fundamental Paling Sehat (Perbankan)"
-              description="Berdasarkan Skor Kesehatan Finansial tertinggi di sektor perbankan."
+              title="Top 5 Healthiest Fundamentals (Banking)"
+              description="Based on the highest Financial Health Score in the banking sector."
             />
           </React.Suspense>
 
@@ -167,8 +167,8 @@ export default async function OverviewDashboardPage(props: {
             <RankingList
               theme="dividend"
               subSector="banks"
-              title="Top Dividen Bintang Lima (Perbankan)"
-              description="Kombinasi fundamental kuat & Dividen tinggi di sektor perbankan."
+              title="Top Five-Star Dividends (Banking)"
+              description="Combination of strong fundamentals & high dividends in the banking sector."
             />
           </React.Suspense>
         </div>

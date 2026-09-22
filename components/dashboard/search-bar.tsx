@@ -116,7 +116,7 @@ export function SearchBar() {
                 ) : (
                   <span className="flex items-center gap-1">
                     <Sparkles className="size-3" />
-                    {remaining} dari {limit} pencarian emiten baru tersisa
+                    {remaining} dari {limit} new stock searches remaining
                   </span>
                 )}
               </Badge>

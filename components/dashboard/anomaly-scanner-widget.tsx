@@ -326,7 +326,7 @@ export async function AnomalyScannerWidget({ symbol }: AnomalyScannerWidgetProps
                 Daftar Peringatan & Anomali Terdeteksi ({issuerReport.alerts.length})
               </span>
               <span className="text-xs text-muted-foreground font-normal">
-                Berdasarkan Formula Kuantitatif Campbell-Shiller & Sloan Accrual
+                Based on Campbell-Shiller & Sloan Accrual Quantitative Formula
               </span>
             </h4>
 

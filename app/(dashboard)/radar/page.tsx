@@ -27,7 +27,7 @@ export default async function RadarPage(props: {
         <div>
           <h2 className="text-xl font-bold tracking-tight">Corporate Radar</h2>
           <p className="text-sm text-muted-foreground mt-0.5">
-            Pantau aksi korporasi dan kalender dividen berdasarkan emiten yang dipilih.
+            Monitor corporate actions and dividend calendars based on the selected stock.
           </p>
         </div>
 

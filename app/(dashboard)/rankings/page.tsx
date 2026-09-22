@@ -11,7 +11,7 @@ export default function RankingsPage() {
         <div>
           <h2 className="text-xl font-bold tracking-tight">Market Movers & Rankings</h2>
           <p className="text-sm text-muted-foreground mt-0.5">
-            Daftar peringkat emiten terbaik berdasarkan skor fundamental Sectors API.
+            List of top companies based on Sectors API fundamental scores.
           </p>
         </div>
 
@@ -26,8 +26,8 @@ export default function RankingsPage() {
             <RankingList
               theme="health"
               subSector="banks"
-              title="Top 5 Fundamental Paling Sehat (Perbankan)"
-              description="Berdasarkan Skor Kesehatan Finansial tertinggi di sektor perbankan."
+              title="Top 5 Healthiest Fundamentals (Banking)"
+              description="Based on the highest Financial Health Score in the banking sector."
             />
           </React.Suspense>
 
@@ -41,8 +41,8 @@ export default function RankingsPage() {
             <RankingList
               theme="dividend"
               subSector="banks"
-              title="Top Dividen Bintang Lima (Perbankan)"
-              description="Kombinasi fundamental kuat & Dividen tinggi di sektor perbankan."
+              title="Top Five-Star Dividends (Banking)"
+              description="Combination of strong fundamentals & high dividends in the banking sector."
             />
           </React.Suspense>
         </div>

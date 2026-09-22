@@ -30,7 +30,7 @@ export default async function AnalyzerPage(props: {
         <div>
           <h2 className="text-xl font-bold tracking-tight">Smart Analyzer</h2>
           <p className="text-sm text-muted-foreground mt-0.5">
-            Cari saham incaran Anda untuk melihat analisis fundamental dan perbandingannya dengan kompetitor.
+            Search for your target stock to view fundamental analysis and compare with competitors.
           </p>
         </div>
 
@@ -70,7 +70,7 @@ export default async function AnalyzerPage(props: {
               key={`radar-${symbol}`}
               fallback={
                 <div className="p-6 rounded-2xl border border-border h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                  Memuat Corporate Radar & Dividend Calendar Aksi Korporasi untuk {symbol}...
+                  Loading Corporate Radar & Corporate Action Calendar for {symbol}...
                 </div>
               }
             >
