@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { Suspense } from 'react';
 import { LogOut, ShieldCheck, Sparkles, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
@@ -165,7 +166,9 @@ export function Header({ userName, isGuest, onSignOut }: HeaderProps) {
         </div>
       </header>
 
-      <MobileDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
+      <Suspense fallback={null}>
+        <MobileDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
+      </Suspense>
     </>
   );
 }

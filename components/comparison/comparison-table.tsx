@@ -1,12 +1,12 @@
-import { cn } from 'cn';
 import type { DecisionMatrixResult } from '@/lib/services/decisionMatrix';
-import { TrendingUp, TrendingDown, Minus } from 'lucide-react';
+import { TrendingUp } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 type Row = DecisionMatrixResult['comparisonSnapshot']['rows'][number];
 
 interface ComparisonTableProps {
   rows: Row[];
-  rankings: DecisionMatrixResult['comparisonSnapshot']['rankings'];
+  rankings: Record<string, string | null>;
 }
 
 const fmt = {
@@ -40,56 +40,21 @@ function Cell({
   );
 }
 
-interface MetricRowDef {
+interface MetricDef {
   label: string;
-  key: string;
-  getValue: (row: Row) => string;
-  rankingKey: keyof DecisionMatrixResult['comparisonSnapshot']['rankings'];
+  getValue: (r: Row) => string;
+  bestKey: string;
+  isLast?: boolean;
 }
 
-const METRICS: MetricRowDef[] = [
-  {
-    label: 'Health Score',
-    key: 'healthScore',
-    getValue: (r) => fmt.score(r.healthScore),
-    rankingKey: 'healthScore',
-  },
-  {
-    label: 'PE Ratio',
-    key: 'pe',
-    getValue: (r) => fmt.num(r.valuation.pe),
-    rankingKey: 'pe',
-  },
-  {
-    label: 'PB Ratio',
-    key: 'pb',
-    getValue: (r) => fmt.num(r.valuation.pb),
-    rankingKey: 'pe', // use same "cheapest valuation" concept
-  },
-  {
-    label: 'Net Profit Margin',
-    key: 'netMargin',
-    getValue: (r) => fmt.pct(r.margins.netProfitMargin),
-    rankingKey: 'netMargin',
-  },
-  {
-    label: 'Operating Margin',
-    key: 'opMargin',
-    getValue: (r) => fmt.pct(r.margins.operatingMargin),
-    rankingKey: 'netMargin',
-  },
-  {
-    label: 'Revenue Growth YoY',
-    key: 'growth',
-    getValue: (r) => fmt.pct(r.dividendYield != null ? null : null), // placeholder
-    rankingKey: 'revenueGrowth',
-  },
-  {
-    label: 'Dividend Yield',
-    key: 'divYield',
-    getValue: (r) => fmt.pct(r.dividendYield),
-    rankingKey: 'dividendYield',
-  },
+const METRICS: MetricDef[] = [
+  { label: 'Health Score',        getValue: (r) => fmt.score(r.healthScore),              bestKey: 'healthScore' },
+  { label: 'PE Ratio',            getValue: (r) => fmt.num(r.valuation.pe),               bestKey: 'pe' },
+  { label: 'PB Ratio',            getValue: (r) => fmt.num(r.valuation.pb),               bestKey: 'pe' },
+  { label: 'Net Profit Margin',   getValue: (r) => fmt.pct(r.margins.netProfitMargin),    bestKey: 'netMargin' },
+  { label: 'Operating Margin',    getValue: (r) => fmt.pct(r.margins.operatingMargin),    bestKey: 'netMargin' },
+  { label: 'Revenue Growth YoY',  getValue: (r) => fmt.pct(r.revenueGrowthYoY),          bestKey: 'revenueGrowth' },
+  { label: 'Dividend Yield',      getValue: (r) => fmt.pct(r.dividendYield),              bestKey: 'dividendYield', isLast: true },
 ];
 
 export function ComparisonTable({ rows, rankings }: ComparisonTableProps) {
@@ -98,7 +63,7 @@ export function ComparisonTable({ rows, rankings }: ComparisonTableProps) {
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b border-border bg-muted/50">
-            <th className="px-4 py-3 text-left font-medium text-muted-foreground w-40">Metrik</th>
+            <th className="px-4 py-3 text-left font-medium text-muted-foreground w-44">Metrik</th>
             {rows.map((r) => (
               <th
                 key={r.ticker}
@@ -118,79 +83,25 @@ export function ComparisonTable({ rows, rankings }: ComparisonTableProps) {
           </tr>
         </thead>
         <tbody>
-          {/* Health Score */}
-          <tr className="border-b border-border hover:bg-muted/30 transition-colors">
-            <td className="px-4 py-3 text-muted-foreground font-medium">Health Score</td>
-            {rows.map((r) => (
-              <Cell
-                key={r.ticker}
-                value={fmt.score(r.healthScore)}
-                isTarget={r.isTarget}
-                isBest={rankings.healthScore === r.ticker}
-              />
-            ))}
-          </tr>
-
-          {/* Valuation */}
-          <tr className="border-b border-border hover:bg-muted/30 transition-colors">
-            <td className="px-4 py-3 text-muted-foreground">PE Ratio</td>
-            {rows.map((r) => (
-              <Cell
-                key={r.ticker}
-                value={fmt.num(r.valuation.pe)}
-                isTarget={r.isTarget}
-                isBest={rankings.pe === r.ticker}
-              />
-            ))}
-          </tr>
-          <tr className="border-b border-border hover:bg-muted/30 transition-colors">
-            <td className="px-4 py-3 text-muted-foreground">PB Ratio</td>
-            {rows.map((r) => (
-              <Cell
-                key={r.ticker}
-                value={fmt.num(r.valuation.pb)}
-                isTarget={r.isTarget}
-                isBest={false}
-              />
-            ))}
-          </tr>
-
-          {/* Margins */}
-          <tr className="border-b border-border hover:bg-muted/30 transition-colors">
-            <td className="px-4 py-3 text-muted-foreground">Net Profit Margin</td>
-            {rows.map((r) => (
-              <Cell
-                key={r.ticker}
-                value={fmt.pct(r.margins.netProfitMargin)}
-                isTarget={r.isTarget}
-                isBest={rankings.netMargin === r.ticker}
-              />
-            ))}
-          </tr>
-          <tr className="border-b border-border hover:bg-muted/30 transition-colors">
-            <td className="px-4 py-3 text-muted-foreground">Operating Margin</td>
-            {rows.map((r) => (
-              <Cell
-                key={r.ticker}
-                value={fmt.pct(r.margins.operatingMargin)}
-                isTarget={r.isTarget}
-                isBest={false}
-              />
-            ))}
-          </tr>
-
-          {/* Dividend */}
-          <tr className="hover:bg-muted/30 transition-colors">
-            <td className="px-4 py-3 text-muted-foreground">Dividend Yield</td>
-            {rows.map((r) => (
-              <Cell
-                key={r.ticker}
-                value={fmt.pct(r.dividendYield)}
-                isTarget={r.isTarget}
-                isBest={rankings.dividendYield === r.ticker}
-              />
-            ))}
-          </tr>
+          {METRICS.map((metric) => (
+            <tr
+              key={metric.label}
+              className={cn(
+                'hover:bg-muted/30 transition-colors',
+                !metric.isLast && 'border-b border-border',
+              )}
+            >
+              <td className="px-4 py-3 text-muted-foreground">{metric.label}</td>
+              {rows.map((r) => (
+                <Cell
+                  key={r.ticker}
+                  value={metric.getValue(r)}
+                  isTarget={r.isTarget}
+                  isBest={rankings[metric.bestKey] === r.ticker}
+                />
+              ))}
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

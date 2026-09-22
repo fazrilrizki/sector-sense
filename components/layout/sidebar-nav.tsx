@@ -77,7 +77,7 @@ export const NAV_SECTIONS: NavSection[] = [
     items: [
       {
         label: 'Settings',
-        href: '/dashboard/settings',
+        href: '/settings',
         icon: Settings,
       },
     ],
