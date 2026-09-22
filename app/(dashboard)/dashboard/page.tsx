@@ -3,12 +3,8 @@ import { GuestBanner } from '@/components/auth/guest-banner';
 import { Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import * as React from 'react';
-import { HealthScoreWidget } from '@/components/dashboard/health-score';
 import { SearchBar } from '@/components/dashboard/search-bar';
-import { DividendTrapWidget } from '@/components/dashboard/dividend-trap-widget';
-import { CorporateRadarWidget } from '@/components/dashboard/corporate-radar';
 import { AnomalyScannerWidget } from '@/components/dashboard/anomaly-scanner-widget';
-import { RankingList } from '@/components/dashboard/ranking-list';
 
 function EmptySymbolState({ message }: { message: string }) {
   return (
@@ -54,71 +50,16 @@ export default async function OverviewDashboardPage(props: {
         )}
       </div>
 
-      {/* Smart Analyzer */}
-      <section id="smart-analyzer" className="space-y-4">
-        <div>
-          <h2 className="text-xl font-bold tracking-tight">Smart Analyzer</h2>
-          <p className="text-sm text-muted-foreground mt-0.5">
-            Search for your target stock to view fundamental analysis and compare with competitors.
-          </p>
-        </div>
-
-        <SearchBar />
-
-        {symbol ? (
-          <div className="space-y-6">
-            <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-              <div className="xl:col-span-2">
-                <React.Suspense
-                  key={`health-${symbol}`}
-                  fallback={
-                    <div className="p-6 rounded-2xl border border-border h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                      Fetching data and calculating score for {symbol}...
-                    </div>
-                  }
-                >
-                  <HealthScoreWidget symbol={symbol} />
-                </React.Suspense>
-              </div>
-              <div className="xl:col-span-1">
-                <React.Suspense
-                  key={`trap-${symbol}`}
-                  fallback={
-                    <div className="p-6 rounded-2xl border border-border h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                      Analyzing dividend trap...
-                    </div>
-                  }
-                >
-                  <DividendTrapWidget symbol={symbol} />
-                </React.Suspense>
-              </div>
-            </div>
-
-            {/* Corporate Radar & Dividend Calendar Engine */}
-            <React.Suspense
-              key={`radar-${symbol}`}
-              fallback={
-                <div className="p-6 rounded-2xl border border-border h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                  Loading Corporate Radar & Corporate Action Calendar for {symbol}...
-                </div>
-              }
-            >
-              <CorporateRadarWidget symbol={symbol} />
-            </React.Suspense>
-          </div>
-        ) : (
-          <EmptySymbolState message="Start by searching for a stock ticker above." />
-        )}
-      </section>
-
       {/* Market Anomaly Scanner */}
       <section className="space-y-4 pt-6 border-t border-border">
         <div>
           <h2 className="text-xl font-bold tracking-tight">Market Anomaly Scanner & Radar</h2>
           <p className="text-sm text-muted-foreground mt-0.5">
-            Pemindai otomatis dislokasi valuasi historis (Z-Score &gt;2σ), lonjakan rasio utang (DER), dan analisis forensik arus kas emiten.
+            Automated scanner for historical valuation dislocation (Z-Score &gt;2σ), debt ratio (DER) spikes, and cash flow forensic analysis.
           </p>
         </div>
+
+        <SearchBar />
 
         <React.Suspense
           key={`anomaly-${symbol || 'BBCA'}`}
@@ -130,48 +71,6 @@ export default async function OverviewDashboardPage(props: {
         >
           <AnomalyScannerWidget symbol={symbol} />
         </React.Suspense>
-      </section>
-
-      {/* Rankings */}
-      <section id="rankings" className="space-y-4 pt-6 border-t border-border">
-        <div>
-          <h2 className="text-xl font-bold tracking-tight">Market Movers & Rankings</h2>
-          <p className="text-sm text-muted-foreground mt-0.5">
-            List of top companies based on Sectors API fundamental scores.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <React.Suspense
-            fallback={
-              <div className="p-6 rounded-2xl border border-border h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                Loading Top 5 Healthy Fundamentals...
-              </div>
-            }
-          >
-            <RankingList
-              theme="health"
-              subSector="banks"
-              title="Top 5 Healthiest Fundamentals (Banking)"
-              description="Based on the highest Financial Health Score in the banking sector."
-            />
-          </React.Suspense>
-
-          <React.Suspense
-            fallback={
-              <div className="p-6 rounded-2xl border border-border h-64 flex items-center justify-center text-muted-foreground animate-pulse">
-                Loading Five-Star Dividends...
-              </div>
-            }
-          >
-            <RankingList
-              theme="dividend"
-              subSector="banks"
-              title="Top Five-Star Dividends (Banking)"
-              description="Combination of strong fundamentals & high dividends in the banking sector."
-            />
-          </React.Suspense>
-        </div>
       </section>
     </div>
   );

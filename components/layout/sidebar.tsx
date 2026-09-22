@@ -10,10 +10,14 @@ function isActive(
   pathname: string,
   searchParams: URLSearchParams
 ): boolean {
-  if (href === '/dashboard') {
-    return pathname === '/dashboard';
+  if (href.includes('?tab=')) {
+    const tab = new URL(href, 'http://x').searchParams.get('tab');
+    return pathname === '/dashboard' && searchParams.get('tab') === tab;
   }
-  return pathname.startsWith(href);
+  if (href === '/dashboard') {
+    return pathname === '/dashboard' && !searchParams.get('tab');
+  }
+  return pathname === href;
 }
 
 export function Sidebar() {

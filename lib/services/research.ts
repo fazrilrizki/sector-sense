@@ -33,7 +33,7 @@ export interface ResearchResult {
     targetTicker: string;
     rows: Pick<
       ComparisonMetricRow,
-      'ticker' | 'companyName' | 'healthScore' | 'valuation' | 'margins' | 'dividendYield' | 'isTarget'
+      'ticker' | 'companyName' | 'healthScore' | 'valuation' | 'margins' | 'dividendYield' | 'revenueGrowthYoY' | 'isTarget'
     >[];
     rankings: Record<string, string | null>;
   };
@@ -137,6 +137,7 @@ export async function generateResearch(input: GenerateResearchInput): Promise<Re
         valuation: r.valuation,
         margins: r.margins,
         dividendYield: r.dividendYield,
+        revenueGrowthYoY: r.revenueGrowthYoY,
         isTarget: r.isTarget,
       })),
       rankings: matrix.rankings,
