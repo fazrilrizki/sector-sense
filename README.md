@@ -1,5 +1,26 @@
 # Sector Sense
 
+4. **Alur Verifikasi Email & Auto-Login**: Pengguna mendaftar &rarr; diarahkan ke `/login` dengan notifikasi &rarr; klik tautan di email &rarr; otomatis login masuk ke `/dashboard`.
+
+## ?? Fitur Unggulan Utama (Track 3: Market Intelligence)
+
+1. **Financial Health Score & Ranking**
+   Menghitung skor kesehatan finansial secara kuantitatif (0-10) berdasarkan 5 pilar (Profitabilitas, Solvabilitas, dll) serta memeringkat emiten terbaik di subsektornya, bukan sekadar menggunakan filter biasa.
+2. **Event-Study Dividend Trap Forecaster**
+   Mesin kalkulasi yang memprediksi probabilitas anjloknya harga saham pada saat *ex-date* dividen, sehingga investor bisa terhindar dari kerugian jebakan dividen (*dividend trap*).
+3. **Market Anomaly Scanner**
+   Memindai valuasi pasar secara otomatis menggunakan formula *Campbell-Shiller* & *Sloan Accrual* untuk mendeteksi *Z-Score* ekstrem (dislokasi valuasi).
+4. **LLM Bull vs Bear Synthesis (Structured JSON)**
+   Mengonversi data komparasi fundamental menjadi rangkuman tesis investasi optimis (*Bull*) dan pesimis (*Bear*) menggunakan LLM (Anthropic/Google). *Output* 100% berformat *Structured JSON*, tanpa interaksi chatbot yang dilarang.
+5. **Actionable Decision Matrix (Option A vs B)**
+   Menyajikan rekomendasi matang: apakah pengguna sebaiknya menahan emiten target (Opsi A) atau mengalihkan portofolio ke emiten kompetitor (Opsi B).
+6. **Capital Simulator**
+   Mengonversi persentase metrik saham langsung ke dalam nominal Rupiah riil berdasarkan nilai modal (*Capital Allocation*) pengguna, sehingga proyeksi untung/rugi lebih mudah dipahami.
+7. **Model Performance Analytics**
+   Menyajikan tingkat eror (*MAPE, RMSE*) dan tingkat akurasi (*Accuracy, F1-Score*) dari model prediktif secara transparan pada dasbor, membuktikan bahwa angka yang dihasilkan berbasis ilmiah.
+
+# Sector Sense
+
 Sector Sense adalah platform analisis dan simulasi saham berbasis AI yang dibangun dengan [Next.js](https://nextjs.org) (App Router), React 19, TypeScript, Tailwind CSS, dan [Supabase](https://supabase.com).
 
 ---
