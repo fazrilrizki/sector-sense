@@ -59,7 +59,7 @@ const RISK_OPTIONS: {
     color: 'text-emerald-600 dark:text-emerald-400',
   },
   {
-    value: 'ModerateE',
+    value: 'MODERATE',
     label: 'Moderate',
     description: 'Balanced between risk and medium-term return potential.',
     icon: ShieldAlert,
@@ -136,7 +136,7 @@ export function PreferenceWizard({
   const [values, setValues] = useState<WizardState>({
     base_capital: defaultCapital,
     rawCapital: formatRupiah(String(defaultCapital)),
-    risk_tolerance: initialValues?.risk_tolerance ?? 'ModerateE',
+    risk_tolerance: initialValues?.risk_tolerance ?? 'MODERATE',
     investment_horizon: initialValues?.investment_horizon ?? 'MEDIUM',
   });
   const [error, setError] = useState<string | null>(null);
