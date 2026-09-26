@@ -23,7 +23,7 @@ export default function LoginPage({
 
   const [errorMessage, setErrorMessage] = useState<string | null>(
     resolvedParams.error === 'auth_callback_failed'
-      ? 'Verifikasi tautan atau otentikasi gagal. Silakan coba login langsung.'
+      ? 'Link verification or authentication failed. Please try logging in directly.'
       : null
   )
   const [isPending, startTransition] = useTransition()
@@ -38,7 +38,7 @@ export default function LoginPage({
     startTransition(async () => {
       const result = await signInWithEmail(formData)
       if (!result.success) {
-        setErrorMessage(result.error || 'Gagal masuk. Periksa email dan password Anda.')
+        setErrorMessage(result.error || 'Failed to sign in. Check your email and password.')
       } else if (result.data?.redirectTo) {
         router.push(result.data.redirectTo)
         router.refresh()
@@ -51,7 +51,7 @@ export default function LoginPage({
     startGuestTransition(async () => {
       const result = await signInAsGuest(nextUrl)
       if (result && !result.success) {
-        setErrorMessage(result.error || 'Gagal membuat sesi tamu.')
+        setErrorMessage(result.error || 'Failed to create guest session.')
       }
     })
   }
@@ -65,10 +65,10 @@ export default function LoginPage({
             <Shield className="size-6" />
           </div>
           <h2 className="text-2xl font-bold tracking-tight text-foreground">
-            Masuk ke Sector Sense
+            Sign in to Sector Sense
           </h2>
           <p className="text-sm text-muted-foreground">
-            Platform analisis & simulasi strategi saham berbasis AI
+            AI-based stock strategy analysis & simulation platform
           </p>
         </div>
 
@@ -77,19 +77,19 @@ export default function LoginPage({
           <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-950 dark:text-emerald-200 space-y-2">
             <div className="flex items-center gap-2 font-semibold text-sm text-emerald-700 dark:text-emerald-300">
               <CheckCircle2 className="size-4 shrink-0" />
-              <span>Pendaftaran Berhasil!</span>
+              <span>Registration Successful!</span>
             </div>
             <p className="text-xs leading-relaxed">
               Tautan verifikasi akun telah dikirimkan ke{' '}
               <strong className="underline underline-offset-2">
-                {registeredEmail || 'email Anda'}
+                {registeredEmail || 'Your Email'}
               </strong>
               .
             </p>
             <div className="flex items-start gap-1.5 text-[11px] text-emerald-600 dark:text-emerald-400 bg-emerald-500/5 p-2 rounded-lg border border-emerald-500/10">
               <Mail className="size-3.5 mt-0.5 shrink-0" />
               <span>
-                Silakan buka kotak masuk (atau spam) email Anda dan klik tautan konfirmasi untuk <strong>otomatis masuk ke dashboard</strong>.
+                Please open your inbox (or spam) and click the confirmation link to <strong>automatically sign in to the dashboard</strong>.
               </span>
             </div>
           </div>
@@ -134,7 +134,7 @@ export default function LoginPage({
             disabled={isPending || isGuestPending}
             className="w-full h-10 font-medium cursor-pointer"
           >
-            {isPending ? 'Sedang Memverifikasi...' : 'Masuk dengan Email'}
+            {isPending ? 'Verifying...' : 'Sign in with Email'}
           </Button>
         </form>
 
@@ -145,7 +145,7 @@ export default function LoginPage({
           </div>
           <div className="relative flex justify-center text-xs uppercase">
             <span className="bg-white dark:bg-zinc-950 px-2 text-muted-foreground">
-              Atau Gunakan Akses Tamu
+              Or Use Guest Access
             </span>
           </div>
         </div>
@@ -160,10 +160,10 @@ export default function LoginPage({
             className="w-full h-10 flex items-center justify-center gap-2 cursor-pointer border border-border"
           >
             <Sparkles className="size-4 text-amber-500" />
-            <span>{isGuestPending ? 'Menyiapkan Akses Tamu...' : 'Masuk sebagai Pengguna Tamu'}</span>
+            <span>{isGuestPending ? 'Setting up Guest Access...' : 'Sign in as Guest'}</span>
           </Button>
           <p className="text-[11px] text-center text-muted-foreground">
-            Eksplorasi fitur simulasi saham langsung tanpa registrasi. Data dapat disimpan kapan saja.
+            Explore stock simulation features instantly without registration. Data can be saved anytime.
           </p>
         </div>
 
@@ -174,7 +174,7 @@ export default function LoginPage({
             href={resolvedParams.next ? `/register?next=${encodeURIComponent(resolvedParams.next)}` : '/register'}
             className="font-medium text-primary hover:underline"
           >
-            Daftar sekarang
+            Register now
           </Link>
         </p>
       </div>

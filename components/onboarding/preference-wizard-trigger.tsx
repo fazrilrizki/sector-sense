@@ -29,7 +29,7 @@ export function PreferenceWizardTrigger({
         className="gap-1.5"
       >
         <Settings2 className="size-3.5" />
-        Ubah Preferensi
+        Change Preferences
       </Button>
 
       <PreferenceWizard

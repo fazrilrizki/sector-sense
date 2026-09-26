@@ -56,11 +56,11 @@ export default async function Home() {
         </div>
 
         <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-foreground max-w-3xl leading-tight">
-          Analisis Sektor & Simulasi Strategi Saham Berbasis AI
+          AI-Based Stock Strategy Simulation & Sector Analysis
         </h1>
 
         <p className="text-base sm:text-lg text-muted-foreground max-w-2xl">
-          Didukung otentikasi aman Supabase Auth, proteksi Next.js Proxy, serta Guest Access Session untuk uji coba instan tanpa registrasi awal.
+          Powered by secure Supabase Auth, Next.js Proxy protection, and Guest Access Session for instant trials without prior registration.
         </p>
 
         {/* CTA Buttons */}
@@ -79,7 +79,7 @@ export default async function Home() {
                 href="/login"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm hover:bg-primary/90 shadow-sm transition-all"
               >
-                <span>Masuk Sekarang</span>
+                <span>Sign In Now</span>
                 <ArrowRight className="size-4" />
               </Link>
               <Link
@@ -87,7 +87,7 @@ export default async function Home() {
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 font-semibold text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all text-foreground"
               >
                 <Sparkles className="size-4 text-amber-500" />
-                <span>Coba Akses Tamu (Guest)</span>
+                <span>Try Guest Access</span>
               </Link>
             </>
           )}

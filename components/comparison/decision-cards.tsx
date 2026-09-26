@@ -92,7 +92,7 @@ function OptionCard({
           {positive ? '+' : ''}{IDR.format(localPnL)}
         </p>
         <p className="text-xs text-muted-foreground">
-          {positive ? '+' : ''}{option.projectedReturnPct.toFixed(2)}% dari modal
+          {positive ? '+' : ''}{option.projectedReturnPct.toFixed(2)}% of capital
         </p>
       </div>
 
@@ -112,7 +112,7 @@ function OptionCard({
       {/* Risks */}
       {option.risks.length > 0 && (
         <div className="space-y-1.5 pt-2 border-t border-border">
-          <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Risiko</p>
+          <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Risk</p>
           <ul className="space-y-1">
             {option.risks.map((r, i) => (
               <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground">

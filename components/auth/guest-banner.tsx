@@ -21,7 +21,7 @@ export function GuestBanner() {
         <div className="flex items-center gap-2 flex-wrap">
           <AlertCircle className="size-4 shrink-0 text-amber-600 dark:text-amber-400" />
           <span>
-            <strong>Akses Tamu Aktif:</strong> Sesi sementara dengan jatah eksplorasi gratis.
+            <strong>Active Guest Access:</strong> Temporary session with free exploration quota.
           </span>
           <Badge
             variant={hasReachedLimit ? 'destructive' : 'warning'}
@@ -42,7 +42,7 @@ export function GuestBanner() {
           href="/register?upgrade=true"
           className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-md bg-amber-600 text-white hover:bg-amber-700 transition-colors shadow-sm"
         >
-          <span>Simpan Akun Permanen</span>
+          <span>Save Permanent Account</span>
           <ArrowRight className="size-3" />
         </Link>
       </div>

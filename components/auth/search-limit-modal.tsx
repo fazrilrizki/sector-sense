@@ -74,7 +74,7 @@ export function SearchLimitModal({
               ))}
             </div>
             <p className="text-[11px] text-muted-foreground/80 pt-0.5">
-              Emiten di atas bebas Anda buka kembali tanpa mengurangi kuota.
+              You can reopen the stocks above for free without reducing your quota.
             </p>
           </div>
         )}
@@ -82,7 +82,7 @@ export function SearchLimitModal({
         {/* Value Proposition Box */}
         <div className="my-3 p-4 rounded-xl bg-primary/5 border border-primary/15 space-y-3">
           <p className="text-xs font-semibold text-primary uppercase tracking-wider">
-            Daftar Akun Gratis untuk Membuka Akses:
+            Register a Free Account to Unlock Access:
           </p>
           <ul className="space-y-2.5 text-xs text-foreground/90">
             <li className="flex items-start gap-2">
@@ -100,13 +100,13 @@ export function SearchLimitModal({
             <li className="flex items-start gap-2">
               <ShieldCheck className="size-3.5 mt-0.5 text-emerald-500 shrink-0" />
               <span>
-                <strong>Deteksi Dividend Trap</strong> — Forensik dividen berkelanjutan & skor kesehatan emiten.
+                <strong>Dividend Trap Detection</strong> — Sustainable dividend forensics & corporate health score.
               </span>
             </li>
             <li className="flex items-start gap-2">
               <Database className="size-3.5 mt-0.5 text-indigo-500 shrink-0" />
               <span>
-                <strong>Simpan Data Permanen</strong> — Watchlist & simulasi tersimpan aman tanpa hilang.
+                <strong>Save Data Permanently</strong> — Watchlists & simulations saved securely without loss.
               </span>
             </li>
           </ul>
@@ -124,7 +124,7 @@ export function SearchLimitModal({
             })}
           >
             <Sparkles className="size-4 text-amber-400" />
-            <span>Daftar Akun Gratis Sekarang</span>
+            <span>Register Free Account Now</span>
             <ArrowRight className="size-4 ml-auto" />
           </Link>
 
@@ -138,7 +138,7 @@ export function SearchLimitModal({
                 className: 'flex-1 text-xs cursor-pointer text-muted-foreground hover:text-foreground',
               })}
             >
-              Sudah punya akun? Masuk
+              Already have an account? Sign in
             </Link>
             <button
               type="button"
@@ -149,7 +149,7 @@ export function SearchLimitModal({
                 className: 'text-xs text-muted-foreground hover:text-foreground cursor-pointer px-3',
               })}
             >
-              Tutup
+              Close
             </button>
           </div>
         </DialogFooter>

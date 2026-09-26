@@ -11,7 +11,7 @@ import { ShieldCheck, User, SlidersHorizontal } from 'lucide-react';
 import { PreferenceWizardTrigger } from '@/components/onboarding/preference-wizard-trigger';
 
 export const metadata: Metadata = {
-  title: 'Pengaturan — Sector Sense',
+  title: 'Settings — Sector Sense',
 };
 
 const IDR = new Intl.NumberFormat('id-ID', {
@@ -21,15 +21,15 @@ const IDR = new Intl.NumberFormat('id-ID', {
 });
 
 const RISK_LABEL: Record<string, string> = {
-  CONSERVATIVE: 'Konservatif',
-  MODERATE: 'Moderat',
-  AGGRESSIVE: 'Agresif',
+  CONSERVATIVE: 'Conservative',
+  ModerateE: 'Moderate',
+  AGGRESSIVE: 'Aggressive',
 };
 
 const HORIZON_LABEL: Record<string, string> = {
-  SHORT: 'Jangka Pendek (< 1 thn)',
-  MEDIUM: 'Jangka Menengah (1–5 thn)',
-  LONG: 'Jangka Panjang (> 5 thn)',
+  SHORT: 'Short Term (< 1 yrs)',
+  MEDIUM: 'Medium Term (1–5 yrs)',
+  LONG: 'Long Term (> 5 yrs)',
 };
 
 export default async function SettingsPage() {
@@ -39,9 +39,9 @@ export default async function SettingsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight">Pengaturan</h1>
+        <h1 className="text-2xl font-bold tracking-tight">Settings</h1>
         <p className="text-muted-foreground mt-1">
-          Kelola akun dan preferensi investasi Anda.
+          Manage your account and investment preferences.
         </p>
       </div>
 
@@ -50,9 +50,9 @@ export default async function SettingsPage() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-base">
             <User className="size-4" />
-            Informasi Akun
+            Account Information
           </CardTitle>
-          <CardDescription>Detail akun yang sedang aktif.</CardDescription>
+          <CardDescription>Details of the active account.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-3 text-sm">
           <div className="flex items-center justify-between py-2 border-b border-border">
@@ -60,18 +60,18 @@ export default async function SettingsPage() {
             <span className="font-medium">{user?.email ?? '–'}</span>
           </div>
           <div className="flex items-center justify-between py-2 border-b border-border">
-            <span className="text-muted-foreground">Nama</span>
+            <span className="text-muted-foreground">Name</span>
             <span className="font-medium">{profile?.full_name ?? '–'}</span>
           </div>
           <div className="flex items-center justify-between py-2">
-            <span className="text-muted-foreground">Tipe Akun</span>
+            <span className="text-muted-foreground">Account Type</span>
             <span className="inline-flex items-center gap-1.5 font-medium">
               {isGuest ? (
-                <span className="text-amber-600 dark:text-amber-400">Tamu</span>
+                <span className="text-amber-600 dark:text-amber-400">Guest</span>
               ) : (
                 <span className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400">
                   <ShieldCheck className="size-3.5" />
-                  Pengguna Terdaftar
+                  Registered User
                 </span>
               )}
             </span>
@@ -85,12 +85,12 @@ export default async function SettingsPage() {
           <div>
             <CardTitle className="flex items-center gap-2 text-base">
               <SlidersHorizontal className="size-4" />
-              Preferensi Investasi
+              Investment Preferences
             </CardTitle>
             <CardDescription>
               {isGuest
-                ? 'Daftar akun untuk menyimpan preferensi investasi secara permanen.'
-                : 'Preferensi ini digunakan sebagai default di seluruh simulasi.'}
+                ? 'Daftar akun untuk menyimpan Investment Preferences secara permanen.'
+                : 'These preferences are used as defaults across simulations.'}
             </CardDescription>
           </div>
           {!isGuest && profile && (
@@ -106,24 +106,24 @@ export default async function SettingsPage() {
         <CardContent className="space-y-3 text-sm">
           {isGuest ? (
             <p className="text-muted-foreground text-sm">
-              Preferensi tidak tersedia untuk sesi tamu.
+              Preferensi tidak tersedia untuk sesi Guest.
             </p>
           ) : profile ? (
             <>
               <div className="flex items-center justify-between py-2 border-b border-border">
-                <span className="text-muted-foreground">Modal Simulasi</span>
+                <span className="text-muted-foreground">Simulation Capital</span>
                 <span className="font-medium font-mono">
                   {IDR.format(Number(profile.base_capital))}
                 </span>
               </div>
               <div className="flex items-center justify-between py-2 border-b border-border">
-                <span className="text-muted-foreground">Toleransi Risiko</span>
+                <span className="text-muted-foreground">Risk Tolerance</span>
                 <span className="font-medium">
                   {RISK_LABEL[profile.risk_tolerance] ?? profile.risk_tolerance}
                 </span>
               </div>
               <div className="flex items-center justify-between py-2">
-                <span className="text-muted-foreground">Horizon Investasi</span>
+                <span className="text-muted-foreground">Investment Horizon</span>
                 <span className="font-medium">
                   {HORIZON_LABEL[profile.investment_horizon] ??
                     profile.investment_horizon}
@@ -132,7 +132,7 @@ export default async function SettingsPage() {
             </>
           ) : (
             <p className="text-muted-foreground text-sm">
-              Data profil tidak tersedia.
+              Profile data not available.
             </p>
           )}
         </CardContent>

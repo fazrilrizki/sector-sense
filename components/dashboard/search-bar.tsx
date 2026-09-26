@@ -80,7 +80,7 @@ export function SearchBar() {
             <Input
               value={symbol}
               onChange={(e) => setSymbol(e.target.value)}
-              placeholder="Ketik kode saham incaran (Misal: BBCA, TLKM, BMRI)..."
+              placeholder="Type target stock ticker (e.g., BBCA, TLKM, BMRI)..."
               className="pl-9 pr-3 border-none bg-white dark:bg-zinc-950 focus-visible:ring-1 uppercase font-medium placeholder:normal-case"
               maxLength={6}
             />
@@ -97,7 +97,7 @@ export function SearchBar() {
         {!isAuthLoading && isGuest && (
           <div className="flex flex-wrap items-center justify-between gap-2 px-1 pt-1 text-xs border-t border-primary/10">
             <div className="flex items-center gap-2">
-              <span className="text-muted-foreground">Status Kuota Tamu:</span>
+              <span className="text-muted-foreground">Guest Quota Status:</span>
               <Badge
                 variant={
                   hasReachedLimit
@@ -111,7 +111,7 @@ export function SearchBar() {
                 {hasReachedLimit ? (
                   <span className="flex items-center gap-1">
                     <AlertTriangle className="size-3" />
-                    Limit Tercapai (0/{limit} emiten tersisa)
+                    Limit Reached (0/{limit} stocks remaining)
                   </span>
                 ) : (
                   <span className="flex items-center gap-1">

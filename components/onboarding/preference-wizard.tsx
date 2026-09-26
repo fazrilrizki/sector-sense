@@ -53,21 +53,21 @@ const RISK_OPTIONS: {
 }[] = [
   {
     value: 'CONSERVATIVE',
-    label: 'Konservatif',
-    description: 'Prioritas keamanan modal. Volatilitas rendah, return stabil.',
+    label: 'Conservative',
+    description: 'Capital security priority. Low volatility, stable returns.',
     icon: ShieldCheck,
     color: 'text-emerald-600 dark:text-emerald-400',
   },
   {
-    value: 'MODERATE',
-    label: 'Moderat',
-    description: 'Seimbang antara risiko dan potensi keuntungan jangka menengah.',
+    value: 'ModerateE',
+    label: 'Moderate',
+    description: 'Balanced between risk and medium-term return potential.',
     icon: ShieldAlert,
     color: 'text-amber-600 dark:text-amber-400',
   },
   {
     value: 'AGGRESSIVE',
-    label: 'Agresif',
+    label: 'Aggressive',
     description: 'Toleransi tinggi terhadap volatilitas demi potensi return maksimal.',
     icon: Zap,
     color: 'text-rose-600 dark:text-rose-400',
@@ -83,23 +83,23 @@ const HORIZON_OPTIONS: {
 }[] = [
   {
     value: 'SHORT',
-    label: 'Jangka Pendek',
+    label: 'Short Term',
     sublabel: '< 1 tahun',
-    description: 'Fokus likuiditas dan peluang dividen jangka dekat.',
+    description: 'Focus on liquidity and near-term dividend opportunities.',
     icon: Clock,
   },
   {
     value: 'MEDIUM',
-    label: 'Jangka Menengah',
+    label: 'Medium Term',
     sublabel: '1 – 5 tahun',
-    description: 'Pertumbuhan fundamental dengan eksposur risiko terkontrol.',
+    description: 'Fundamental growth with controlled risk exposure.',
     icon: CalendarDays,
   },
   {
     value: 'LONG',
-    label: 'Jangka Panjang',
+    label: 'Long Term',
     sublabel: '> 5 tahun',
-    description: 'Akumulasi kekayaan jangka panjang melalui compounding.',
+    description: 'Akumulasi kekayaan Long Term melalui compounding.',
     icon: TrendingUp,
   },
 ];
@@ -136,7 +136,7 @@ export function PreferenceWizard({
   const [values, setValues] = useState<WizardState>({
     base_capital: defaultCapital,
     rawCapital: formatRupiah(String(defaultCapital)),
-    risk_tolerance: initialValues?.risk_tolerance ?? 'MODERATE',
+    risk_tolerance: initialValues?.risk_tolerance ?? 'ModerateE',
     investment_horizon: initialValues?.investment_horizon ?? 'MEDIUM',
   });
   const [error, setError] = useState<string | null>(null);
@@ -153,7 +153,7 @@ export function PreferenceWizard({
 
   function handleNext() {
     if (step === 1 && values.base_capital < 1_000_000) {
-      setError('Modal minimal Rp 1.000.000.');
+      setError('Minimum capital is Rp 1,000,000.');
       return;
     }
     setError(null);
@@ -174,7 +174,7 @@ export function PreferenceWizard({
       });
 
       if (!result.success) {
-        setError(result.error ?? 'Gagal menyimpan.');
+        setError(result.error ?? 'Failed to save.');
         return;
       }
 
@@ -200,13 +200,13 @@ export function PreferenceWizard({
             <StepDots step={step} />
           </div>
           <DialogTitle>
-            {step === 1 && 'Modal Awal Simulasi'}
-            {step === 2 && 'Toleransi Risiko'}
-            {step === 3 && 'Horizon Investasi'}
+            {step === 1 && 'Initial Simulation Capital'}
+            {step === 2 && 'Risk Tolerance'}
+            {step === 3 && 'Investment Horizon'}
           </DialogTitle>
           <DialogDescription>
-            {step === 1 && 'Berapa modal yang ingin Anda gunakan untuk simulasi investasi?'}
-            {step === 2 && 'Seberapa besar risiko yang dapat Anda terima?'}
+            {step === 1 && 'How much capital do you want to use for investment simulation?'}
+            {step === 2 && 'How much risk can you accept?'}
             {step === 3 && 'Berapa lama Anda berencana memegang investasi?'}
           </DialogDescription>
         </DialogHeader>
@@ -215,7 +215,7 @@ export function PreferenceWizard({
           {/* Step 1: Capital */}
           {step === 1 && (
             <div className="space-y-2">
-              <Label htmlFor="wiz-capital">Jumlah Modal (IDR)</Label>
+              <Label htmlFor="wiz-capital">Capital Amount (IDR)</Label>
               <div className="relative">
                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-muted-foreground select-none">
                   Rp
@@ -335,16 +335,16 @@ export function PreferenceWizard({
               onClick={handleBack}
               disabled={isPending}
             >
-              Kembali
+              Back
             </Button>
           )}
           {step < TOTAL_STEPS ? (
             <Button type="button" onClick={handleNext}>
-              Lanjut →
+              Next →
             </Button>
           ) : (
             <Button type="button" onClick={handleSave} disabled={isPending}>
-              {isPending ? 'Menyimpan...' : 'Simpan Preferensi'}
+              {isPending ? 'Saving...' : 'Save Preferences'}
             </Button>
           )}
         </DialogFooter>

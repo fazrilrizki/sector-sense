@@ -81,7 +81,7 @@ function StockCombobox({
                   Gunakan &quot;{search.toUpperCase()}&quot;
                 </Button>
               ) : (
-                "Ketik kode saham..."
+                "Type stock ticker..."
               )}
             </CommandEmpty>
             <CommandGroup>
@@ -139,7 +139,7 @@ export function ComparisonForm({ onSubmit, loading }: ComparisonFormProps) {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {/* Target */}
         <div className="space-y-1.5">
-          <Label>Saham Target</Label>
+          <Label>Target Stock</Label>
           <StockCombobox
             value={target}
             onChange={setTarget}
@@ -165,7 +165,7 @@ export function ComparisonForm({ onSubmit, loading }: ComparisonFormProps) {
                     type="button"
                     variant="ghost"
                     size="icon-sm"
-                    aria-label={`Hapus kompetitor ${i + 1}`}
+                    aria-label={`Remove competitor ${i + 1}`}
                     onClick={() => removeCompetitor(i)}
                     className="shrink-0"
                   >
@@ -183,7 +183,7 @@ export function ComparisonForm({ onSubmit, loading }: ComparisonFormProps) {
                 onClick={addCompetitor}
               >
                 <Plus className="size-3.5" />
-                Tambah kompetitor
+                Add competitor
               </Button>
             )}
           </div>

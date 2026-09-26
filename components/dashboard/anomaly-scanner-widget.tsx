@@ -114,7 +114,7 @@ export async function AnomalyScannerWidget({ symbol }: AnomalyScannerWidgetProps
         </div>
 
         <div className="flex items-center gap-2 shrink-0">
-          <span className="text-xs text-muted-foreground mr-1">Emiten Dipantau:</span>
+          <span className="text-xs text-muted-foreground mr-1">Monitored Stock:</span>
           {Object.keys(universeScan.issuers).map((sym) => {
             const isCurrent = sym === activeSymbol;
             const item = universeScan.issuers[sym];
@@ -147,7 +147,7 @@ export async function AnomalyScannerWidget({ symbol }: AnomalyScannerWidgetProps
               <div className="flex items-center gap-2">
                 <CardTitle className="text-xl font-bold flex items-center gap-2">
                   <Activity className="size-5 text-primary" />
-                  Pemindai Anomali Emiten: {activeSymbol}
+                  Corporate Anomaly Scanner: {activeSymbol}
                 </CardTitle>
               </div>
               <CardDescription className="mt-1">
@@ -323,7 +323,7 @@ export async function AnomalyScannerWidget({ symbol }: AnomalyScannerWidgetProps
             <h4 className="text-sm font-semibold flex items-center justify-between">
               <span className="flex items-center gap-2">
                 <AlertTriangle className="size-4 text-amber-500" />
-                Daftar Peringatan & Anomali Terdeteksi ({issuerReport.alerts.length})
+                List of Warnings & Anomalies Detected ({issuerReport.alerts.length})
               </span>
               <span className="text-xs text-muted-foreground font-normal">
                 Based on Campbell-Shiller & Sloan Accrual Quantitative Formula
@@ -333,7 +333,7 @@ export async function AnomalyScannerWidget({ symbol }: AnomalyScannerWidgetProps
             {issuerReport.alerts.length === 0 ? (
               <div className="p-6 rounded-xl border border-dashed border-zinc-200 dark:border-zinc-800 text-center text-xs text-muted-foreground bg-zinc-50/50 dark:bg-zinc-900/30">
                 <ShieldCheck className="size-6 text-emerald-500 mx-auto mb-1.5" />
-                Tidak ada alert anomali ekstrem yang terdeteksi untuk {activeSymbol}. Fundamental dalam rentang historis wajar.
+                No extreme anomaly alerts detected for {activeSymbol}. Fundamentals are within reasonable historical ranges.
               </div>
             ) : (
               <div className="space-y-2.5">

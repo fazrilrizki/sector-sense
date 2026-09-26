@@ -33,7 +33,7 @@ export default function RegisterPage({
     const confirmPassword = formData.get('confirmPassword') as string
 
     if (password !== confirmPassword) {
-      setErrorMessage('Konfirmasi password tidak cocok dengan password.')
+      setErrorMessage('Password confirmation does not match the password.')
       return
     }
 
@@ -42,7 +42,7 @@ export default function RegisterPage({
         // Upgrade existing guest account
         const result = await upgradeGuestAccount(formData)
         if (!result.success) {
-          setErrorMessage(result.error || 'Gagal meng-upgrade akun tamu.')
+          setErrorMessage(result.error || 'Failed to upgrade guest account.')
         } else {
           router.push(nextUrl)
           router.refresh()
@@ -51,7 +51,7 @@ export default function RegisterPage({
         // Standard registration
         const result = await signUpWithEmail(formData)
         if (!result.success) {
-          setErrorMessage(result.error || 'Gagal mendaftar akun.')
+          setErrorMessage(result.error || 'Failed to register account.')
         } else {
           // Redirect to login page with clear instructions and pre-filled email
           router.push(`/login?registered=true&email=${encodeURIComponent(email)}`)
@@ -69,12 +69,12 @@ export default function RegisterPage({
             {isUpgrade ? <Sparkles className="size-6 text-amber-500" /> : <Shield className="size-6" />}
           </div>
           <h2 className="text-2xl font-bold tracking-tight text-foreground">
-            {isUpgrade ? 'Simpan Akun Permanen' : 'Daftar ke Sector Sense'}
+            {isUpgrade ? 'Save Permanent Account' : 'Register to Sector Sense'}
           </h2>
           <p className="text-sm text-muted-foreground">
             {isUpgrade
-              ? 'Konversi sesi tamu Anda menjadi akun permanen untuk mengamankan data simulasi & watchlist.'
-              : 'Daftar untuk mengakses seluruh fitur simulasi dan analisis saham.'}
+              ? 'Convert your guest session to a permanent account to secure your simulation data & watchlist.'
+              : 'Register to access all stock simulation and analysis features.'}
           </p>
         </div>
 
@@ -89,13 +89,13 @@ export default function RegisterPage({
         {/* Form */}
         <form onSubmit={handleRegister} className="space-y-4">
           <div className="space-y-1.5">
-            <Label htmlFor="fullName">Nama Lengkap</Label>
+            <Label htmlFor="fullName">Full Name</Label>
             <Input
               id="fullName"
               name="fullName"
               type="text"
               required
-              placeholder="Nama Anda"
+              placeholder="Your Name"
             />
           </div>
 
@@ -118,37 +118,37 @@ export default function RegisterPage({
               name="password"
               autoComplete="new-password"
               required
-              placeholder="Minimal 6 karakter"
+              placeholder="Minimum 6 characters"
             />
           </div>
 
           <div className="space-y-1.5">
-            <Label htmlFor="confirmPassword">Konfirmasi Password</Label>
+            <Label htmlFor="confirmPassword">Confirm Password</Label>
             <PasswordInput
               id="confirmPassword"
               name="confirmPassword"
               autoComplete="new-password"
               required
-              placeholder="Ulangi password"
+              placeholder="Repeat password"
             />
           </div>
 
           <Button type="submit" disabled={isPending} className="w-full h-10 font-medium cursor-pointer">
             {isPending
               ? isUpgrade
-                ? 'Mengamankan Akun...'
-                : 'Mendaftarkan Akun...'
+                ? 'Securing Account...'
+                : 'Registering Account...'
               : isUpgrade
-                ? 'Simpan dan Jadikan Akun Permanen'
-                : 'Daftar Sekarang'}
+                ? 'Save and Make Account Permanent'
+                : 'Register Now'}
           </Button>
         </form>
 
         {/* Footer */}
         <p className="text-center text-xs text-muted-foreground pt-2">
-          Sudah memiliki akun?{' '}
+          Already have an account?{' '}
           <Link href="/login" className="font-medium text-primary hover:underline">
-            Masuk di sini
+            Sign in here
           </Link>
         </p>
       </div>

@@ -239,13 +239,13 @@ export async function CorporateRadarWidget({ symbol }: { symbol: string }) {
               Kalender Aksi Korporasi Terkini & Mendatang
             </CardTitle>
             <CardDescription>
-              Jadwal Cum Date, Ex Date, dan Pembayaran Dividen {symbol}
+              Cum Date, Ex Date, and Dividend Payment Schedule {symbol}
             </CardDescription>
           </CardHeader>
           <CardContent>
             {calendar.length === 0 ? (
               <p className="text-sm text-muted-foreground py-6 text-center">
-                Belum ada data aksi korporasi untuk emiten ini.
+                No corporate action data yet for this stock.
               </p>
             ) : (
               <div className="divide-y divide-border/60">

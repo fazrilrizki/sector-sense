@@ -35,8 +35,8 @@ export default async function OverviewDashboardPage(props: {
           </h2>
           <p className="text-sm text-muted-foreground mt-1">
             {isGuest
-              ? 'Anda saat ini berada di lingkungan uji coba dengan sesi sementara.'
-              : 'Akun Anda aktif dan seluruh simulasi tersimpan secara permanen.'}
+              ? 'You are currently in a trial environment with a temporary session.'
+              : 'Your account is active and all simulations are saved permanently.'}
           </p>
         </div>
         {isGuest && (
@@ -45,7 +45,7 @@ export default async function OverviewDashboardPage(props: {
             className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-amber-600 text-white hover:bg-amber-700 transition-colors shrink-0 shadow-sm"
           >
             <Sparkles className="size-4" />
-            <span>Simpan Akun Permanen</span>
+            <span>Save Permanent Account</span>
           </Link>
         )}
       </div>
